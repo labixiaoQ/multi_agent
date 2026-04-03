@@ -32,6 +32,7 @@ class Voyager:
         action_agent_task_max_retries: int = 4,
         action_agent_show_chat_log: bool = True,
         action_agent_show_execution_error: bool = True,
+        action_agent_show_strategy: bool = True,
         curriculum_agent_model_name: str = "gpt-3.5-turbo",
         curriculum_agent_temperature: float = 0,
         curriculum_agent_qa_model_name: str = "gpt-3.5-turbo",
@@ -136,6 +137,7 @@ class Voyager:
             resume=resume,
             chat_log=action_agent_show_chat_log,
             execution_error=action_agent_show_execution_error,
+            show_strategy=action_agent_show_strategy,
             logger=logger,
             username=username,
         )

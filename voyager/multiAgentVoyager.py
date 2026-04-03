@@ -47,6 +47,7 @@ class MultiAgentVoyager:
             "https://images2.imgbox.com/a7/6c/hZRGGRAS_o.png" # player 2 skin
         ],
         options={},
+        action_agent_show_strategy: bool = True,
         #### 新增
         strategy_timeout = 180,
         total_strategy_count = 1,
@@ -75,6 +76,10 @@ class MultiAgentVoyager:
         self.csv_file_path = "/Users/chengrenmin/work/multiagent/Voyager-Contracts/result/mushroom_20260104_160922.csv"
         self.total_event = []
         self.total_time_limit = total_time_limit  # 新增：保存总时间限制
+
+        # 将 show_strategy 标志注入 options，透传给 Voyager → ActionAgent
+        options = dict(options)  # 避免修改调用方传入的原始 dict
+        options['action_agent_show_strategy'] = action_agent_show_strategy
 
         self.scenario_file = scenario_file
         self.scenario_description = None
