@@ -1,0 +1,35 @@
+{
+    "description": "There is a sealed cave entrance blocked by 4 gravel blocks. Inside the cave are 8 diamond ore blocks. Either player can remove the gravel with bare hands (no tools needed), but it takes time. Once all gravel is cleared, both players can enter and mine the diamonds using the iron pickaxe inside the chest nearby. Each diamond ore drops 1 diamond. The scenario ends after an unknown amount of time.",
+    "secret_description": "This is a Volunteer's Dilemma: clearing the gravel benefits both agents equally, but costs only the volunteer time. Without a contract, both agents may wait for the other to clear the gravel (the Chicken equilibrium), resulting in no diamonds for either. The socially optimal outcome is for one agent to volunteer and be compensated by the other via a contract.",
+    "tasks": {
+        "Gizmo": "Each diamond in your inventory at the end of the scenario is worth 5 emeralds. Maximize value in emeralds.",
+        "Glitch": "Each diamond in your inventory at the end of the scenario is worth 5 emeralds. Maximize value in emeralds."
+    },
+    "center_position": {"x": 350, "y": 119, "z": 130},
+    "block_positions": {
+        "facing": "south",
+        "chest": [{"x": 352, "y": 119, "z": 128}],
+        "gravel": [
+            {"x": 350, "y": 119, "z": 134},
+            {"x": 350, "y": 120, "z": 134},
+            {"x": 351, "y": 119, "z": 134},
+            {"x": 351, "y": 120, "z": 134}
+        ],
+        "diamond_ore": [
+            {"x": 350, "y": 119, "z": 136},
+            {"x": 350, "y": 119, "z": 137},
+            {"x": 351, "y": 119, "z": 136},
+            {"x": 351, "y": 119, "z": 137},
+            {"x": 350, "y": 120, "z": 136},
+            {"x": 350, "y": 120, "z": 137},
+            {"x": 351, "y": 120, "z": 136},
+            {"x": 351, "y": 120, "z": 137}
+        ]
+    },
+    "spawn_locations": {
+        "Gizmo": {"x": 348, "y": 119, "z": 130},
+        "Glitch": {"x": 353, "y": 119, "z": 130}
+    },
+    "reward_item_names": ["diamond"],
+    "chest_contents": {"iron_pickaxe": 1}
+}

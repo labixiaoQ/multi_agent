@@ -20,20 +20,20 @@ options = {
     # ckpt_dir: ckpt_dir, # Feel free to use a new dir. Do not use the same dir as skill library because new events will still be recorded to ckpt_dir. 
     'resume':False, # Do not resume from a skill library because this is not learning.
     'env_wait_ticks':80,
-    # 'env_request_timeout': 600,
+    'env_request_timeout': 600,
     'action_agent_task_max_retries':50,
     'action_agent_show_chat_log':True,
     'action_agent_temperature':0.3,
-    'action_agent_model_name': "gpt-4-0613", # #"gpt-4-0613",
-    'critic_agent_model_name': "gpt-4-0613", #"gpt-3.5-turbo", #"gpt-4-0613",
+    'action_agent_model_name': "gpt-3.5-turbo", # #"gpt-3.5-turbo",
+    'critic_agent_model_name': "gpt-3.5-turbo", #"gpt-3.5-turbo", #"gpt-3.5-turbo",
 }
 
 multi_options = {
     'scenario_file': "cleanup.json",
     'continuous': True,
-    'episode_timeout': 120, #120,
+    'episode_timeout': 500, #120,
     'num_episodes': 1,
-    'negotiator_model_name': "gpt-4-0613",
+    'negotiator_model_name': "gpt-3.5-turbo",
     'negotiator_temperature': 0.7,
     'options': options
 }
@@ -52,17 +52,26 @@ for contract_i in range(4, 10):
     )
     contract_env.load_scenario(reset='hard')
     for i in range(3):
+        # contract_env.negotiate_contract()
+        # if contract_env.contract is not None:
+        #     print(f"Contract {contract_env.contract} negotiated successfully.")
+        #     break
+        # else:
+        #     print(f"Negotiation failed, retrying... ({i+1}/3)")
+        #     contract_env.reset_agents(mode='hard', timeout=50)
+        #     time.sleep(5)
         try:
             contract_env.negotiate_contract()
             break
         except:
             print('negotiation failed')
+            time.sleep(5)
             continue
     if contract_env.contract is None:
         raise Exception('Contract negotiation failed after 3 tries')
     contract = contract_env.contract
     contract_env.close()
-
+    print("start multi-agent negotiation...")
     for game in range(5):
 
         multi_agent = MultiAgentVoyager(

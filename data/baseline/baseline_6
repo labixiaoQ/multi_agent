@@ -1,0 +1,571 @@
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 80346.
+Server http://127.0.0.1:3003 started successfully
+Creating agent Gizmo on port 3013
+Server on port 3013 not ready yet (attempt 1/15)
+Server on port 3013 not ready yet (attempt 4/15)
+Server on port 3013 not ready yet (attempt 7/15)
+Server on port 3013 not ready yet (attempt 10/15)
+Server on port 3013 not ready yet (attempt 13/15)
+Warning: Server on port 3013 may not be ready after 15 attempts
+Waiting 3 seconds before creating next agent...
+Creating agent Glitch on port 3023
+Server on port 3023 not ready yet (attempt 1/15)
+Server on port 3023 not ready yet (attempt 4/15)
+Server on port 3023 not ready yet (attempt 7/15)
+Server on port 3023 not ready yet (attempt 10/15)
+Server on port 3023 not ready yet (attempt 13/15)
+Warning: Server on port 3023 may not be ready after 15 attempts
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 80439.
+Server http://127.0.0.1:3013 started successfully
+Server http://127.0.0.1:3013 started successfully
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 80443.
+Server http://127.0.0.1:3023 started successfully
+Server http://127.0.0.1:3023 started successfully
+Loading cleanup.json...
+Mineflayer process has exited, restarting
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 80454.
+Subprocess mineflayer started with PID 80455.
+Server http://127.0.0.1:3023 started successfully
+Server http://127.0.0.1:3013 started successfully
+Warning: No chest found in scenario
+Server http://127.0.0.1:3003 started successfully
+Server http://127.0.0.1:3003 started successfully
+Server http://127.0.0.1:3013 started successfully
+Server http://127.0.0.1:3023 started successfully
+Starting episode 0...
+=== Starting Game Round 1/1 ===
+{'message': 'Success'}
+Pausing agents...
+--- Turn 1 of Round 1 ---
+Getting strategy recommendation...
+Generating recommended strategy based on current state and history...
+Generating strategy for agents...
+Loading value sets from /Users/chengrenmin/work/multiagent/Voyager-Contracts/result/mushroom_20260104_160922.csv
+real_state: (18, 11) current_strategy: ('hunt', 'clean') real_strategy: ('hunt', 'hunt') 
+
+执行策略示例（5步）:
+check_inducibility (1): FEASIBLE...
+check_inducibility (2): FEASIBLE...
+步骤: 状态=(18, 11), 实际执行的动作=('hunt', 'hunt'), 下一步推荐的动作=('hunt', 'hunt'), 奖励=[1. 1.]
+Recommended strategy: ('hunt', 'hunt')
+Strategy updated: ('hunt', 'hunt')
+LLM deciding on turn strategy, real_strategy_count: 0, turn_count: 1
+Unpausing agents...
+Executing env step
+Server http://127.0.0.1:3013 started successfully
+Timeout connecting to http://127.0.0.1:3023, retry 1/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 2/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 3/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 4/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Server http://127.0.0.1:3023 started successfully
+{'message': 'Success'}
+Pausing agents...
+Summarizing turn...
+matches_hunt_Gizmo []
+matches_clean_Gizmo ['<Gizmo> Cleaned_slime']
+matches_hunt_Glitch []
+matches_clean_Glitch ['<Glitch> Cleaned_slime']
+timeout_Gizmo 6558
+timeout_Glitch 7347
+real_timeout: (6.558, 7.347)
+real_strategy: ('clean', 'clean')
+summarized Turn 1 of Round 1 ---
+chat_log: <Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 10, Reward blocks count: 18
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 9, Reward blocks count: 18
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 8, Reward blocks count: 18
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 7, Reward blocks count: 18
+<Glitch> Cleaned_slime 10
+<Glitch> Glitch took 7347ms
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 8, Reward blocks count: 18
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Waste blocks count: 9, Reward blocks count: 18
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 10, Reward blocks count: 18
+Summarizing subtask
+Slime block placements found: 10, Mushroom block placements found: 0
+匹配结果: [('10', '18'), ('9', '18'), ('8', '18'), ('7', '18'), ('8', '18'), ('9', '18'), ('10', '18')]
+最后一处匹配内容: ('10', '18')
+最后一处匹配内容: Waste blocks count: 10, Reward blocks count: 18
+Slime block placements found: 10, Mushroom block placements found: 0
+上次的状态记录: 无
+State extracted: {'waste_blocks': 10, 'reward_blocks': 18, 'slime_count': 10, 'mushroom_count': 0, 'strategy': ('clean', 'clean'), 'recommend_strategy': ('hunt', 'hunt')}
+Subtask summary completed.
+Updated total_time: 7.347 seconds after adding max timeout: 7.347 seconds
+total_time/turn_count: 7.347/1
+check_task_success for turn
+--- Turn 2 of Round 1 ---
+Getting strategy recommendation...
+Generating recommended strategy based on current state and history...
+Generating strategy for agents...
+Loading value sets from /Users/chengrenmin/work/multiagent/Voyager-Contracts/result/mushroom_20260104_160922.csv
+real_state: (18, 10) current_strategy: ('hunt', 'hunt') real_strategy: ('clean', 'clean') 
+
+执行策略示例（5步）:
+check_inducibility (3): FEASIBLE...
+check_inducibility (4): FEASIBLE...
+步骤: 状态=(18, 10), 实际执行的动作=('clean', 'clean'), 下一步推荐的动作=('hunt', 'hunt'), 奖励=[0. 0.]
+Recommended strategy: ('hunt', 'hunt')
+Strategy updated: ('hunt', 'hunt')
+LLM deciding on turn strategy, real_strategy_count: 0, turn_count: 2
+Unpausing agents...
+Executing env step
+Server http://127.0.0.1:3013 started successfully
+Server http://127.0.0.1:3023 started successfully
+{'message': 'Success'}
+Pausing agents...
+Summarizing turn...
+matches_hunt_Gizmo ['<Gizmo> Harvested_mushroom']
+matches_clean_Gizmo []
+matches_hunt_Glitch ['<Glitch> Harvested_mushroom']
+matches_clean_Glitch []
+timeout_Gizmo 11834
+timeout_Glitch 12076
+real_timeout: (11.834, 12.076)
+real_strategy: ('hunt', 'hunt')
+summarized Turn 2 of Round 1 ---
+chat_log: <Glitch> Gamerule keepInventory is now set to: true]
+<Glitch> Gamerule doDaylightCycle is now set to: false]
+<Judy> Waste blocks count: 11, Reward blocks count: 16
+<Judy> Waste blocks count: 11, Reward blocks count: 15
+<Judy> Waste blocks count: 11, Reward blocks count: 14
+<Judy> Waste blocks count: 11, Reward blocks count: 12
+<Judy> Waste blocks count: 11, Reward blocks count: 10
+<Judy> Waste blocks count: 11, Reward blocks count: 9
+<Judy> Waste blocks count: 11, Reward blocks count: 8
+<Judy> Waste blocks count: 11, Reward blocks count: 6
+<Judy> Waste blocks count: 11, Reward blocks count: 4
+<Judy> Waste blocks count: 11, Reward blocks count: 2
+<Gizmo> Harvested_mushroom 27
+<Gizmo> Gizmo took 11834ms
+<Judy> Waste blocks count: 11, Reward blocks count: 0
+<Glitch> Harvested_mushroom 27
+<Glitch> Glitch took 12076ms
+Summarizing subtask
+Slime block placements found: 0, Mushroom block placements found: 0
+匹配结果: [('11', '16'), ('11', '15'), ('11', '14'), ('11', '12'), ('11', '10'), ('11', '9'), ('11', '8'), ('11', '6'), ('11', '4'), ('11', '2'), ('11', '0')]
+最后一处匹配内容: ('11', '0')
+最后一处匹配内容: Waste blocks count: 11, Reward blocks count: 0
+Slime block placements found: 0, Mushroom block placements found: 0
+上次的状态记录: (18, 10)
+State extracted: {'waste_blocks': 11, 'reward_blocks': 0, 'slime_count': 0, 'mushroom_count': 0, 'strategy': ('hunt', 'hunt'), 'recommend_strategy': ('hunt', 'hunt')}
+Subtask summary completed.
+Updated total_time: 19.423000000000002 seconds after adding max timeout: 12.076 seconds
+total_time/turn_count: 19.423000000000002/2
+check_task_success for turn
+--- Turn 3 of Round 1 ---
+Getting strategy recommendation...
+Generating recommended strategy based on current state and history...
+Generating strategy for agents...
+Loading value sets from /Users/chengrenmin/work/multiagent/Voyager-Contracts/result/mushroom_20260104_160922.csv
+real_state: (0, 11) current_strategy: ('hunt', 'hunt') real_strategy: ('hunt', 'hunt') 
+
+执行策略示例（5步）:
+check_inducibility (5): FEASIBLE...
+check_inducibility (6): FEASIBLE...
+步骤: 状态=(0, 11), 实际执行的动作=('hunt', 'hunt'), 下一步推荐的动作=('clean', 'clean'), 奖励=[0. 0.]
+Recommended strategy: ('clean', 'clean')
+Strategy updated: ('clean', 'clean')
+LLM deciding on turn strategy, real_strategy_count: 0, turn_count: 3
+Unpausing agents...
+Executing env step
+Server http://127.0.0.1:3013 started successfully
+Server http://127.0.0.1:3023 started successfully
+{'message': 'Success'}
+Pausing agents...
+Summarizing turn...
+matches_hunt_Gizmo []
+matches_clean_Gizmo ['<Gizmo> Cleaned_slime']
+matches_hunt_Glitch []
+matches_clean_Glitch ['<Glitch> Cleaned_slime']
+timeout_Gizmo 4616
+timeout_Glitch 8485
+real_timeout: (4.616, 8.485)
+real_strategy: ('clean', 'clean')
+summarized Turn 3 of Round 1 ---
+chat_log: <Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 10, Reward blocks count: 0
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 9, Reward blocks count: 0
+<Gizmo> Cleaned_slime 5
+<Gizmo> Gizmo took 4616ms
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 7, Reward blocks count: 0
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_slime_block 347 -60 113
+<Glitch> Cleaned_slime 10
+<Glitch> Glitch took 8485ms
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Waste blocks count: 6, Reward blocks count: 0
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 7, Reward blocks count: 0
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 8, Reward blocks count: 0
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 9, Reward blocks count: 0
+Summarizing subtask
+Slime block placements found: 10, Mushroom block placements found: 0
+匹配结果: [('10', '0'), ('9', '0'), ('7', '0'), ('6', '0'), ('7', '0'), ('8', '0'), ('9', '0')]
+最后一处匹配内容: ('9', '0')
+最后一处匹配内容: Waste blocks count: 9, Reward blocks count: 0
+Slime block placements found: 10, Mushroom block placements found: 0
+上次的状态记录: (0, 11)
+State extracted: {'waste_blocks': 9, 'reward_blocks': 0, 'slime_count': 10, 'mushroom_count': 0, 'strategy': ('clean', 'clean'), 'recommend_strategy': ('clean', 'clean')}
+Subtask summary completed.
+Updated total_time: 27.908 seconds after adding max timeout: 8.485 seconds
+total_time/turn_count: 27.908/3
+check_task_success for turn
+--- Turn 4 of Round 1 ---
+Getting strategy recommendation...
+Generating recommended strategy based on current state and history...
+Generating strategy for agents...
+Loading value sets from /Users/chengrenmin/work/multiagent/Voyager-Contracts/result/mushroom_20260104_160922.csv
+real_state: (0, 9) current_strategy: ('clean', 'clean') real_strategy: ('clean', 'clean') 
+
+执行策略示例（5步）:
+check_inducibility (7): FEASIBLE...
+check_inducibility (8): FEASIBLE...
+步骤: 状态=(0, 9), 实际执行的动作=('clean', 'clean'), 下一步推荐的动作=('clean', 'clean'), 奖励=[0. 0.]
+Recommended strategy: ('clean', 'clean')
+Strategy updated: ('clean', 'clean')
+LLM deciding on turn strategy, real_strategy_count: 0, turn_count: 4
+Unpausing agents...
+Executing env step
+Server http://127.0.0.1:3013 started successfully
+Server http://127.0.0.1:3023 started successfully
+{'message': 'Success'}
+Pausing agents...
+Summarizing turn...
+matches_hunt_Gizmo ['<Gizmo> Harvested_mushroom']
+matches_clean_Gizmo []
+matches_hunt_Glitch []
+matches_clean_Glitch ['<Glitch> Cleaned_slime']
+timeout_Gizmo 148
+timeout_Glitch 8319
+real_timeout: (0.148, 8.319)
+real_strategy: ('hunt', 'clean')
+summarized Turn 4 of Round 1 ---
+chat_log: <Gizmo> Harvested_mushroom 27
+<Gizmo> Gizmo took 148ms
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 10, Reward blocks count: 0
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 9, Reward blocks count: 0
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Glitch> Cleaned_slime 10
+<Glitch> Glitch took 8319ms
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 10, Reward blocks count: 0
+<Judy> Waste blocks count: 11, Reward blocks count: 0
+Summarizing subtask
+Slime block placements found: 10, Mushroom block placements found: 0
+匹配结果: [('10', '0'), ('9', '0'), ('10', '0'), ('11', '0')]
+最后一处匹配内容: ('11', '0')
+最后一处匹配内容: Waste blocks count: 11, Reward blocks count: 0
+Slime block placements found: 10, Mushroom block placements found: 0
+上次的状态记录: (0, 9)
+State extracted: {'waste_blocks': 11, 'reward_blocks': 0, 'slime_count': 10, 'mushroom_count': 0, 'strategy': ('hunt', 'clean'), 'recommend_strategy': ('clean', 'clean')}
+Subtask summary completed.
+Updated total_time: 36.227000000000004 seconds after adding max timeout: 8.319 seconds
+total_time/turn_count: 36.227000000000004/4
+check_task_success for turn
+--- Turn 5 of Round 1 ---
+Getting strategy recommendation...
+Generating recommended strategy based on current state and history...
+Generating strategy for agents...
+Loading value sets from /Users/chengrenmin/work/multiagent/Voyager-Contracts/result/mushroom_20260104_160922.csv
+real_state: (0, 11) current_strategy: ('clean', 'clean') real_strategy: ('hunt', 'clean') 
+
+执行策略示例（5步）:
+check_inducibility (9): FEASIBLE...
+check_inducibility (10): FEASIBLE...
+步骤: 状态=(0, 11), 实际执行的动作=('hunt', 'clean'), 下一步推荐的动作=('clean', 'clean'), 奖励=[0. 0.]
+Recommended strategy: ('clean', 'clean')
+Strategy updated: ('clean', 'clean')
+LLM deciding on turn strategy, real_strategy_count: 0, turn_count: 5
+Unpausing agents...
+Executing env step
+Server http://127.0.0.1:3023 started successfully
+Timeout connecting to http://127.0.0.1:3013, retry 1/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 2/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 3/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 4/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Server http://127.0.0.1:3013 started successfully
+{'message': 'Success'}
+Pausing agents...
+Summarizing turn...
+matches_hunt_Gizmo ['<Gizmo> Harvested_mushroom']
+matches_clean_Gizmo ['<Gizmo> Cleaned_slime']
+matches_hunt_Glitch []
+matches_clean_Glitch ['<Glitch> Cleaned_slime']
+timeout_Gizmo 7618
+timeout_Glitch 8468
+real_timeout: (7.618, 8.468)
+real_strategy: ('clean', 'clean')
+summarized Turn 5 of Round 1 ---
+chat_log: <Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 10, Reward blocks count: 0
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 9, Reward blocks count: 0
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 8, Reward blocks count: 0
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 7, Reward blocks count: 0
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_slime_block 347 -60 113
+<Gizmo> Cleaned_slime 10
+<Gizmo> Gizmo took 6852ms
+<Judy> Changed the block at 346, -60, 113]
+<Gizmo> Harvested_mushroom 27
+<Gizmo> Gizmo took 766ms
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 8, Reward blocks count: 0
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 9, Reward blocks count: 0
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 10, Reward blocks count: 0
+Summarizing subtask
+Slime block placements found: 10, Mushroom block placements found: 0
+匹配结果: [('10', '0'), ('9', '0'), ('8', '0'), ('7', '0'), ('8', '0'), ('9', '0'), ('10', '0')]
+最后一处匹配内容: ('10', '0')
+最后一处匹配内容: Waste blocks count: 10, Reward blocks count: 0
+Slime block placements found: 10, Mushroom block placements found: 0
+上次的状态记录: (0, 11)
+State extracted: {'waste_blocks': 10, 'reward_blocks': 0, 'slime_count': 10, 'mushroom_count': 0, 'strategy': ('clean', 'clean'), 'recommend_strategy': ('clean', 'clean')}
+Subtask summary completed.
+Updated total_time: 44.69500000000001 seconds after adding max timeout: 8.468 seconds
+total_time/turn_count: 44.69500000000001/5
+check_task_success for turn
+--- Turn 6 of Round 1 ---
+Getting strategy recommendation...
+Generating recommended strategy based on current state and history...
+Generating strategy for agents...
+Loading value sets from /Users/chengrenmin/work/multiagent/Voyager-Contracts/result/mushroom_20260104_160922.csv
+real_state: (0, 10) current_strategy: ('clean', 'clean') real_strategy: ('clean', 'clean') 
+
+执行策略示例（5步）:
+check_inducibility (11): FEASIBLE...
+check_inducibility (12): FEASIBLE...
+步骤: 状态=(0, 10), 实际执行的动作=('clean', 'clean'), 下一步推荐的动作=('clean', 'clean'), 奖励=[0. 0.]
+Recommended strategy: ('clean', 'clean')
+Strategy updated: ('clean', 'clean')
+LLM deciding on turn strategy, real_strategy_count: 0, turn_count: 6
+Unpausing agents...
+Executing env step
+Timeout connecting to http://127.0.0.1:3013, retry 1/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 1/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 2/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 2/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 3/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 3/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 4/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 4/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 5/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 5/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 6/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 6/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 7/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 7/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 8/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Warning: Failed to start bot after 8 retries, returning empty response
+Timeout connecting to http://127.0.0.1:3023, retry 8/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Warning: Failed to start bot after 8 retries, returning empty response
+{'message': 'Success'}
+Pausing agents...
+Summarizing turn...
+matches_hunt_Gizmo []
+matches_clean_Gizmo ['<Gizmo> Cleaned_slime']
+matches_hunt_Glitch []
+matches_clean_Glitch ['<Glitch> Cleaned_slime']
+timeout_Gizmo 7378
+timeout_Glitch 8654
+real_timeout: (7.378, 8.654)
+real_strategy: ('clean', 'clean')
+summarized Turn 6 of Round 1 ---
+chat_log: <Gizmo> Gamerule keepInventory is now set to: true]
+<Gizmo> Gamerule doDaylightCycle is now set to: false]
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 9, Reward blocks count: 0
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 8, Reward blocks count: 0
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 7, Reward blocks count: 0
+<Gizmo> Cleaned_slime 10
+<Gizmo> Gizmo took 7378ms
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 6, Reward blocks count: 0
+<Glitch> Cleaned_slime 10
+<Glitch> Glitch took 8654ms
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Changed the block at 343, -60, 111]
+<Judy> setblock_slime_block 343 -60 111
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 7, Reward blocks count: 0
+<Judy> Changed the block at 347, -59, 113]
+<Judy> setblock_slime_block 347 -59 113
+<Judy> Waste blocks count: 8, Reward blocks count: 0
+Summarizing subtask
+Slime block placements found: 11, Mushroom block placements found: 0
+匹配结果: [('9', '0'), ('8', '0'), ('7', '0'), ('6', '0'), ('7', '0'), ('8', '0')]
+最后一处匹配内容: ('8', '0')
+最后一处匹配内容: Waste blocks count: 8, Reward blocks count: 0
+Slime block placements found: 11, Mushroom block placements found: 0
+上次的状态记录: (0, 10)
+State extracted: {'waste_blocks': 8, 'reward_blocks': 0, 'slime_count': 11, 'mushroom_count': 0, 'strategy': ('clean', 'clean'), 'recommend_strategy': ('clean', 'clean')}
+Subtask summary completed.
+Updated total_time: 53.349000000000004 seconds after adding max timeout: 8.654 seconds
+total_time/turn_count: 53.349000000000004/6
+check_task_success for turn
+--- Turn 7 of Round 1 ---
+Getting strategy recommendation...
+Generating recommended strategy based on current state and history...
+Generating strategy for agents...
+Loading value sets from /Users/chengrenmin/work/multiagent/Voyager-Contracts/result/mushroom_20260104_160922.csv
+real_state: (0, 8) current_strategy: ('clean', 'clean') real_strategy: ('clean', 'clean') 
+
+执行策略示例（5步）:
+check_inducibility (13): FEASIBLE...
+check_inducibility (14): FEASIBLE...
+步骤: 状态=(0, 8), 实际执行的动作=('clean', 'clean'), 下一步推荐的动作=('clean', 'clean'), 奖励=[0. 0.]
+Recommended strategy: ('clean', 'clean')
+Strategy updated: ('clean', 'clean')
+LLM deciding on turn strategy, real_strategy_count: 0, turn_count: 7
+Unpausing agents...
+Executing env step
+Server http://127.0.0.1:3023 started successfully
+Server http://127.0.0.1:3013 started successfully
+{'message': 'Success'}
+Pausing agents...
+Summarizing turn...
+matches_hunt_Gizmo ['<Gizmo> Harvested_mushroom']
+matches_clean_Gizmo []
+matches_hunt_Glitch ['<Glitch> Harvested_mushroom']
+matches_clean_Glitch ['<Glitch> Cleaned_slime']
+timeout_Gizmo 675
+timeout_Glitch 8639
+real_timeout: (0.675, 8.639)
+real_strategy: ('hunt', 'clean')
+summarized Turn 7 of Round 1 ---
+chat_log: <Gizmo> Gamerule keepInventory is now set to: true]
+<Gizmo> Gamerule doDaylightCycle is now set to: false]
+<Gizmo> Harvested_mushroom 27
+<Gizmo> Gizmo took 675ms
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 10, Reward blocks count: 0
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 9, Reward blocks count: 0
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 8, Reward blocks count: 0
+<Glitch> Cleaned_slime 10
+<Glitch> Glitch took 7973ms
+<Glitch> Harvested_mushroom 27
+<Glitch> Glitch took 666ms
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 9, Reward blocks count: 0
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 10, Reward blocks count: 0
+<Judy> Waste blocks count: 11, Reward blocks count: 0
+Summarizing subtask
+Slime block placements found: 10, Mushroom block placements found: 0
+匹配结果: [('10', '0'), ('9', '0'), ('8', '0'), ('9', '0'), ('10', '0'), ('11', '0')]
+最后一处匹配内容: ('11', '0')
+最后一处匹配内容: Waste blocks count: 11, Reward blocks count: 0
+Slime block placements found: 10, Mushroom block placements found: 0
+上次的状态记录: (0, 8)
+State extracted: {'waste_blocks': 11, 'reward_blocks': 0, 'slime_count': 10, 'mushroom_count': 0, 'strategy': ('hunt', 'clean'), 'recommend_strategy': ('clean', 'clean')}
+Subtask summary completed.
+Updated total_time: 61.988 seconds after adding max timeout: 8.639 seconds
+total_time/turn_count: 61.988/7
+check_task_success for turn
+=== Round 1 Summary ===
+========================
+Gizmo - Success: False, Emeralds: None
+Glitch - Success: False, Emeralds: None
+Judy - Success: None, Emeralds: {'Gizmo': 0, 'Glitch': 0}
+Unpausing agents...
+Strategy count completed: 1

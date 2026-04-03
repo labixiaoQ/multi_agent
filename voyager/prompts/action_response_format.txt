@@ -6,7 +6,7 @@ Plan:
 ...
 Code:
 ```javascript
-// helper functions (only if needed, try to avoid them)
+// helper functions (if needed, use them)
 ...
 // main function after the helper functions
 async function yourMainFunctionName(bot) {

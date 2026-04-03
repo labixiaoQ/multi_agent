@@ -5,8 +5,8 @@ scenario_description = """There is a chest nearby which contains a stone pickaxe
 task1 = "Maximize points where 'iron ore' is worth 3 and 'diamond ore' is worth 5. Points are calculated at the end of the game by resources in the player inventory."
 task2 = "Maximize points where 'iron ore' is worth 4 and 'diamond ore' is worth 4. Points are calculated at the end of the game by resources in player inventory."
 
-agent1 = Negotiator(name="Alice", task=task1, other_name="Bob", other_task=task2, scenario=scenario_description, model="gpt-4-0613")
-agent2 = Negotiator(name="Bob", task=task2, other_name="Alice", other_task=task1, scenario=scenario_description, model="gpt-4-0613")
+agent1 = Negotiator(name="Alice", task=task1, other_name="Bob", other_task=task2, scenario=scenario_description, model="gpt-3.5-turbo")
+agent2 = Negotiator(name="Bob", task=task2, other_name="Alice", other_task=task1, scenario=scenario_description, model="gpt-3.5-turbo")
 
 conversation = Negotiation(agent1, agent2, max_turns=6)
 conversation.simulate()

@@ -11,9 +11,9 @@ args = parser.parse_args()
 
 # You can also use mc_port instead of azure_login, but azure_login is highly recommended
 azure_login = {
-    "client_id": "d0f74e80-fffc-4ace-8361-7e4f0b21fc5c",
+    "client_id": "4f4f23ab-67a0-4731-9fb1-c9f3bbd8c54a",
     "redirect_url": "https://127.0.0.1/auth-response",
-    "secret_value": "[OPTIONAL] YOUR_SECRET_VALUE",
+    #"secret_value": "[OPTIONAL] YOUR_SECRET_VALUE",
     "version": "fabric-loader-0.14.18-1.20.1", # the version Voyager is tested on
 }
 
@@ -21,7 +21,7 @@ mc_port = args.port
 options = {
     'azure_login':  None,
     'mc_port': mc_port,
-    'openai_api_key': openai_api_key,
+    'openai_api_key': "sk-740e6db3e4524c51a2ec4c0fac7454b6",
     # skill_library_dir=skill_library_dir, # Load a learned skill library.
     # ckpt_dir: ckpt_dir, # Feel free to use a new dir. Do not use the same dir as skill library because new events will still be recorded to ckpt_dir. 
     'resume':False, # Do not resume from a skill library because this is not learning.
@@ -30,8 +30,13 @@ options = {
     'action_agent_task_max_retries':50,
     'action_agent_show_chat_log':True,
     'action_agent_temperature':0.3,
-    'action_agent_model_name': "gpt-4-0613", # #"gpt-4-0613",
-    'critic_agent_model_name': "gpt-4-0613", #"gpt-3.5-turbo", #"gpt-4-0613",
+    'action_agent_model_name': "gpt-3.5-turbo", # #"gpt-3.5-turbo",
+    'critic_agent_model_name': "gpt-3.5-turbo", #"gpt-3.5-turbo", #"gpt-3.5-turbo",
+    #应该没用
+    # 'curriculum_agent_qa_model_name': "gpt-3.5-turbo",
+    # 'skill_manager_model_name': "gpt-3.5-turbo",
+    #'openai_api_base': "https://api.openai.com/v1",
+
 }
 
 contract = """
@@ -61,10 +66,11 @@ multi_agent = MultiAgentVoyager(
     contract=contract,
     # save_dir="saves/cleanup_swap_transfer",
     continuous=True,
-    episode_timeout=120, #120,
+    episode_timeout=200, #120,
     num_episodes=1,
-    negotiator_model_name="gpt-4-0613",
+    negotiator_model_name="gpt-3.5-turbo",
     negotiator_temperature=0.7,
+    #negotiator_model_api_base="https://api.zhizengzeng.com/v1",
     options=options
 )
 

@@ -17,6 +17,7 @@ class CriticAgent:
     ):
         self.llm = ChatOpenAI(
             model_name=model_name,
+            openai_api_base="https://api.zhizengzeng.com/v1",
             temperature=temperature,
             request_timeout=request_timout,
         )

@@ -106,15 +106,15 @@ app.post("/start", (req, res) => {
         const tool = require("mineflayer-tool").plugin;
         const collectBlock = require("mineflayer-collectblock").plugin;
         const pvp = require("mineflayer-pvp").plugin;
-        const minecraftHawkEye = require("minecrafthawkeye");
+        // const minecraftHawkEye = require("minecrafthawkeye");
         bot.loadPlugin(pathfinder);
         bot.loadPlugin(tool);
         bot.loadPlugin(collectBlock);
         bot.loadPlugin(pvp);
-        bot.loadPlugin(minecraftHawkEye);
+        // bot.loadPlugin(minecraftHawkEye);
 
-        // bot.collectBlock.movements.digCost = 0;
-        // bot.collectBlock.movements.placeCost = 0;
+        bot.collectBlock.movements.digCost = 0;
+        bot.collectBlock.movements.placeCost = 0;
 
         obs.inject(bot, [
             OnChat,
@@ -212,7 +212,15 @@ app.post("/step", async (req, res) => {
 
     // Set up pathfinder
     const movements = new Movements(bot, mcData);
-    bot.pathfinder.setMovements(movements);
+    if (bot.pathfinder) {
+        bot.pathfinder.setMovements(movements);
+    } else {
+        // 如果pathfinder插件未加载，先加载它
+        const { pathfinder } = require("mineflayer-pathfinder");
+        bot.loadPlugin(pathfinder);
+        bot.pathfinder.setMovements(movements);
+    }
+    // bot.pathfinder.setMovements(movements);
 
     bot.globalTickCounter = 0;
     bot.stuckTickCounter = 0;
@@ -229,7 +237,7 @@ app.post("/step", async (req, res) => {
         }
     }
 
-    bot.on("physicTick", onTick);
+    bot.on("physicsTick", onTick);
 
     // initialize fail count
     let _craftItemFailCount = 0;
@@ -255,14 +263,93 @@ app.post("/step", async (req, res) => {
         response_sent = true;
         res.json(bot.observe());
     }
-    bot.removeListener("physicTick", onTick);
+    bot.removeListener("physicsTick", onTick);
 
+    // async function evaluateCode(code, programs) {
+    //     // Echo the code produced for players to see it. Don't echo when the bot code is already producing dialog or it will double echo
+    //     try {
+    //         await eval("(async () => {" + programs + "\n" + code + "})()");
+    //         return "success";
+    //     } catch (err) {
+    //         return err;
+    //     }
+    // }
+    function stopAllOperations() {
+        // 停止路径规划
+        if (bot.pathfinder && bot.pathfinder.isMoving()) {
+            bot.pathfinder.stop();
+        }
+        
+        // 停止挖掘
+        if (bot.targetDigBlock) {
+            bot.stopDigging();
+        }
+        
+        // 停止攻击
+        if (bot.pvp && bot.pvp.target) {
+            bot.pvp.stop();
+        }
+        
+        if (bot.collectBlock && bot.collectBlock.isCollecting && typeof bot.collectBlock.cancel === 'function') {
+            bot.collectBlock.cancel();
+        }
+        // 停止所有正在进行的异步操作
+        bot.clearControlStates();
+        
+        // 重置状态计数器
+        bot.stuckTickCounter = 0;
+        bot.globalTickCounter = 0;
+    }
+    // async function evaluateCode(code, programs) {
+    //     let timeoutId = null;
+    //     try {
+            
+    //         const timeoutPromise = new Promise((_, reject) => {
+    //             timeoutId = setTimeout(() => {
+    //                 stopAllOperations();
+    //                 reject(new Error("Execution timeout after 20 seconds"));
+    //             }, 20000);
+    //         });
+            
+    //         const executionPromise = eval("(async () => {" + programs + "\n" + code + "})()");
+            
+    //         const result = await Promise.race([executionPromise, timeoutPromise]);
+            
+    //         clearTimeout(timeoutId);
+    //         return "success";
+    //     } catch (err) {
+    //         if (timeoutId) clearTimeout(timeoutId);
+    //         return err;
+    //     }
+    // }
     async function evaluateCode(code, programs) {
-        // Echo the code produced for players to see it. Don't echo when the bot code is already producing dialog or it will double echo
+        let timeoutId = null;
         try {
-            await eval("(async () => {" + programs + "\n" + code + "})()");
+            // 记录开始时间
+            const startTime = Date.now();
+            
+            const timeoutPromise = new Promise((_, reject) => {
+                timeoutId = setTimeout(() => {
+                    stopAllOperations();
+                    reject(new Error("Execution timeout after 60 seconds"));
+                }, 30000);
+            });
+            
+            const executionPromise = eval("(async () => {" + programs + "\n" + code + "})()");
+            
+            const result = await Promise.race([executionPromise, timeoutPromise]);
+            
+            // 记录结束时间并计算执行时间
+            const endTime = Date.now();
+            const executionTime = endTime - startTime;
+            // 打印执行时间
+            console.log(`Execution time: ${executionTime} ms`);
+            
+            
+            clearTimeout(timeoutId);
             return "success";
         } catch (err) {
+            if (timeoutId) clearTimeout(timeoutId);
             return err;
         }
     }

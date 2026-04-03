@@ -16,6 +16,7 @@ class JudgeAgent:
         execution_error=False,
     ):
         self.llm = ChatOpenAI(
+            openai_api_base="https://api.zhizengzeng.com/v1",
             model_name=model_name,
             temperature=temperature,
             request_timeout=request_timout,
@@ -40,6 +41,7 @@ class JudgeAgent:
         error_messages = []
         # FIXME: damage_messages is not used
         damage_messages = []
+        #注释掉
         assert events[-1][0] == "observe", "Last event must be observe"
         for i, (event_type, event) in enumerate(events):
             if event_type == "onChat":

@@ -1,0 +1,495 @@
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 50234.
+Timeout connecting to http://127.0.0.1:3003, retry 1/8: HTTPConnectionPool(host='127.0.0.1', port=3003): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3003, retry 2/8: HTTPConnectionPool(host='127.0.0.1', port=3003): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3003, retry 3/8: HTTPConnectionPool(host='127.0.0.1', port=3003): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3003, retry 4/8: HTTPConnectionPool(host='127.0.0.1', port=3003): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3003, retry 5/8: HTTPConnectionPool(host='127.0.0.1', port=3003): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3003, retry 6/8: HTTPConnectionPool(host='127.0.0.1', port=3003): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3003, retry 7/8: HTTPConnectionPool(host='127.0.0.1', port=3003): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3003, retry 8/8: HTTPConnectionPool(host='127.0.0.1', port=3003): Read timed out. (read timeout=10)
+Warning: Failed to start bot after 8 retries, returning empty response
+Creating agent Gizmo on port 3013
+Server on port 3013 not ready yet (attempt 1/15)
+Server on port 3013 not ready yet (attempt 4/15)
+Server on port 3013 not ready yet (attempt 7/15)
+Server on port 3013 not ready yet (attempt 10/15)
+Server on port 3013 not ready yet (attempt 13/15)
+Warning: Server on port 3013 may not be ready after 15 attempts
+Waiting 3 seconds before creating next agent...
+Creating agent Glitch on port 3023
+Server on port 3023 not ready yet (attempt 1/15)
+Server on port 3023 not ready yet (attempt 4/15)
+Server on port 3023 not ready yet (attempt 7/15)
+Server on port 3023 not ready yet (attempt 10/15)
+Server on port 3023 not ready yet (attempt 13/15)
+Warning: Server on port 3023 may not be ready after 15 attempts
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 50367.
+Timeout connecting to http://127.0.0.1:3013, retry 1/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 2/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 3/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 4/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 5/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 6/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 7/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 8/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Warning: Failed to start bot after 8 retries, returning empty response
+Timeout connecting to http://127.0.0.1:3013, retry 1/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 2/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 3/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 4/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 5/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 6/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 7/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 8/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Warning: Failed to start bot after 8 retries, returning empty response
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 50584.
+Timeout connecting to http://127.0.0.1:3023, retry 1/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 2/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 3/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Server http://127.0.0.1:3023 started successfully
+Server http://127.0.0.1:3023 started successfully
+Loading cleanup.json...
+Mineflayer process has exited, restarting
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 50668.
+Subprocess mineflayer started with PID 50669.
+Server http://127.0.0.1:3023 started successfully
+Server http://127.0.0.1:3013 started successfully
+Warning: No chest found in scenario
+Server http://127.0.0.1:3003 started successfully
+Server http://127.0.0.1:3003 started successfully
+Server http://127.0.0.1:3013 started successfully
+Server http://127.0.0.1:3023 started successfully
+Starting episode 0...
+=== Starting Game Round 1/1 ===
+{'message': 'Success'}
+Pausing agents...
+--- Turn 1 of Round 1 ---
+Getting strategy recommendation...
+Generating recommended strategy based on current state and history...
+Generating strategy for agents...
+Loading value sets from /Users/chengrenmin/work/multiagent/Voyager-Contracts/result/mushroom_20260104_160922.csv
+real_state: (18, 11) current_strategy: ('hunt', 'clean') real_strategy: ('hunt', 'hunt') 
+
+执行策略示例（5步）:
+check_inducibility (1): FEASIBLE...
+check_inducibility (2): FEASIBLE...
+步骤: 状态=(18, 11), 实际执行的动作=('hunt', 'hunt'), 下一步推荐的动作=('hunt', 'hunt'), 奖励=[1. 1.]
+Recommended strategy: ('hunt', 'hunt')
+Strategy updated: ('hunt', 'hunt')
+LLM deciding on turn strategy, real_strategy_count: 0, turn_count: 1
+Unpausing agents...
+Executing env step
+Server http://127.0.0.1:3013 started successfully
+Timeout connecting to http://127.0.0.1:3023, retry 1/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 2/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 3/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 4/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 5/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 6/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 7/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 8/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Warning: Failed to start bot after 8 retries, returning empty response
+{'message': 'Success'}
+Pausing agents...
+Summarizing turn...
+event1 <Judy> Changed the block at 340, -60, 111]
+agent.username Gizmo
+event1 <Judy> setblock_slime_block 340 -60 111
+agent.username Gizmo
+event1 <Judy> Waste blocks count: 10, Reward blocks count: 18
+agent.username Gizmo
+event1 <Judy> Changed the block at 341, -60, 110]
+agent.username Gizmo
+event1 <Judy> setblock_slime_block 341 -60 110
+agent.username Gizmo
+event1 <Judy> Changed the block at 340, -60, 111]
+agent.username Gizmo
+event1 <Judy> Changed the block at 342, -60, 110]
+agent.username Gizmo
+event1 <Judy> setblock_slime_block 340 -60 111
+agent.username Gizmo
+event1 <Judy> Waste blocks count: 9, Reward blocks count: 18
+agent.username Gizmo
+event1 <Judy> setblock_slime_block 342 -60 110
+agent.username Gizmo
+event1 <Judy> Changed the block at 342, -59, 110]
+agent.username Gizmo
+event1 <Judy> Changed the block at 341, -60, 110]
+agent.username Gizmo
+event1 <Judy> setblock_slime_block 341 -60 110
+agent.username Gizmo
+event1 <Judy> Waste blocks count: 8, Reward blocks count: 18
+agent.username Gizmo
+event1 <Gizmo> Cleaned_slime 10
+agent.username Gizmo
+event1 <Gizmo> Gizmo took 7260ms
+agent.username Gizmo
+matches_timeout_Gizmo: 7260
+timeout_Gizmo: 7260
+event1 <Judy> Changed the block at 342, -59, 110]
+agent.username Gizmo
+event1 <Judy> setblock_slime_block 342 -59 110
+agent.username Gizmo
+event1 <Judy> Changed the block at 340, -60, 111]
+agent.username Gizmo
+event1 <Judy> setblock_slime_block 340 -60 111
+agent.username Gizmo
+event1 <Judy> Changed the block at 343, -60, 111]
+agent.username Gizmo
+event1 <Judy> setblock_slime_block 343 -60 111
+agent.username Gizmo
+event1 <Judy> Waste blocks count: 9, Reward blocks count: 18
+agent.username Gizmo
+event1 <Judy> Changed the block at 342, -60, 110]
+agent.username Gizmo
+event1 <Judy> setblock_slime_block 342 -60 110
+agent.username Gizmo
+event1 <Judy> Waste blocks count: 10, Reward blocks count: 18
+agent.username Gizmo
+real_timeout: (7.26, 0.0)
+real_strategy: ('', 'clean')
+Summarizing subtask{events} for {agent.username}...
+Processing events for agent: Gizmo, count: 24
+Combined chat events for regex matching: <Judy> Changed the block at 340, -60, 111] <Judy> setblock_slime_block 340 -60 111 <Judy> Waste blocks count: 10, Reward blocks count: 18 <Judy> Changed the block at 341, -60, 110] <Judy> setblock_slime_block 341 -60 110 <Judy> Changed the block at 340, -60, 111] <Judy> Changed the block at 342, -60, 110] <Judy> setblock_slime_block 340 -60 111 <Judy> Waste blocks count: 9, Reward blocks count: 18 <Judy> setblock_slime_block 342 -60 110 <Judy> Changed the block at 342, -59, 110] <Judy> Changed the block at 341, -60, 110] <Judy> setblock_slime_block 341 -60 110 <Judy> Waste blocks count: 8, Reward blocks count: 18 <Judy> Changed the block at 342, -59, 110] <Judy> setblock_slime_block 342 -59 110 <Judy> Changed the block at 340, -60, 111] <Judy> setblock_slime_block 340 -60 111 <Judy> Changed the block at 343, -60, 111] <Judy> setblock_slime_block 343 -60 111 <Judy> Waste blocks count: 9, Reward blocks count: 18 <Judy> Changed the block at 342, -60, 110] <Judy> setblock_slime_block 342 -60 110 <Judy> Waste blocks count: 10, Reward blocks count: 18
+Slime block placements found: 9, Mushroom block placements found: 0
+匹配结果: [('10', '18'), ('9', '18'), ('8', '18'), ('9', '18'), ('10', '18')]
+最后一处匹配内容: ('10', '18')
+最后一处匹配内容: Waste blocks count: 10, Reward blocks count: 18
+Slime block placements found: 9, Mushroom block placements found: 0
+上次的状态记录: 无
+State extracted: {'waste_blocks': 10, 'reward_blocks': 18, 'slime_count': 9, 'mushroom_count': 0, 'strategy': ('', 'clean'), 'recommend_strategy': ('hunt', 'hunt')}
+Subtask summary completed.
+Updated total_time: 7.26 seconds after adding max timeout: 7.26 seconds
+total_time/turn_count: 7.26/1
+check_task_success for turn
+Gizmo - Success: False, Emeralds: None
+Glitch - Success: False, Emeralds: None
+Judy - Success: None, Emeralds: {'Gizmo': 0, 'Glitch': 0}
+--- Turn 2 of Round 1 ---
+Getting strategy recommendation...
+Generating recommended strategy based on current state and history...
+Generating strategy for agents...
+Loading value sets from /Users/chengrenmin/work/multiagent/Voyager-Contracts/result/mushroom_20260104_160922.csv
+real_state: (18, 10) current_strategy: ('hunt', 'hunt') real_strategy: ('', 'clean') 
+Warning: Invalid real_strategy ('', 'clean'), using default ('hunt', 'hunt')
+
+执行策略示例（5步）:
+check_inducibility (3): FEASIBLE...
+check_inducibility (4): FEASIBLE...
+步骤: 状态=(18, 10), 实际执行的动作=('hunt', 'hunt'), 下一步推荐的动作=('hunt', 'hunt'), 奖励=[1. 1.]
+Recommended strategy: ('hunt', 'hunt')
+Strategy updated: ('hunt', 'hunt')
+LLM deciding on turn strategy, real_strategy_count: 0, turn_count: 2
+Unpausing agents...
+Executing env step
+Timeout connecting to http://127.0.0.1:3023, retry 1/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 1/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 2/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 2/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 3/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 3/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 4/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 4/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 5/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 5/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 6/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 6/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 7/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 7/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 8/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Warning: Failed to start bot after 8 retries, returning empty response
+Timeout connecting to http://127.0.0.1:3013, retry 8/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Warning: Failed to start bot after 8 retries, returning empty response
+{'message': 'Success'}
+Pausing agents...
+Summarizing turn...
+event1 <Glitch> Gamerule keepInventory is now set to: true]
+agent.username Gizmo
+event1 <Glitch> Gamerule doDaylightCycle is now set to: false]
+agent.username Gizmo
+event1 <Judy> Changed the block at 340, -60, 111]
+agent.username Gizmo
+event1 <Judy> Changed the block at 341, -60, 110]
+agent.username Gizmo
+event1 <Judy> Waste blocks count: 10, Reward blocks count: 18
+agent.username Gizmo
+event1 <Judy> Changed the block at 340, -60, 111]
+agent.username Gizmo
+event1 <Judy> setblock_slime_block 341 -60 110
+agent.username Gizmo
+event1 <Judy> Waste blocks count: 9, Reward blocks count: 18
+agent.username Gizmo
+event1 <Glitch> Cleaned_slime 4
+agent.username Gizmo
+event1 <Glitch> Glitch took 3192ms
+agent.username Gizmo
+matches_timeout_Glitch: 3192
+timeout_Glitch: 3192
+event1 <Judy> The river is clean!
+agent.username Gizmo
+event1 <Judy> Changed the block at 346, -60, 113]
+agent.username Gizmo
+event1 <Judy> Waste blocks count: 7, Reward blocks count: 18
+agent.username Gizmo
+event1 <Judy> Changed the block at 342, -59, 110]
+agent.username Gizmo
+event1 <Judy> Waste blocks count: 5, Reward blocks count: 18
+agent.username Gizmo
+event1 <Judy> Changed the block at 340, -60, 111]
+agent.username Gizmo
+event1 <Judy> Waste blocks count: 4, Reward blocks count: 18
+agent.username Gizmo
+event1 <Judy> setblock_slime_block 340 -60 111
+agent.username Gizmo
+event1 <Judy> Waste blocks count: 3, Reward blocks count: 18
+agent.username Gizmo
+event1 <Gizmo> Cleaned_slime 10
+agent.username Gizmo
+event1 <Gizmo> Gizmo took 7455ms
+agent.username Gizmo
+matches_timeout_Gizmo: 7455
+timeout_Gizmo: 7455
+event1 <Judy> Changed the block at 339, -58, 110]
+agent.username Gizmo
+event1 <Judy> Changed the block at 341, -60, 110]
+agent.username Gizmo
+event1 <Judy> Changed the block at 338, -58, 110]
+agent.username Gizmo
+event1 <Judy> Changed the block at 346, -60, 113]
+agent.username Gizmo
+event1 <Judy> Waste blocks count: 4, Reward blocks count: 17
+agent.username Gizmo
+real_timeout: (7.455, 3.192)
+real_strategy: ('clean', 'clean')
+Summarizing subtask{events} for {agent.username}...
+Processing events for agent: Gizmo, count: 20
+Combined chat events for regex matching: <Judy> Changed the block at 340, -60, 111] <Judy> Changed the block at 341, -60, 110] <Judy> Waste blocks count: 10, Reward blocks count: 18 <Judy> Changed the block at 340, -60, 111] <Judy> setblock_slime_block 341 -60 110 <Judy> Waste blocks count: 9, Reward blocks count: 18 <Judy> The river is clean! <Judy> Changed the block at 346, -60, 113] <Judy> Waste blocks count: 7, Reward blocks count: 18 <Judy> Changed the block at 342, -59, 110] <Judy> Waste blocks count: 5, Reward blocks count: 18 <Judy> Changed the block at 340, -60, 111] <Judy> Waste blocks count: 4, Reward blocks count: 18 <Judy> setblock_slime_block 340 -60 111 <Judy> Waste blocks count: 3, Reward blocks count: 18 <Judy> Changed the block at 339, -58, 110] <Judy> Changed the block at 341, -60, 110] <Judy> Changed the block at 338, -58, 110] <Judy> Changed the block at 346, -60, 113] <Judy> Waste blocks count: 4, Reward blocks count: 17
+Slime block placements found: 2, Mushroom block placements found: 0
+匹配结果: [('10', '18'), ('9', '18'), ('7', '18'), ('5', '18'), ('4', '18'), ('3', '18'), ('4', '17')]
+最后一处匹配内容: ('4', '17')
+最后一处匹配内容: Waste blocks count: 4, Reward blocks count: 17
+Slime block placements found: 2, Mushroom block placements found: 0
+上次的状态记录: (18, 10)
+State extracted: {'waste_blocks': 4, 'reward_blocks': 17, 'slime_count': 2, 'mushroom_count': 0, 'strategy': ('clean', 'clean'), 'recommend_strategy': ('hunt', 'hunt')}
+Subtask summary completed.
+Updated total_time: 14.715 seconds after adding max timeout: 7.455 seconds
+total_time/turn_count: 14.715/2
+check_task_success for turn
+Gizmo - Success: False, Emeralds: None
+Glitch - Success: True, Emeralds: None
+Judy - Success: None, Emeralds: {'Gizmo': 0, 'Glitch': 0}
+--- Turn 3 of Round 1 ---
+Getting strategy recommendation...
+Generating recommended strategy based on current state and history...
+Generating strategy for agents...
+Loading value sets from /Users/chengrenmin/work/multiagent/Voyager-Contracts/result/mushroom_20260104_160922.csv
+real_state: (17, 4) current_strategy: ('hunt', 'hunt') real_strategy: ('clean', 'clean') 
+
+执行策略示例（5步）:
+check_inducibility (5): FEASIBLE...
+check_inducibility (6): FEASIBLE...
+步骤: 状态=(17, 4), 实际执行的动作=('clean', 'clean'), 下一步推荐的动作=('hunt', 'hunt'), 奖励=[0. 0.]
+Recommended strategy: ('hunt', 'hunt')
+Strategy updated: ('hunt', 'hunt')
+LLM deciding on turn strategy, real_strategy_count: 0, turn_count: 3
+Unpausing agents...
+Executing env step
+Timeout connecting to http://127.0.0.1:3013, retry 1/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 1/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 2/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 2/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3023, retry 3/8: HTTPConnectionPool(host='127.0.0.1', port=3023): Read timed out. (read timeout=10)
+Timeout connecting to http://127.0.0.1:3013, retry 3/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Server http://127.0.0.1:3023 started successfully
+Timeout connecting to http://127.0.0.1:3013, retry 4/8: HTTPConnectionPool(host='127.0.0.1', port=3013): Read timed out. (read timeout=10)
+Server http://127.0.0.1:3013 started successfully
+{'message': 'Success'}
+Pausing agents...
+Summarizing turn...
+event1 <Judy> Waste blocks count: 8, Reward blocks count: 5
+agent.username Gizmo
+event1 <Judy> Changed the block at 346, -60, 114]
+agent.username Gizmo
+event1 <Glitch> Cleaned_slime 10
+agent.username Gizmo
+event1 <Glitch> Glitch took 7713ms
+agent.username Gizmo
+matches_timeout_Glitch: 7713
+timeout_Glitch: 7713
+event1 <Judy> Changed the block at 347, -60, 114]
+agent.username Gizmo
+event1 <Judy> setblock_slime_block 346 -60 114
+agent.username Gizmo
+event1 <Judy> setblock_slime_block 347 -60 114
+agent.username Gizmo
+event1 <Judy> Changed the block at 346, -60, 113]
+agent.username Gizmo
+event1 <Judy> setblock_slime_block 346 -60 113
+agent.username Gizmo
+event1 <Judy> Waste blocks count: 6, Reward blocks count: 5
+agent.username Gizmo
+event1 <Judy> Changed the block at 347, -59, 113]
+agent.username Gizmo
+event1 <Judy> setblock_slime_block 347 -59 113
+agent.username Gizmo
+event1 <Judy> Changed the block at 346, -60, 113]
+agent.username Gizmo
+event1 <Judy> setblock_slime_block 346 -60 113
+agent.username Gizmo
+event1 <Judy> Changed the block at 347, -60, 113]
+agent.username Gizmo
+event1 <Judy> setblock_slime_block 347 -60 113
+agent.username Gizmo
+event1 <Judy> Changed the block at 347, -59, 113]
+agent.username Gizmo
+event1 <Judy> Changed the block at 338, -58, 110]
+agent.username Gizmo
+event1 <Judy> The river is clean!
+agent.username Gizmo
+event1 <Gizmo> Cleaned_slime 10
+agent.username Gizmo
+event1 <Gizmo> Gizmo took 8361ms
+agent.username Gizmo
+matches_timeout_Gizmo: 8361
+timeout_Gizmo: 8361
+event1 <Judy> Changed the block at 339, -58, 108]
+agent.username Gizmo
+event1 <Judy> Changed the block at 347, -60, 114]
+agent.username Gizmo
+event1 <Judy> Changed the block at 337, -58, 110]
+agent.username Gizmo
+event1 <Judy> Changed the block at 346, -60, 114]
+agent.username Gizmo
+event1 <Judy> Waste blocks count: 5, Reward blocks count: 5
+agent.username Gizmo
+event1 <Judy> Changed the block at 335, -58, 116]
+agent.username Gizmo
+event1 <Judy> Waste blocks count: 4, Reward blocks count: 5
+agent.username Gizmo
+event1 <Judy> Changed the block at 343, -60, 111]
+agent.username Gizmo
+event1 <Judy> setblock_red_mushroom_block 335 -58 116
+agent.username Gizmo
+event1 <Judy> setblock_slime_block 346 -60 114
+agent.username Gizmo
+event1 <Judy> Changed the block at 342, -60, 110]
+agent.username Gizmo
+event1 <Judy> The river is too dirty!
+agent.username Gizmo
+event1 <Judy> setblock_slime_block 343 -60 111
+agent.username Gizmo
+event1 <Judy> Waste blocks count: 3, Reward blocks count: 6
+agent.username Gizmo
+event1 <Judy> setblock_slime_block 342 -60 110
+agent.username Gizmo
+event1 <Judy> Waste blocks count: 6, Reward blocks count: 9
+agent.username Gizmo
+real_timeout: (8.361, 7.713)
+real_strategy: ('clean', 'clean')
+Summarizing subtask{events} for {agent.username}...
+Processing events for agent: Gizmo, count: 33
+Combined chat events for regex matching: <Judy> Waste blocks count: 8, Reward blocks count: 5 <Judy> Changed the block at 346, -60, 114] <Judy> Changed the block at 347, -60, 114] <Judy> setblock_slime_block 346 -60 114 <Judy> setblock_slime_block 347 -60 114 <Judy> Changed the block at 346, -60, 113] <Judy> setblock_slime_block 346 -60 113 <Judy> Waste blocks count: 6, Reward blocks count: 5 <Judy> Changed the block at 347, -59, 113] <Judy> setblock_slime_block 347 -59 113 <Judy> Changed the block at 346, -60, 113] <Judy> setblock_slime_block 346 -60 113 <Judy> Changed the block at 347, -60, 113] <Judy> setblock_slime_block 347 -60 113 <Judy> Changed the block at 347, -59, 113] <Judy> Changed the block at 338, -58, 110] <Judy> The river is clean! <Judy> Changed the block at 339, -58, 108] <Judy> Changed the block at 347, -60, 114] <Judy> Changed the block at 337, -58, 110] <Judy> Changed the block at 346, -60, 114] <Judy> Waste blocks count: 5, Reward blocks count: 5 <Judy> Changed the block at 335, -58, 116] <Judy> Waste blocks count: 4, Reward blocks count: 5 <Judy> Changed the block at 343, -60, 111] <Judy> setblock_red_mushroom_block 335 -58 116 <Judy> setblock_slime_block 346 -60 114 <Judy> Changed the block at 342, -60, 110] <Judy> The river is too dirty! <Judy> setblock_slime_block 343 -60 111 <Judy> Waste blocks count: 3, Reward blocks count: 6 <Judy> setblock_slime_block 342 -60 110 <Judy> Waste blocks count: 6, Reward blocks count: 9
+Slime block placements found: 9, Mushroom block placements found: 1
+匹配结果: [('8', '5'), ('6', '5'), ('5', '5'), ('4', '5'), ('3', '6'), ('6', '9')]
+最后一处匹配内容: ('6', '9')
+最后一处匹配内容: Waste blocks count: 6, Reward blocks count: 9
+Slime block placements found: 9, Mushroom block placements found: 1
+上次的状态记录: (17, 4)
+State extracted: {'waste_blocks': 6, 'reward_blocks': 9, 'slime_count': 9, 'mushroom_count': 1, 'strategy': ('clean', 'clean'), 'recommend_strategy': ('hunt', 'hunt')}
+Subtask summary completed.
+Updated total_time: 23.076 seconds after adding max timeout: 8.361 seconds
+total_time/turn_count: 23.076/3
+check_task_success for turn
+Gizmo - Success: False, Emeralds: None
+Glitch - Success: False, Emeralds: None
+Judy - Success: None, Emeralds: {'Gizmo': 0, 'Glitch': 0}
+--- Turn 4 of Round 1 ---
+Getting strategy recommendation...
+Generating recommended strategy based on current state and history...
+Generating strategy for agents...
+Loading value sets from /Users/chengrenmin/work/multiagent/Voyager-Contracts/result/mushroom_20260104_160922.csv
+real_state: (9, 6) current_strategy: ('hunt', 'hunt') real_strategy: ('clean', 'clean') 
+
+执行策略示例（5步）:
+check_inducibility (7): FEASIBLE...
+check_inducibility (8): FEASIBLE...
+步骤: 状态=(9, 6), 实际执行的动作=('clean', 'clean'), 下一步推荐的动作=('hunt', 'hunt'), 奖励=[0. 0.]
+Recommended strategy: ('hunt', 'hunt')
+Strategy updated: ('hunt', 'hunt')
+LLM deciding on turn strategy, real_strategy_count: 0, turn_count: 4
+Unpausing agents...
+Executing env step
+Server http://127.0.0.1:3013 started successfully
+Server http://127.0.0.1:3023 started successfully
+{'message': 'Success'}
+Pausing agents...
+Summarizing turn...
+event1 <Glitch> Gamerule keepInventory is now set to: true]
+agent.username Gizmo
+event1 <Glitch> Gamerule doDaylightCycle is now set to: false]
+agent.username Gizmo
+event1 <Judy> Waste blocks count: 11, Reward blocks count: 8
+agent.username Gizmo
+event1 <Judy> Waste blocks count: 11, Reward blocks count: 6
+agent.username Gizmo
+event1 <Judy> Waste blocks count: 11, Reward blocks count: 5
+agent.username Gizmo
+event1 <Judy> Waste blocks count: 11, Reward blocks count: 4
+agent.username Gizmo
+event1 <Judy> Waste blocks count: 11, Reward blocks count: 2
+agent.username Gizmo
+event1 <Judy> Waste blocks count: 11, Reward blocks count: 1
+agent.username Gizmo
+event1 <Gizmo> Harvested_mushroom 9
+agent.username Gizmo
+event1 <Gizmo> Gizmo took 7083ms
+agent.username Gizmo
+matches_timeout_Gizmo: 7083
+timeout_Gizmo: 7083
+event1 <Glitch> Harvested_mushroom 27
+agent.username Gizmo
+event1 <Glitch> Glitch took 7108ms
+agent.username Gizmo
+matches_timeout_Glitch: 7108
+timeout_Glitch: 7108
+event1 <Judy> Waste blocks count: 11, Reward blocks count: 0
+agent.username Gizmo
+real_timeout: (7.083, 7.108)
+real_strategy: ('hunt', 'hunt')
+Summarizing subtask{events} for {agent.username}...
+Processing events for agent: Gizmo, count: 7
+Combined chat events for regex matching: <Judy> Waste blocks count: 11, Reward blocks count: 8 <Judy> Waste blocks count: 11, Reward blocks count: 6 <Judy> Waste blocks count: 11, Reward blocks count: 5 <Judy> Waste blocks count: 11, Reward blocks count: 4 <Judy> Waste blocks count: 11, Reward blocks count: 2 <Judy> Waste blocks count: 11, Reward blocks count: 1 <Judy> Waste blocks count: 11, Reward blocks count: 0
+Slime block placements found: 0, Mushroom block placements found: 0
+匹配结果: [('11', '8'), ('11', '6'), ('11', '5'), ('11', '4'), ('11', '2'), ('11', '1'), ('11', '0')]
+最后一处匹配内容: ('11', '0')
+最后一处匹配内容: Waste blocks count: 11, Reward blocks count: 0
+Slime block placements found: 0, Mushroom block placements found: 0
+上次的状态记录: (9, 6)
+State extracted: {'waste_blocks': 11, 'reward_blocks': 0, 'slime_count': 0, 'mushroom_count': 0, 'strategy': ('hunt', 'hunt'), 'recommend_strategy': ('hunt', 'hunt')}
+Subtask summary completed.
+Updated total_time: 30.184 seconds after adding max timeout: 7.108 seconds
+total_time/turn_count: 30.184/4
+check_task_success for turn
+Gizmo - Success: False, Emeralds: None
+Glitch - Success: False, Emeralds: None
+Judy - Success: None, Emeralds: {'Gizmo': 0, 'Glitch': 0}
+=== Round 1 Summary ===
+========================
+Gizmo - Success: False, Emeralds: None
+Glitch - Success: False, Emeralds: None
+Judy - Success: None, Emeralds: {'Gizmo': 0, 'Glitch': 0}
+Unpausing agents...
+Strategy count completed: 1
+check
+0 ('hunt', 'hunt') ('clean', 'clean') (9, 6)
+check
+0 ('hunt', 'hunt') ('clean', 'clean') (9, 6)
+Gizmo {emeralds: {'Gizmo': 0, 'Glitch': 0}}
+Glitch {emeralds: {'Gizmo': 0, 'Glitch': 0}}
+Quitting...
+Closing...
+Contract None completed. 1034.1732778549194 seconds elapsed.

@@ -1,0 +1,6 @@
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 22830.
+Server http://127.0.0.1:3003 started successfully
+Creating agent Gizmo on port 3013
+Server on port 3013 not ready yet (attempt 1/15)
+Server on port 3013 not ready yet (attempt 4/15)

@@ -1,11 +1,28 @@
 import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed, wait
+import concurrent.futures
 from voyager import Voyager
 from voyager.negotiation import Negotiation, Negotiator
+from voyager.strategy_recommand.strategy_agent import MushroomStrategy
 import time
 import voyager.utils as U
 import copy
 from datetime import datetime
+import random
 import requests
+import re
+
+from dataclasses import dataclass
+
+@dataclass
+class AgentState:
+    real_strategy_count: int = 0
+    current_strategy: tuple = None
+    real_strategy: tuple = None
+    real_state: tuple = (18, 11)
+    recommend_strategy: tuple = None
+
+
 
 class MultiAgentVoyager:
     
@@ -20,16 +37,44 @@ class MultiAgentVoyager:
         contract_mode="auto",
         contract=None,
         continuous=True,
-        episode_timeout=120, 
+        episode_timeout=200, #120
         num_episodes=3,
-        negotiator_model_name="gpt-4",
+        negotiator_model_name="gpt-3.5-turbo",
         negotiator_temperature=0.7,
+        #negotiator_model_api_base="https://api.openai.com/v1",
         skinurls = [
             "https://images2.imgbox.com/60/3d/2bJnlM8U_o.png", # player 1 skin
             "https://images2.imgbox.com/a7/6c/hZRGGRAS_o.png" # player 2 skin
         ],
-        options={}
+        options={},
+        #### 新增
+        strategy_timeout = 180,
+        total_strategy_count = 1,
+        strategy_history = [],
+        recommend_strategy_history = [],
+        state_history = [],
+        timeout_history = [],
+        total_time_limit = 60,
+
+        # strategy = None,
+        # ####
     ):
+        # Strategy management
+        self.strategy_lock = threading.Lock()
+        self.strategy_queues = {}  # One queue per agent
+        self.active_strategies = {}  # Currently active strategies
+        self.strategy_timeout = strategy_timeout
+        self.total_strategy_count = total_strategy_count
+        self.strategy_history = strategy_history 
+        self.recommend_strategy_history = recommend_strategy_history
+        self.timeout_history = timeout_history
+        self.state_history = state_history
+        self.max_mushrooms = 18
+        self.max_slimes = 11
+        self.strategy = MushroomStrategy(max_mushrooms=self.max_mushrooms, max_slimes=self.max_slimes, gamma=2/3, delta=0.5, epsilon=0.5)
+        self.csv_file_path = "/Users/chengrenmin/work/multiagent/Voyager-Contracts/result/mushroom_20260104_160922.csv"
+        self.total_event = []
+        self.total_time_limit = total_time_limit  # 新增：保存总时间限制
 
         self.scenario_file = scenario_file
         self.scenario_description = None
@@ -45,6 +90,7 @@ class MultiAgentVoyager:
         self.num_episodes = num_episodes
         self.negotiator_model_name = negotiator_model_name
         self.negotiator_temperature = negotiator_temperature
+        #self.negotiator_model_api_base = negotiator_model_api_base
         self.skinurls = skinurls
         self.chest_memory = {}
         self.episode = 0
@@ -100,29 +146,78 @@ class MultiAgentVoyager:
             **options
         )
         self.judge.env.reset()
+        self.judge.heartbeat_interval = 10
+        self.connection_timeout = 10
 
-        # create agents
+
+        # create agents with fixed port allocation to avoid conflicts
+        # Use fixed port offsets for each agent to ensure stability
+        port_offsets = {
+            'Gizmo': 10,
+            'Glitch': 20,
+            'Judy': 25
+        }
+        
         for i in range(num_agents):
-            username=self.usernames[i]
-            ckpt_dir=f"{self.save_dir}/{username}_ckpt"
-
+            username = self.usernames[i]
+            ckpt_dir = f"{self.save_dir}/{username}_ckpt"
+            
+            # Use fixed port offset instead of random
+            agent_port = server_port + port_offsets.get(username, (i + 1) * 10)
+            print(f"Creating agent {username} on port {agent_port}")
+            
             agent = Voyager(
                 username=username,
-                server_port=str(server_port+1+i),
+                server_port=str(agent_port),
                 ckpt_dir=ckpt_dir,
                 episode_timeout=episode_timeout,
                 **options
             )
+            
+            # Wait for agent server to start before proceeding
+            self._wait_for_server_ready(agent_port)
             self.agents.append(agent)
+            
+            # Add delay between agent creations to avoid resource conflicts
+            if i < num_agents - 1:
+                print(f"Waiting 3 seconds before creating next agent...")
+                time.sleep(3)
 
-        # # set voyager skins
-        # for i, agent in enumerate(self.agents):
-        #     agent.env.reset()
-        #     agent.env.step(
-        #         U.skins_commands(self.skinurls[i])
-        # )
+        # set voyager skins
+        for i, agent in enumerate(self.agents):
+            agent.env.reset()
+            agent.env.step(
+                U.skins_commands(self.skinurls[i])
+        )
 
-        # time.sleep(1)
+        time.sleep(2)  # Additional wait time for stability
+
+    def _wait_for_server_ready(self, port, max_retries=15, timeout=10):
+        """Wait for the server on the specified port to be ready"""
+        import requests
+        import time
+        
+        server_url = f"http://127.0.0.1:{port}"
+        for retry in range(max_retries):
+            try:
+                # Try to connect to the server with a simple GET request
+                # Use a small timeout to avoid blocking too long
+                response = requests.get(server_url, timeout=2)
+                # If we get any response (even 404), the server is running
+                print(f"Server on port {port} is ready")
+                return True
+            except requests.exceptions.ConnectionError:
+                if retry % 3 == 0:  # Only log every 3rd attempt to reduce noise
+                    print(f"Server on port {port} not ready yet (attempt {retry + 1}/{max_retries})")
+                time.sleep(2)  # Longer wait time for server startup
+            except requests.exceptions.RequestException as e:
+                if retry % 3 == 0:
+                    print(f"Error checking server on port {port}: {e}")
+                time.sleep(2)
+        
+        print(f"Warning: Server on port {port} may not be ready after {max_retries} attempts")
+        # Even if not ready, continue and let the normal error handling deal with it
+        return True
 
     def run_threads(self, target, args=None, include_judge=False, shared_args=False):
         """
@@ -147,10 +242,120 @@ class MultiAgentVoyager:
             thread.join()
         return results
     
-    def reset_agents(self, mode='soft', timeout=10):
+    def run_threads_non_blocking(self, target, args=None, include_judge=False, shared_args=False, timeout=30, round_num=0):
+       
+        agents = self.agents + [self.judge] if include_judge else self.agents
+        if args is None: args = {agent.username: {} for agent in agents}
+        if shared_args: args = {agent.username: args for agent in agents}
+
+        results = {agent.username: {} for agent in agents}
+        
+        # 验证 args 结构，确保所有必需参数都存在
+        print(f"=== Validating args for Round {round_num} ===")
+        for agent in agents:
+            agent_args = args.get(agent.username, {})
+            print(f"  {agent.username}: {list(agent_args.keys())}")
+            # 如果缺少关键参数，记录警告
+            if not agent_args:
+                print(f"  ⚠ WARNING: Empty args for {agent.username}")
+        
+        # 包装target函数以增强错误处理
+        def wrapped_target(agent, **kwargs):
+            result = {}
+            try:
+                target(agent, result, **kwargs)
+            except TypeError as e:
+                print(f"TypeError in thread {agent.username}_round{round_num}: {e}")
+                print(f"  Kwargs received: {list(kwargs.keys())}")
+                import traceback
+                traceback.print_exc()
+            except Exception as e:
+                print(f"Error in thread {agent.username}_round{round_num}: {e}")
+                import traceback
+                traceback.print_exc()
+                # 确保agent的环境仍然可用
+                if hasattr(agent, 'env') and hasattr(agent.env, 'check_process'):
+                    try:
+                        agent.env.check_process()
+                    except Exception as env_e:
+                        print(f"Failed to check/restore agent environment: {env_e}")
+            return agent.username, result
+        
+        # 使用线程池执行
+        print(f"=== Starting Round {round_num} with ThreadPoolExecutor (timeout={timeout}s) ===")
+        executor = ThreadPoolExecutor(max_workers=len(agents), thread_name_prefix=f"round{round_num}")
+        
+        try:
+            # 提交所有任务
+            futures = {
+                executor.submit(wrapped_target, agent, **args[agent.username]): agent.username 
+                for agent in agents
+            }
+            
+            # 等待所有任务完成，带超时
+            try:
+                done, not_done = wait(
+                    futures.keys(),
+                    timeout=timeout,
+                    return_when=concurrent.futures.ALL_COMPLETED
+                )
+                
+                # 收集已完成任务的结果
+                for future in done:
+                    try:
+                        username, result = future.result(timeout=1)
+                        results[username] = result
+                        print(f"✓ Task completed for {username}")
+                    except Exception as e:
+                        username = futures[future]
+                        print(f"✗ Error getting result for {username}: {e}")
+                        import traceback
+                        traceback.print_exc()
+                
+                # 处理超时的任务
+                if not_done:
+                    print(f"\n⚠ WARNING: {len(not_done)} task(s) timed out after {timeout}s")
+                    for future in not_done:
+                        username = futures[future]
+                        print(f"  - Task timeout: {username}")
+                        # 尝试取消未完成的任务
+                        cancelled = future.cancel()
+                        if not cancelled:
+                            print(f"  - Could not cancel {username}, task may still be running")
+                        
+            except Exception as e:
+                print(f"❌ ThreadPool execution error: {e}")
+                import traceback
+                traceback.print_exc()
+                
+        finally:
+            # 强制关闭线程池，不等待未完成的任务
+            print(f"Shutting down executor for round {round_num}...")
+            executor.shutdown(wait=False)  # 不等待，强制关闭
+            print(f"=== Round {round_num} executor shutdown complete ===\n")
+        
+        return results
+    
+    def reset_agents(self, mode='soft', timeout=20):
         args = {agent.username: {'options': {'mode': mode, 'wait_ticks': agent.env_wait_ticks}} for agent in self.agents}
         self.run_threads(lambda agent, _, options: agent.env.reset(options=options), args=args)
         time.sleep(2)
+
+    def pause_agents(self):
+         for agent in [self.judge] + self.agents:
+            if agent.env is not None:
+                agent.env.pause()
+            print('Pausing agents...')
+            break #pause one agent = pause all agents
+
+    def unpause_agents(self):
+         for agent in [self.judge] + self.agents:
+            if agent.env is not None:
+                agent.env.unpause()
+            print('Unpausing agents...')
+            break
+
+
 
     def save_scenario(self, save_options):
         """
@@ -386,8 +591,100 @@ class MultiAgentVoyager:
         if self.critic_mode == "manual":
             return human_check_task_success()
         
-        return self.run_threads(ai_check_task_success, events, include_judge=True)
+        critic_responses = self.run_threads(ai_check_task_success, events, include_judge=True)
+        # Transform responses into expected format
+        formatted_responses = {}
+        for agent in self.agents + [self.judge]:
+            formatted_responses[agent.username] = {
+                'success': critic_responses[agent.username]['success'],
+                'critique': critic_responses[agent.username]['critique'],
+                'emeralds': critic_responses[agent.username]['emeralds']
+            }
+            print(f"{agent.username} - Success: {formatted_responses[agent.username]['success']}, Emeralds: {formatted_responses[agent.username]['emeralds']}")
+        return formatted_responses
         
+    def summary_subtask(self,chat_log):
+        """Summarizes the subtask from the events"""
+        def ai_summary_subtask(result, chat_log):   
+
+            print("Summarizing subtask")         
+
+            events_str = ""
+            slime_count = 0
+            mushroom_count = 0
+            pattern_slime = r"setblock_slime_block\s+(-?\d+)\s+(-?\d+)\s+(-?\d+)"
+            pattern_mushroom = r"setblock_red_mushroom_block\s+(-?\d+)\s+(-?\d+)\s+(-?\d+)"
+            #列表转字符串
+            chat_log = "".join(chat_log)
+            
+            matches_slime = re.findall(pattern_slime, chat_log)
+            matches_mushroom = re.findall(pattern_mushroom, chat_log)
+            #统计slime和mushroom的数量
+            slime_count = len(matches_slime)
+            mushroom_count = len(matches_mushroom)
+            print(f"Slime block placements found: {slime_count}, Mushroom block placements found: {mushroom_count}")
+
+            # pattern_hunt = r"collect_mushrooms"
+            # pattern_clean = r"clean_slime"
+            # matches_hunt = re.findall(pattern_hunt, events_str)
+            # matches_clean = re.findall(pattern_clean, events_str)
+
+            # #统计受伤和清洁slime的次数
+            # hunt_count = len(matches_hunt)
+            # clean_count = len(matches_clean)
+            # print(f"hunt mushrooms count: {hunt_count}, Clean slime count: {clean_count}")
+           
+            # print(f"Combined events string: {events_str}")
+            pattern = r"Waste blocks count: (\d+), Reward blocks count: (\d+)"
+            matches = re.findall(pattern, chat_log)
+            # print(f"chat_log: {chat_log}")
+            print(f"匹配结果: {matches}")
+            
+            if matches:
+                # 获取最后一个匹配项
+                last_match = matches[-1]
+                print(f"最后一处匹配内容: {last_match}")
+                waste_blocks = int(last_match[0])
+                reward_blocks = int(last_match[1])
+                print(f"最后一处匹配内容: Waste blocks count: {waste_blocks}, Reward blocks count: {reward_blocks}")
+                print(f"Slime block placements found: {slime_count}, Mushroom block placements found: {mushroom_count}")
+                print(f"上次的状态记录: {self.state_history[-1] if self.state_history else '无'}")
+               
+                # 记录当前回合的策略和执行动作
+                current_strategy = self.strategy_history[-1] if self.strategy_history else ""
+                
+                state = {
+                    "waste_blocks": waste_blocks, 
+                    "reward_blocks": reward_blocks,
+                    "slime_count": slime_count,
+                    "mushroom_count": mushroom_count,
+                    "strategy": current_strategy,
+                    "recommend_strategy": AgentState.recommend_strategy,
+                }
+                
+                self.state_history.append((reward_blocks, waste_blocks))
+                print(f"State extracted: {state}")
+                result.update({"state": state})
+            else:
+                print("未找到匹配内容")
+            
+        result = {}
+
+        ai_summary_subtask(result, chat_log)
+        print(f"Subtask summary completed.")
+        return result
+
+    def summary_task(self, turn_seconds, events, max_retries=5):
+        # every episode summary
+        #1.reward blocks and waste blocks count
+        #2.history actually strategy
+        #3.history recommend strategy
+        #4.current state
+        reward = 0
+
+        return reward
+
+
     def save_episode(self, results):
         U.dump_json(results, f"{self.save_dir}/episodes/episode{self.episode}/code.json")
 
@@ -405,13 +702,116 @@ class MultiAgentVoyager:
 
     #     episode_results = self.load_episode(episode)
     #     self.run_threads(env_step, args=episode_results)
-    
+
+    def recommend_strategy(self, agents, current_strategy, real_strategy, real_state):
+        """Generate real-time strategy recommendation"""
+        if not agents:
+            return ""
+        print(f"Generating strategy for agents...")
+        for agent in agents:
+            if not hasattr(agent, 'username'):
+                continue
+            #推荐逻辑
+        
+        # strategy = MushroomStrategy()
+
+        # 加载值集（请替换为实际的CSV文件路径）
+        csv_file_path = self.csv_file_path
+        self.strategy.load_value_sets_from_csv(csv_file_path)
+
+       
+        # 计算最优策略
+        print(f"real_state: {real_state} current_strategy: {current_strategy} real_strategy: {real_strategy} ")
+        
+        # 参数验证和默认值设置
+        # 验证real_state（current_state参数）
+        if not (isinstance(real_state, tuple) and len(real_state) == 2 and 
+                all(isinstance(x, int) for x in real_state)):
+            print(f"Warning: Invalid real_state {real_state}, using default (0, 0)")
+            real_state = (0, 0)
+        
+        # 验证current_strategy（current_policy参数）
+        valid_actions = ["hunt", "clean"]
+        if not (isinstance(current_strategy, tuple) and len(current_strategy) == 2 and 
+                all(action in valid_actions for action in current_strategy)):
+            print(f"Warning: Invalid current_strategy {current_strategy}, using default ('hunt', 'clean')")
+            current_strategy = ('hunt', 'clean')
+        
+        # 验证real_strategy（current_policy_player参数）
+        if not (isinstance(real_strategy, tuple) and len(real_strategy) == 2 and 
+                all(action in valid_actions for action in real_strategy)):
+            print(f"Warning: Invalid real_strategy {real_strategy}, using default ('hunt', 'hunt')")
+            real_strategy = ('hunt', 'hunt')
+        
+        # # 验证num_steps
+        # if not (isinstance(num_steps, int) and num_steps > 0):
+        #     print(f"Warning: Invalid num_steps {num_steps}, using default 5")
+        #     num_steps = 5
+        
+        recommend_strategy = self.strategy.recommend_strategy(real_state, current_strategy, real_strategy, num_steps=5)
+
+        # # 计算最优策略
+        # print(f"real_state: {real_state} current_strategy: {current_strategy} real_strategy: {real_strategy} ")
+        # recommend_strategy = self.strategy.recommend_strategy(real_state, current_strategy, real_strategy, num_steps=5)
+
+            #
+        print(f"Recommended strategy: {recommend_strategy}")   
+        # recommend_strategy = f"""
+        # [RECOMMENDED STRATEGY]:
+        # agent1: {agent.username} recommend_strategy:mushroom{2}, waste_block:{1};
+        # agent2: {agent.username} recommend_strategy:mushroom{3}, waste_block:{4};
+        # """
+        self.recommend_strategy_history.append(recommend_strategy)
+        
+        return recommend_strategy
+
     def run_episode(self, episode=None, reload=True, reset='soft'):
+        # Real-time strategy monitoring
+        
+        def strategy_monitor(real_strategy_count):
+            AgentState.real_strategy_count = real_strategy_count
+            try:
+                # Get current state from all agents
+                agent_events = {}
+                for agent in self.agents:
+                    # Get real events from agent
+                    events = getattr(agent, 'last_events', [])
+                    agent_events[agent.username] = events
+                
+                # Get historical strategies and states
+                AgentState.current_strategy = self.recommend_strategy_history[-1] if self.recommend_strategy_history else None
+                #
+                AgentState.real_strategy = self.strategy_history[-1] if self.strategy_history else None
+                #
+                AgentState.real_state = self.state_history[-1] if self.state_history else None
+
+                 # 第一次边界监测
+                if AgentState.current_strategy is None:
+                    AgentState.current_strategy = ('hunt', 'hurt')
+                if AgentState.real_strategy is None:
+                    AgentState.real_strategy = ('hunt', 'hunt')
+                if AgentState.real_state is None:
+                    AgentState.real_state = (18, 11)
+                
+                # Generate context-aware strategy for all agents
+               
+                print(f"Generating recommended strategy based on current state and history...")
+                AgentState.recommend_strategy = self.recommend_strategy(self.agents, AgentState.current_strategy, AgentState.real_strategy, AgentState.real_state)
+
+
+                print(f"Strategy updated: {AgentState.recommend_strategy}")
+                
+            except Exception as e:
+                print(f"Strategy monitor error for agents: {e}")
+                import traceback
+                traceback.print_exc()
+
         # get ai_message and parse
         def get_ai_message_parse(agent, result):
             if agent.action_agent_rollout_num_iter < 0:
                 raise ValueError("Agent must be reset before stepping")
             ai_message = agent.action_agent.llm(agent.messages)
+            # print(f"AI message received: {agent.messages}")
             agent.logger(f"\033[34m****Action Agent ai message****\n{ai_message.content}\033[0m")
             agent.conversations.append(
                 (agent.messages[0].content, agent.messages[1].content, ai_message.content)
@@ -419,7 +819,7 @@ class MultiAgentVoyager:
             parsed_result = agent.action_agent.process_ai_message(message=ai_message)
             result.update({'parsed_result': parsed_result})
 
-        # do env.step
+        # do env.step with improved error handling and timeout protection
         def env_step(agent, result, parsed_result):
             if not isinstance(parsed_result, dict):
                 assert isinstance(parsed_result, str)
@@ -438,7 +838,7 @@ class MultiAgentVoyager:
             result.update({'events': events})
 
         # update messages for next round
-        def update_agent(agent, result, parsed_result, events, success, critique, contract_critique, emeralds):
+        def update_agent(agent, result, AgentState, parsed_result, events, success, critique, contract_critique, emeralds):
             new_skills = agent.skill_manager.retrieve_skills(
                 query=agent.context
                 + "\n\n"
@@ -454,11 +854,19 @@ class MultiAgentVoyager:
                 context=agent.context,
                 critique=critique,
                 contract_critique=contract_critique,
+                real_strategy_count=AgentState.real_strategy_count,
+                current_strategy=AgentState.current_strategy,
+                real_strategy=AgentState.real_strategy,
+                real_state=AgentState.real_state,
+                recommend_strategy=AgentState.recommend_strategy,
             )
             agent.last_events = copy.deepcopy(events)
             agent.messages = [system_message, human_message]
             assert len(agent.messages) == 2
             agent.action_agent_rollout_num_iter += 1
+            # checkpointing
+            print(f"check")
+            print(AgentState.real_strategy_count, AgentState.current_strategy, AgentState.real_strategy, AgentState.real_state)
 
             done = (
                 agent.action_agent_rollout_num_iter >= agent.action_agent_task_max_retries
@@ -485,6 +893,13 @@ class MultiAgentVoyager:
         # replace chat events with those from the agent who lived longest and save both players observations
         # note: this is a hacky solution to a problem that should be fixed in the future
         def fix_chat_events(events):
+            if not isinstance(events, dict):
+        # 确保列表非空
+                if isinstance(events, list) and len(events) > 0:
+                    events = events[-1]
+                else:
+                    # 如果不是字典也不是有效的列表，返回空结构
+                    return {agent.username: {'events': []} for agent in self.agents}
             # collect all chat events for each agent
             chat_events = {agent.username: [] for agent in self.agents}
             other_events = {agent.username: [] for agent in self.agents}
@@ -504,8 +919,143 @@ class MultiAgentVoyager:
 
             # copy one of the agents events for the judge
             new_events[self.judge_username] = new_events[self.agents[0].username]
-
+            # print('fix_chat_events, events:', events)
+            # print('fix_chat_events, new_events:', new_events)
             return new_events
+        def fix_event(events):
+            
+            events = events[self.agents[0].username]['events']
+            chat_messages = []
+            for i, (event_type, event) in enumerate(events):
+                if event_type == "onChat":
+                    chat_messages.append(event["onChat"])
+
+            chat_log = "\n".join(chat_messages)
+            print("chat_log:", chat_log)
+            return chat_log
+
+        
+            
+        def fix_chat_state_events(events):
+            chat_events = {agent.username: "" for agent in self.agents}
+            # print("events", events)
+            for agent in self.agents:
+                    for (event_type, event) in events[agent.username]['events']:
+                        
+                        if event_type == 'onChat' :
+                            event1 = event["onChat"]
+                            chat_events[agent.username] += event1
+            #print('fix_chat_events, events:', events)
+            # print('fix_chat_events1, chat_events:', chat_events)
+            #print('state_events:', state_events)
+            
+
+
+            pattern_hunt_Gizmo = r"<Gizmo> Harvested_mushroom"
+            pattern_hunt_Glitch = r"<Glitch> Harvested_mushroom"
+            pattern_clean_Gizmo = r"<Gizmo> Cleaned_slime"
+            pattern_clean_Glitch = r"<Glitch> Cleaned_slime"
+            # territory_pd.json: Defect_poison maps to 'hunt' (defect strategy)
+            pattern_defect_Gizmo = r"<Gizmo> Defected_poison"
+            pattern_defect_Glitch = r"<Glitch> Defected_poison"
+           
+            pattern_timeout_Gizmo = r"<Gizmo> Gizmo took (\d+)(?=ms)"
+            pattern_timeout_Glitch = r'<Glitch> Glitch took (\d+)(?=ms)'
+            real_strategy_agent1 = ""
+            real_strategy_agent2 = ""
+            timeout_Gizmo = 0
+            timeout_Glitch = 0
+
+            matches_hunt_Gizmo = re.findall(pattern_hunt_Gizmo, chat_events[self.agents[0].username])
+            matches_hunt_Glitch = re.findall(pattern_hunt_Glitch, chat_events[self.agents[1].username])
+            matches_clean_Gizmo = re.findall(pattern_clean_Gizmo, chat_events[self.agents[0].username])
+            matches_clean_Glitch = re.findall(pattern_clean_Glitch, chat_events[self.agents[1].username])
+            # territory_pd.json: Defected_poison → defect strategy (mapped to 'hunt')
+            matches_defect_Gizmo = re.findall(pattern_defect_Gizmo, chat_events[self.agents[0].username])
+            matches_defect_Glitch = re.findall(pattern_defect_Glitch, chat_events[self.agents[1].username])
+            if matches_hunt_Gizmo:
+                real_strategy_agent1 = 'hunt'
+            if matches_clean_Gizmo:
+                real_strategy_agent1 = 'clean'
+            if matches_defect_Gizmo:
+                real_strategy_agent1 = 'hunt'
+            if matches_hunt_Glitch:
+                real_strategy_agent2 = 'hunt'
+            if matches_clean_Glitch:
+                real_strategy_agent2 = 'clean'
+            if matches_defect_Glitch:
+                real_strategy_agent2 = 'hunt'
+            matches_time_Gizmo = re.findall(pattern_timeout_Gizmo, chat_events[self.agents[0].username])
+            matches_time_Glitch = re.findall(pattern_timeout_Glitch, chat_events[self.agents[1].username])
+            if matches_time_Gizmo:
+                for time in matches_time_Gizmo:
+                    timeout_Gizmo += int(time)
+
+            if matches_time_Glitch:
+                for time in matches_time_Glitch:
+                    timeout_Glitch += int(time)
+            print ("matches_hunt_Gizmo", matches_hunt_Gizmo)
+            print ("matches_clean_Gizmo", matches_clean_Gizmo)
+            print ("matches_hunt_Glitch", matches_hunt_Glitch)
+            print ("matches_clean_Glitch", matches_clean_Glitch)
+            print ("timeout_Gizmo", timeout_Gizmo)
+            print ("timeout_Glitch", timeout_Glitch)
+            # for agent in self.agents:
+                # if 'events' in events[agent.username]:
+                #     for (event_type, event) in events[agent.username]['events']:
+                        
+                #         if event_type == 'onChat' :
+                #             if agent.username == self.agents[0].username:
+                #                 print ("event11", event1)
+                #             event1 = event["onChat"]
+                #             print("event1", event1)
+                #             # print("agent.username", agent.username)
+                #             # chat_events[agent.username].append((event_type, event1))
+
+                            
+                #             matches_hunt_Gizmo = re.findall(pattern_hunt_Gizmo, event1)
+                #             matches_clean_Gizmo = re.findall(pattern_clean_Gizmo, event1)
+                #             matches_hunt_Glitch = re.findall(pattern_hunt_Glitch, event1)
+                #             matches_clean_Glitch = re.findall(pattern_clean_Glitch, event1)
+                            
+                            
+                #             matches_time_Gizmo = re.findall(pattern_timeout_Gizmo, event1)
+                            
+                #             matches_timeout_Gizmo = int(matches_time_Gizmo[-1]) if matches_time_Gizmo else 0
+                #             if (matches_timeout_Gizmo > 0):
+                #                 timeout_Gizmo += matches_timeout_Gizmo
+                #                 print("matches_timeout_Gizmo:", matches_timeout_Gizmo)
+                #                 print("timeout_Gizmo:", timeout_Gizmo)
+                        
+                #             matches_time_Glitch = re.findall(pattern_timeout_Glitch, event1)
+                #             matches_timeout_Glitch = int(matches_time_Glitch[-1]) if matches_time_Glitch else 0
+                #             if (matches_timeout_Glitch > 0):
+                #                 timeout_Glitch += matches_timeout_Glitch
+                #                 print("matches_timeout_Glitch:", matches_timeout_Glitch)
+                #                 print("timeout_Glitch:", timeout_Glitch)
+
+                # if matches_hunt_Gizmo:
+                #     real_strategy_agent1 = 'hunt'
+                # if matches_clean_Gizmo:
+                #     real_strategy_agent1 = 'clean'
+                # if matches_hunt_Glitch:
+                #     real_strategy_agent2 = 'hunt'
+                # if matches_clean_Glitch:
+                #     real_strategy_agent2 = 'clean'
+                            
+
+
+            timeout_Gizmo = timeout_Gizmo / 1000 
+            timeout_Glitch = timeout_Glitch / 1000 
+            real_timeout = (timeout_Gizmo, timeout_Glitch)
+            print("real_timeout:", real_timeout)
+            self.timeout_history.append(real_timeout)
+            real_strategy = (real_strategy_agent1, real_strategy_agent2)
+            
+            print("real_strategy:", real_strategy)
+
+            # print('fix_chat_events, chat_events:', chat_events)
+            return chat_events, real_strategy
 
         # reset for both agents and load scenario
         if reload:
@@ -519,44 +1069,116 @@ class MultiAgentVoyager:
                 raise ValueError("episode must be an integer")
             
             episode_results = self.load_episode(episode)
-            self.run_threads(env_step, args=episode_results)
+            # self.run_threads(env_step, args=episode_results)
             self.reset_agents()
             return
         
-        # get ai_message and parse in parallel
-        print('get_ai_message_parse')
-        parsed_results = self.run_threads(get_ai_message_parse)
+        events = {}
+        real_strategy_count = 0
 
-        # save episode
-        self.save_episode(parsed_results)
 
-        # do env.step in parallel`
-        print('env_step')
-        events = self.run_threads(env_step, args=parsed_results)
-        self.reset_agents()
+        while real_strategy_count < self.total_strategy_count:
+            print(f'=== Starting Game Round {real_strategy_count + 1}/{self.total_strategy_count} ===')
+            
+            # Initialize round statistics
+            # round_mushroom_total = 0
+            # round_slime_total = 0
+            
+            # Each round consists of multiple turns
+            total_time = 0
+            turn_count = 0
+            max_turns_per_round = 10  # 设置每轮的最大回合数
+            slime_count = 0
+            mushroom_count = 0
+            self.pause_agents()
 
-        # check for task success
-        print('check_task_success')
-        events = fix_chat_events(events)
-        critic_response = self.check_task_success(events)
+            while total_time <= self.total_time_limit:
 
-        print(critic_response)
+                turn_count += 1
+                print(f'--- Turn {turn_count} of Round {real_strategy_count + 1} ---')
+                    
+                # Step 1: Pause game and get strategy recommendation
+                
+                print('Getting strategy recommendation...')
+                strategy_monitor(turn_count)
+                
+                #状态更新需要在check_task_success之后，这样才能拿到最新的状态信息
+                if turn_count > 1:
+                    critic_response = self.check_task_success(events)
+                    results = self.run_threads(update_agent, args={
+                        agent.username: {
+                            **parsed_results[agent.username],
+                            **events[agent.username], 
+                            **critic_response[agent.username],
+                            'contract_critique': critic_response[self.judge.username]['critique'],
+                            'emeralds': critic_response[self.judge.username]['emeralds'],
+                            'AgentState': AgentState,
+                        } for agent in self.agents}
+                    )
 
-        # update agents (note this function does not need to be run with threads; could add a flag to just iterate)
-        results = self.run_threads(update_agent, args={
-            agent.username: {
-                **parsed_results[agent.username],
-                **events[agent.username], 
-                **critic_response[agent.username],
-                'contract_critique': critic_response[self.judge.username]['critique'][agent.username],
-                'emeralds': critic_response[self.judge.username]['emeralds'][agent.username],
+                # Step 2: LLM decides on turn strategy based on recommendation
+                print(f'LLM deciding on turn strategy, real_strategy_count: {real_strategy_count}, turn_count: {turn_count}')
+                parsed_results = self.run_threads(get_ai_message_parse)
+                
+                self.save_episode(parsed_results)
+                
+                # Step 3: Resume game and execute strategy with thread pool
+                self.unpause_agents()
+                print('Executing env step')
+                # Step 4: Update time
+                results = self.run_threads(env_step, args=parsed_results)
 
-            } for agent in self.agents}
-        )
+                
+                # Step 4: Pause game and summarize turn
+                self.pause_agents()
+                print('Summarizing turn...')
+
+                events = results  # results contains events from env_step
+                
+                
+                new_events, real_strategy = fix_chat_state_events(events)
+                self.strategy_history.append(real_strategy)
+                
+                print(f'summarized Turn {turn_count} of Round {real_strategy_count + 1} ---')
+                events = fix_chat_events(events)
+                self.total_event = events
+                chat_log = fix_event(events)
+                # Summarize subtask with environmental information
+                self.summary_subtask(chat_log)
+                real_timeout = self.timeout_history[-1] if self.timeout_history else (0, 0)
+                max_timeout = max(real_timeout)    
+                total_time += max_timeout if max_timeout is not None else 0
+                print(f"Updated total_time: {total_time} seconds after adding max timeout: {max_timeout} seconds")
+                print(f"total_time/turn_count: {total_time}/{turn_count}")
+                
+                # Step 5: Check for task success and update agents
+                print('check_task_success for turn')
+                
+                
+
+                
+                
+            # Step 6: Round summary
+            print(f'=== Round {real_strategy_count + 1} Summary ===')
+            print('========================')
+            critic_response = self.check_task_success(self.total_event)
+            self.unpause_agents()
+            real_strategy_count += 1 
+            print(f'Strategy count completed: {real_strategy_count}')
+            results = self.run_threads(update_agent, args={
+                    agent.username: {
+                        **parsed_results[agent.username],
+                        **events[agent.username], 
+                        **critic_response[agent.username],
+                        'contract_critique': critic_response[self.judge.username]['critique'],
+                        'emeralds': critic_response[self.judge.username]['emeralds'],
+                        'AgentState': AgentState,
+                    } for agent in self.agents}
+                )
 
         return results
 
-    def negotiate_contract(self, max_turns=8):
+    def negotiate_contract(self, max_turns=12):
         """
         Generates a contract for the agents to follow and sets self.contract to the contract.
         """
@@ -576,6 +1198,7 @@ class MultiAgentVoyager:
             scenario=self.scenario_description,
             model=self.negotiator_model_name,
             temperature=self.negotiator_temperature,
+            #model_api_base=self.negotiator_model_api_base,
         )
         negotiator2 = Negotiator(
             name=agent2.username,
@@ -585,19 +1208,43 @@ class MultiAgentVoyager:
             scenario=self.scenario_description,
             model=self.negotiator_model_name,
             temperature=self.negotiator_temperature,
+            #model_api_base=self.negotiator_e,
         )
 
         # hold a negotiation between players, where negotiator1 starts first
+        print(f"Negotiating contract between {agent1.username} and {agent2.username}...")
+
+
         negotiation = Negotiation(negotiator1, negotiator2, max_turns=max_turns, save_dir=self.save_dir)
+        print(f"Negotiation started with max turns {max_turns}...")
         negotiation.simulate()
         self.contract = negotiation.get_contract()
 
     def run(self):
+        max_startup_attempts = 3
+        for startup_attempt in range(max_startup_attempts):
+            try:
+                if self.load_from_save:
+                    input("Warning: loaded from saved directory. Continuing may overwrite saved files. Press enter to continue...")
 
-        if self.load_from_save:
-            input("Warning: loaded from saved directory. Continuing may overwrite saved files. Press enter to continue...")
-
-        self.load_scenario(reset='hard')
+                self.load_scenario(reset='hard')
+                break  # Successfully started, break out of retry loop
+            except Exception as e:
+                print(f"Startup attempt {startup_attempt + 1}/{max_startup_attempts} failed: {e}")
+                if startup_attempt == max_startup_attempts - 1:
+                    print("All startup attempts failed, shutting down...")
+                    self.close()
+                    return
+                print("Restarting mineflayer servers and retrying...")
+                # Clean up and restart servers
+                for agent in self.agents + [self.judge]:
+                    if hasattr(agent, 'env') and hasattr(agent.env, 'mineflayer'):
+                        agent.env.mineflayer.stop()
+                time.sleep(5)
+        else:
+            print("Failed to start after multiple attempts")
+            self.close()
+            return
         
         # load the contract
         if self.contract_mode == "auto":
@@ -625,7 +1272,7 @@ class MultiAgentVoyager:
                 self.run_episode(episode=self.episode, reload=True, reset='soft')
             else:
                 U.f_mkdir(f"{self.save_dir}/episodes/episode{self.episode}")
-
+                print(f'Starting episode {self.episode}...')
                 # dont load episode if its already loaded
                 reload = False if self.episode == 0 else True
                 results = self.run_episode(reload=reload, reset='soft')
@@ -668,58 +1315,13 @@ class MultiAgentVoyager:
         print('Quitting...') 
     
     def close(self):
+        print('Closing...')
         server = self.judge.env.server
         res = requests.post(f"{server}/stop")
         for agent in self.agents + [self.judge]:
             agent.env.mineflayer.stop()
         
-        # killing voyagers
-        # self.agents[0].close()
-        # for agent in self.agents:
-        #     agent.close()
-
-
-
-
-
-    # def run_episode(self, tasks, contract="", context=""):
-    #     results = []
-    #     threads = []
-
-    #     # Start threads to run rollouts concurrently
-    #     for i, agent in enumerate(self.agents):
-    #         task = tasks[i]
-    #         result = {}
-    #         thread = threading.Thread(target=self.step, args=(agent, result, task, contract, context), daemon=True)
-    #         threads.append(thread)
-    #         results.append(result)
-    #         thread.start()
-
-    #     # Wait for all threads to finish
-    #     for thread in threads:
-    #         thread.join()
-
-    #     # TODO: terminate threads that don't complete and update results to indicate timeout
-    #     # time.sleep(45)
-    #     # self.load_scenario(self.scenario)
-    #     # for i, agent in enumerate(self.agents):
-    #     #     agent.env.reset(
-    #     #         options={
-    #     #             "mode": "hard",
-    #     #             "wait_ticks": 80,
-    #     #         }
-    #     #     )
-
-    #     print('threads finished')
-            
-    #     return results
-
-    # def step(self, agent, result, task, contract, context):
-    #     # resetting because every step is a new episode
-    #     agent.reset(
-    #         task=task, 
-    #         contract=contract, 
-    #         context=context, 
-    #         reset_env=False)
-    #     messages, reward, done, info = messages, reward, done, info = agent.step()
-    #     result.update({"messages": messages, "reward": reward, "done": done, "info": info})
+        # Wait for all threads to terminate
+        for agent in self.agents + [self.judge]:
+            if hasattr(agent, '_thread') and agent._thread.is_alive():
+                agent._thread.join(timeout=1.0)

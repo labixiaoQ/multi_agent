@@ -20,12 +20,12 @@ options = {
     # ckpt_dir: ckpt_dir, # Feel free to use a new dir. Do not use the same dir as skill library because new events will still be recorded to ckpt_dir. 
     'resume':False, # Do not resume from a skill library because this is not learning.
     'env_wait_ticks':80,
-    # 'env_request_timeout': 600,
+    'env_request_timeout': 600,
     'action_agent_task_max_retries':50,
     'action_agent_show_chat_log':True,
     'action_agent_temperature':0.3,
-    'action_agent_model_name': "gpt-4-0613", # #"gpt-4-0613",
-    'critic_agent_model_name': "gpt-4-0613", #"gpt-3.5-turbo", #"gpt-4-0613",
+    'action_agent_model_name': "gpt-3.5-turbo", # #"gpt-3.5-turbo",
+    'critic_agent_model_name': "gpt-3.5-turbo", 
 }
 
 multi_options = {
@@ -33,25 +33,26 @@ multi_options = {
     'continuous': True,
     'episode_timeout': 120, #120,
     'num_episodes': 1,
-    'negotiator_model_name': "gpt-4-0613",
+    #'negotiator_model_name': "deepek-chat",
+    'negotiator_model_name': "gpt-3.5-turbo",
     'negotiator_temperature': 0.7,
     'options': options
 }
 
 start_time = time.time()
 
-save_dir = f"saves/cleanup/baseline"
+save_dir = f"saves/cleanup/shiyan_1"
 U.f_mkdir(save_dir)
 
 contract = "None"
 
-for game in range(5, 20):
+for game in range(5, 6):
 
     multi_agent = MultiAgentVoyager(
         **multi_options,
         contract_mode = "manual",
         contract=contract,
-        save_dir=f"{save_dir}/game{game}_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
+        save_dir=f"{save_dir}/game_{datetime.now().strftime('%Y%m%d_%H%M%S')}_5_{game}",
     )
     multi_agent.run()
     multi_agent.close()

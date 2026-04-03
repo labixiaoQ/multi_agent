@@ -62,7 +62,47 @@ class VoyagerEnv(gym.Env):
             ready_match=r"Server started on port (\d+)",
             log_path=U.f_join(self.log_path, "mineflayer"),
         )
-
+    def reset_connection(self):
+        """
+        Reset the connection to the Minecraft server.
+        """
+        print(f"Resetting connection for {self.username}...")
+        
+        try:
+            # First try to stop gracefully
+            if self.connected:
+                requests.post(f"{self.server}/stop", timeout=5)
+                self.connected = False
+        except Exception as e:
+            print(f"Error stopping connection: {e}")
+        
+        # Restart mineflayer process
+        self.mineflayer.stop()
+        time.sleep(2)  # Give it time to stop
+        
+        # Start mineflayer process again
+        self.mineflayer.run()
+        time.sleep(3)  # Give it time to start
+        
+        # Reset connection status
+        self.has_reset = False
+        self.connected = False
+        
+        # If reset options exist, try to reconnect
+        if self.reset_options:
+            try:
+                # Try to reconnect with existing reset options
+                returned_data = self.check_process()
+                if returned_data:
+                    self.has_reset = True
+                    self.connected = True
+                    print(f"Connection reset successful for {self.username}")
+                    return True
+            except Exception as e:
+                print(f"Error reconnecting: {e}")
+        
+        print(f"Connection reset failed for {self.username}")
+        return False
     def get_mc_instance(self):
         print("Creating Minecraft server")
         U.f_mkdir(self.log_path, "minecraft")
@@ -90,24 +130,57 @@ class VoyagerEnv(gym.Env):
             if not self.mineflayer.is_running:
                 continue
 
-        for retry in range(3):
-            # janky wait to make sure process has started
+        max_retries = 8
+        base_wait_time = 3
+        for retry in range(max_retries):
+            # Wait longer between retries for subsequent attempts
+            # if retry > 0:
+            #     wait_time = base_wait_time * (retry + 1)
+            #     print(f"Waiting {wait_time} seconds before retry {retry + 1}/{max_retries}...")
+            #     url, host, port = str(self.server).split(':')
+            #     new_port = int(port) + retry -1
+            #     self.server = f"{url}:{host}:{new_port}"
+            #     print(f"{self.server}")
+                
+            #     time.sleep(wait_time)
+            
             try:
+                # Check if mineflayer process is running
+                if not self.mineflayer.is_running:
+                    print("Mineflayer process not running, restarting...")
+                    self.mineflayer.run()
+                    # Give it some time to start
+                    time.sleep(2)
+                
                 res = requests.post(
                     f"{self.server}/start",
                     json=self.reset_options,
-                    timeout=10, #self.request_timeout,
+                    timeout=10,
                 )
+                
                 if res.status_code != 200:
-                    self.mineflayer.stop()
-                    raise RuntimeError(
-                        f"Minecraft server reply with code {res.status_code}"
-                    )
-            except:
-                print('bot start failed, retrying...')
-                continue
-            print(self.mineflayer.ready_line)
-            return res.json()
+                    print(f"Minecraft server reply with code {res.status_code}, retrying...")
+                    continue
+                
+                print(f"Server {self.server} started successfully")
+                return res.json()
+                
+            except requests.exceptions.ConnectionError as e:
+                print(f'Connection error to {self.server}, retry {retry + 1}/{max_retries}: {str(e)}')
+                # Restart mineflayer on connection errors
+                self.mineflayer.stop()
+                time.sleep(1)
+                self.mineflayer.run()
+                time.sleep(2)
+                
+            except requests.exceptions.Timeout as e:
+                print(f'Timeout connecting to {self.server}, retry {retry + 1}/{max_retries}: {str(e)}')
+                
+            except Exception as e:
+                print(f'bot start failed, retry {retry + 1}/{max_retries}: {str(e)}')
+        
+        print(f"Warning: Failed to start bot after {max_retries} retries, returning empty response")
+        return "{}"  # Return empty JSON object
 
     def step(
         self,
@@ -126,6 +199,7 @@ class VoyagerEnv(gym.Env):
         res = requests.post(
             f"{self.server}/step", json=data, timeout=self.request_timeout
         )
+        #需要看下request请求的逻辑
         if res.status_code != 200:
             raise RuntimeError(
                 f"Minecraft server reply with code {res.status_code}"
@@ -166,6 +240,9 @@ class VoyagerEnv(gym.Env):
         time.sleep(1)  # wait for mineflayer to exit
 
         returned_data = self.check_process()
+        # print(f"reset returned data: {returned_data}")
+        if returned_data is None:
+            returned_data = "{}"  # Return empty JSON object if None
         self.has_reset = True
         self.connected = True
         # All the reset in step will be soft
@@ -188,6 +265,7 @@ class VoyagerEnv(gym.Env):
     def pause(self):
         if self.mineflayer.is_running and not self.server_paused:
             res = requests.post(f"{self.server}/pause")
+            print(res.json())
             if res.status_code == 200:
                 self.server_paused = True
         return self.server_paused

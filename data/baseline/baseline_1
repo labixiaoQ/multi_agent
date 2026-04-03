@@ -1,0 +1,1648 @@
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 40215.
+Server http://127.0.0.1:3003 started successfully
+Creating agent Gizmo on port 3013
+Server on port 3013 not ready yet (attempt 1/15)
+Server on port 3013 not ready yet (attempt 4/15)
+Server on port 3013 not ready yet (attempt 7/15)
+Server on port 3013 not ready yet (attempt 10/15)
+Server on port 3013 not ready yet (attempt 13/15)
+Warning: Server on port 3013 may not be ready after 15 attempts
+Waiting 3 seconds before creating next agent...
+Creating agent Glitch on port 3023
+Server on port 3023 not ready yet (attempt 1/15)
+Server on port 3023 not ready yet (attempt 4/15)
+Server on port 3023 not ready yet (attempt 7/15)
+Server on port 3023 not ready yet (attempt 10/15)
+Server on port 3023 not ready yet (attempt 13/15)
+Warning: Server on port 3023 may not be ready after 15 attempts
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 40349.
+Server http://127.0.0.1:3013 started successfully
+Server http://127.0.0.1:3013 started successfully
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 40354.
+Server http://127.0.0.1:3023 started successfully
+Server http://127.0.0.1:3023 started successfully
+Loading cleanup.json...
+Mineflayer process has exited, restarting
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 40355.
+Subprocess mineflayer started with PID 40356.
+Server http://127.0.0.1:3023 started successfully
+Server http://127.0.0.1:3013 started successfully
+Warning: No chest found in scenario
+Server http://127.0.0.1:3003 started successfully
+Server http://127.0.0.1:3003 started successfully
+Server http://127.0.0.1:3023 started successfully
+Server http://127.0.0.1:3013 started successfully
+Starting episode 0...
+=== Starting Game Round 1/1 ===
+{'message': 'Success'}
+Pausing agents...
+--- Turn 1 of Round 1 ---
+Getting strategy recommendation...
+Generating recommended strategy based on current state and history...
+Generating strategy for agents...
+Loading value sets from /Users/chengrenmin/work/multiagent/Voyager-Contracts/result/mushroom_20260104_160922.csv
+real_state: (18, 11) current_strategy: ('hunt', 'clean') real_strategy: ('hunt', 'hunt') 
+
+执行策略示例（5步）:
+check_inducibility (1): FEASIBLE...
+check_inducibility (2): FEASIBLE...
+步骤: 状态=(18, 11), 实际执行的动作=('hunt', 'hunt'), 下一步推荐的动作=('hunt', 'hunt'), 奖励=[1. 1.]
+Recommended strategy: ('hunt', 'hunt')
+Strategy updated: ('hunt', 'hunt')
+LLM deciding on turn strategy, real_strategy_count: 0, turn_count: 1
+Unpausing agents...
+Executing env step
+Server http://127.0.0.1:3023 started successfully
+Server http://127.0.0.1:3013 started successfully
+{'message': 'Success'}
+Pausing agents...
+Summarizing turn...
+matches_hunt_Gizmo []
+matches_clean_Gizmo ['<Gizmo> Cleaned_slime']
+matches_hunt_Glitch ['<Glitch> Harvested_mushroom', '<Glitch> Harvested_mushroom', '<Glitch> Harvested_mushroom']
+matches_clean_Glitch ['<Glitch> Cleaned_slime', '<Glitch> Cleaned_slime', '<Glitch> Cleaned_slime']
+timeout_Gizmo 8333
+timeout_Glitch 48325
+real_timeout: (8.333, 48.325)
+real_strategy: ('clean', 'clean')
+summarized Turn 1 of Round 1 ---
+Summarizing subtask
+Slime block placements found: 37, Mushroom block placements found: 10
+匹配结果: [('8', '18'), ('6', '18'), ('3', '18'), ('2', '18'), ('3', '18'), ('8', '18'), ('6', '18'), ('3', '18'), ('2', '18'), ('3', '18'), ('4', '17'), ('5', '16'), ('6', '15'), ('7', '14'), ('8', '12'), ('9', '10'), ('10', '9'), ('11', '9'), ('11', '7'), ('11', '6'), ('11', '4'), ('11', '2'), ('11', '1'), ('11', '0'), ('10', '0'), ('9', '0'), ('8', '0'), ('7', '0'), ('6', '0'), ('5', '0'), ('5', '1'), ('5', '2'), ('5', '3'), ('5', '4'), ('4', '5'), ('4', '6'), ('5', '7'), ('6', '8'), ('7', '6'), ('8', '4'), ('9', '4'), ('10', '3'), ('11', '1'), ('11', '0')]
+最后一处匹配内容: ('11', '0')
+最后一处匹配内容: Waste blocks count: 11, Reward blocks count: 0
+Slime block placements found: 37, Mushroom block placements found: 10
+上次的状态记录: 无
+State extracted: {'waste_blocks': 11, 'reward_blocks': 0, 'slime_count': 37, 'mushroom_count': 10, 'strategy': ('clean', 'clean'), 'recommend_strategy': ('hunt', 'hunt')}
+Subtask summary completed.
+Updated total_time: 48.325 seconds after adding max timeout: 48.325 seconds
+total_time/turn_count: 48.325/1
+check_task_success for turn
+chat_log: <Gizmo> Gamerule keepInventory is now set to: true]
+<Gizmo> Gamerule doDaylightCycle is now set to: false]
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 8, Reward blocks count: 18
+<Judy> Changed the block at 342, -59, 110]
+<Judy> setblock_slime_block 342 -59 110
+<Judy> Waste blocks count: 6, Reward blocks count: 18
+<Judy> The river is clean!
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 3, Reward blocks count: 18
+<Judy> Changed the block at 340, -60, 111]
+<Judy> setblock_slime_block 340 -60 111
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Waste blocks count: 2, Reward blocks count: 18
+<Judy> Changed the block at 347, -59, 113]
+<Judy> setblock_slime_block 347 -59 113
+<Judy> Changed the block at 341, -60, 110]
+<Judy> setblock_slime_block 341 -60 110
+<Gizmo> Cleaned_slime 10
+<Gizmo> Gizmo took 8333ms
+<Judy> Changed the block at 343, -60, 111]
+<Judy> setblock_slime_block 343 -60 111
+<Glitch> Cleaned_slime 10
+<Glitch> Glitch took 9361ms
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Changed the block at 342, -59, 110]
+<Judy> setblock_slime_block 342 -59 110
+<Judy> Waste blocks count: 3, Reward blocks count: 18
+<Judy> Changed the block at 339, -58, 110]
+<Judy> setblock_red_mushroom_block 339 -58 110
+<Judy> Changed the block at 347, -59, 113]
+<Judy> setblock_slime_block 347 -59 113
+<Judy> Waste blocks count: 4, Reward blocks count: 17
+<Judy> Changed the block at 338, -58, 110]
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_red_mushroom_block 338 -58 110
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Waste blocks count: 5, Reward blocks count: 16
+<Judy> Changed the block at 340, -60, 111]
+<Judy> The river is too dirty!
+<Judy> setblock_slime_block 340 -60 111
+<Judy> Waste blocks count: 6, Reward blocks count: 15
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 7, Reward blocks count: 14
+<Judy> Changed the block at 342, -60, 110]
+<Judy> setblock_slime_block 342 -60 110
+<Judy> Waste blocks count: 8, Reward blocks count: 12
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 9, Reward blocks count: 10
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 10, Reward blocks count: 9
+<Judy> Waste blocks count: 11, Reward blocks count: 9
+<Judy> Waste blocks count: 11, Reward blocks count: 7
+<Judy> Waste blocks count: 11, Reward blocks count: 6
+<Judy> Waste blocks count: 11, Reward blocks count: 4
+<Judy> Waste blocks count: 11, Reward blocks count: 2
+<Judy> Waste blocks count: 11, Reward blocks count: 1
+<Glitch> Harvested_mushroom 27
+<Glitch> Glitch took 15236ms
+<Judy> Waste blocks count: 11, Reward blocks count: 0
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 10, Reward blocks count: 0
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 9, Reward blocks count: 0
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 8, Reward blocks count: 0
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Glitch> Cleaned_slime 10
+<Glitch> Glitch took 7251ms
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 7, Reward blocks count: 0
+<Glitch> Harvested_mushroom 27
+<Glitch> Glitch took 489ms
+<Judy> Changed the block at 347, -59, 113]
+<Judy> setblock_slime_block 347 -59 113
+<Judy> Waste blocks count: 6, Reward blocks count: 0
+<Judy> The river is clean!
+<Judy> Changed the block at 335, -58, 116]
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_red_mushroom_block 335 -58 116
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 5, Reward blocks count: 0
+<Judy> Changed the block at 334, -58, 116]
+<Judy> setblock_red_mushroom_block 334 -58 116
+<Judy> Changed the block at 343, -60, 111]
+<Judy> setblock_slime_block 343 -60 111
+<Judy> Waste blocks count: 5, Reward blocks count: 1
+<Judy> Changed the block at 339, -58, 108]
+<Judy> setblock_red_mushroom_block 339 -58 108
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 5, Reward blocks count: 2
+<Judy> Changed the block at 335, -58, 117]
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_red_mushroom_block 335 -58 117
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 5, Reward blocks count: 3
+<Judy> Changed the block at 338, -58, 108]
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_red_mushroom_block 338 -58 108
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Waste blocks count: 5, Reward blocks count: 4
+<Judy> Changed the block at 333, -58, 118]
+<Judy> setblock_red_mushroom_block 333 -58 118
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 4, Reward blocks count: 5
+<Glitch> Cleaned_slime 10
+<Glitch> Glitch took 7446ms
+<Judy> Changed the block at 339, -58, 110]
+<Judy> setblock_red_mushroom_block 339 -58 110
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 4, Reward blocks count: 6
+<Judy> Changed the block at 339, -58, 109]
+<Judy> setblock_red_mushroom_block 339 -58 109
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 5, Reward blocks count: 7
+<Judy> Changed the block at 347, -60, 113]
+<Judy> The river is too dirty!
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Waste blocks count: 6, Reward blocks count: 8
+<Judy> Changed the block at 343, -60, 111]
+<Judy> setblock_slime_block 343 -60 111
+<Judy> Waste blocks count: 7, Reward blocks count: 6
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 8, Reward blocks count: 4
+<Judy> Changed the block at 342, -60, 110]
+<Judy> setblock_slime_block 342 -60 110
+<Judy> Waste blocks count: 9, Reward blocks count: 4
+<Judy> Changed the block at 347, -59, 113]
+<Judy> setblock_slime_block 347 -59 113
+<Judy> Waste blocks count: 10, Reward blocks count: 3
+<Judy> Waste blocks count: 11, Reward blocks count: 1
+<Judy> Waste blocks count: 11, Reward blocks count: 0
+<Glitch> Harvested_mushroom 27
+<Glitch> Glitch took 8542ms
+Gizmo - Success: False, Emeralds: None
+Glitch - Success: False, Emeralds: None
+Judy - Success: None, Emeralds: {'Gizmo': 0, 'Glitch': 0}
+--- Turn 2 of Round 1 ---
+Getting strategy recommendation...
+Generating recommended strategy based on current state and history...
+Generating strategy for agents...
+Loading value sets from /Users/chengrenmin/work/multiagent/Voyager-Contracts/result/mushroom_20260104_160922.csv
+real_state: (0, 11) current_strategy: ('hunt', 'hunt') real_strategy: ('clean', 'clean') 
+
+执行策略示例（5步）:
+check_inducibility (3): FEASIBLE...
+check_inducibility (4): FEASIBLE...
+步骤: 状态=(0, 11), 实际执行的动作=('clean', 'clean'), 下一步推荐的动作=('clean', 'clean'), 奖励=[0. 0.]
+Recommended strategy: ('clean', 'clean')
+Strategy updated: ('clean', 'clean')
+LLM deciding on turn strategy, real_strategy_count: 0, turn_count: 2
+Unpausing agents...
+Executing env step
+Server http://127.0.0.1:3013 started successfully
+Server http://127.0.0.1:3023 started successfully
+{'message': 'Success'}
+Pausing agents...
+Summarizing turn...
+matches_hunt_Gizmo []
+matches_clean_Gizmo ['<Gizmo> Cleaned_slime']
+matches_hunt_Glitch []
+matches_clean_Glitch ['<Glitch> Cleaned_slime']
+timeout_Gizmo 24364
+timeout_Glitch 7946
+real_timeout: (24.364, 7.946)
+real_strategy: ('clean', 'clean')
+summarized Turn 2 of Round 1 ---
+Summarizing subtask
+Slime block placements found: 11, Mushroom block placements found: 8
+匹配结果: [('9', '0'), ('8', '0'), ('6', '0'), ('5', '0'), ('5', '1'), ('5', '2'), ('4', '3'), ('2', '4'), ('3', '5'), ('3', '6'), ('2', '7'), ('2', '8'), ('1', '9'), ('2', '10'), ('1', '11'), ('1', '12'), ('1', '13'), ('1', '14'), ('2', '15'), ('1', '16'), ('1', '17'), ('1', '18'), ('0', '18'), ('1', '18'), ('2', '18'), ('3', '18'), ('9', '0'), ('8', '0'), ('6', '0'), ('5', '0'), ('5', '1'), ('5', '2'), ('4', '3'), ('2', '4'), ('3', '5'), ('3', '6'), ('2', '7')]
+最后一处匹配内容: ('2', '7')
+最后一处匹配内容: Waste blocks count: 2, Reward blocks count: 7
+Slime block placements found: 11, Mushroom block placements found: 8
+上次的状态记录: (0, 11)
+State extracted: {'waste_blocks': 2, 'reward_blocks': 7, 'slime_count': 11, 'mushroom_count': 8, 'strategy': ('clean', 'clean'), 'recommend_strategy': ('clean', 'clean')}
+Subtask summary completed.
+Updated total_time: 72.68900000000001 seconds after adding max timeout: 24.364 seconds
+total_time/turn_count: 72.68900000000001/2
+check_task_success for turn
+chat_log: <Glitch> Gamerule keepInventory is now set to: true]
+<Glitch> Gamerule doDaylightCycle is now set to: false]
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 9, Reward blocks count: 0
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 8, Reward blocks count: 0
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 6, Reward blocks count: 0
+<Judy> The river is clean!
+<Judy> Changed the block at 337, -58, 109]
+<Judy> setblock_red_mushroom_block 337 -58 109
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Waste blocks count: 5, Reward blocks count: 0
+<Judy> Changed the block at 337, -58, 108]
+<Judy> setblock_red_mushroom_block 337 -58 108
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 5, Reward blocks count: 1
+<Judy> Changed the block at 339, -58, 108]
+<Judy> setblock_red_mushroom_block 339 -58 108
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 5, Reward blocks count: 2
+<Judy> Changed the block at 335, -58, 118]
+<Judy> Changed the block at 342, -60, 110]
+<Judy> setblock_red_mushroom_block 335 -58 118
+<Judy> setblock_slime_block 342 -60 110
+<Judy> Waste blocks count: 4, Reward blocks count: 3
+<Glitch> Cleaned_slime 10
+<Glitch> Glitch took 7946ms
+<Judy> Changed the block at 335, -58, 116]
+<Judy> setblock_red_mushroom_block 335 -58 116
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 2, Reward blocks count: 4
+<Judy> Changed the block at 333, -58, 117]
+<Judy> setblock_red_mushroom_block 333 -58 117
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 3, Reward blocks count: 5
+<Judy> Changed the block at 338, -57, 109]
+<Judy> setblock_red_mushroom_block 338 -57 109
+<Judy> Changed the block at 342, -59, 110]
+<Judy> setblock_slime_block 342 -59 110
+<Judy> Waste blocks count: 3, Reward blocks count: 6
+<Judy> Changed the block at 334, -58, 116]
+<Judy> setblock_red_mushroom_block 334 -58 116
+<Judy> Changed the block at 343, -60, 111]
+<Judy> setblock_slime_block 343 -60 111
+<Judy> Waste blocks count: 2, Reward blocks count: 7
+<Judy> Changed the block at 333, -58, 118]
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_red_mushroom_block 333 -58 118
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 2, Reward blocks count: 8
+<Judy> Changed the block at 333, -58, 116]
+<Judy> setblock_red_mushroom_block 333 -58 116
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Waste blocks count: 1, Reward blocks count: 9
+<Judy> Changed the block at 337, -58, 110]
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_red_mushroom_block 337 -58 110
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 2, Reward blocks count: 10
+<Judy> Changed the block at 338, -58, 108]
+<Judy> setblock_red_mushroom_block 338 -58 108
+<Judy> Changed the block at 341, -60, 110]
+<Judy> setblock_slime_block 341 -60 110
+<Judy> Waste blocks count: 1, Reward blocks count: 11
+<Judy> Changed the block at 338, -58, 110]
+<Judy> setblock_red_mushroom_block 338 -58 110
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Waste blocks count: 1, Reward blocks count: 12
+<Judy> Changed the block at 334, -58, 118]
+<Judy> setblock_red_mushroom_block 334 -58 118
+<Judy> Changed the block at 342, -59, 110]
+<Judy> setblock_slime_block 342 -59 110
+<Judy> Waste blocks count: 1, Reward blocks count: 13
+<Judy> Changed the block at 339, -58, 110]
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_red_mushroom_block 339 -58 110
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 1, Reward blocks count: 14
+<Judy> Changed the block at 335, -58, 117]
+<Judy> setblock_red_mushroom_block 335 -58 117
+<Judy> Changed the block at 340, -60, 111]
+<Judy> setblock_slime_block 340 -60 111
+<Judy> Waste blocks count: 2, Reward blocks count: 15
+<Judy> Changed the block at 339, -58, 109]
+<Judy> setblock_red_mushroom_block 339 -58 109
+<Judy> Changed the block at 342, -60, 110]
+<Judy> setblock_slime_block 342 -60 110
+<Judy> Waste blocks count: 1, Reward blocks count: 16
+<Judy> Changed the block at 334, -57, 117]
+<Judy> setblock_red_mushroom_block 334 -57 117
+<Judy> Changed the block at 340, -60, 111]
+<Judy> setblock_slime_block 340 -60 111
+<Judy> Waste blocks count: 1, Reward blocks count: 17
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Waste blocks count: 1, Reward blocks count: 18
+<Judy> Changed the block at 347, -59, 113]
+<Judy> setblock_slime_block 347 -59 113
+<Gizmo> Cleaned_slime 100
+<Gizmo> Gizmo took 24364ms
+<Judy> Changed the block at 340, -60, 111]
+<Judy> setblock_slime_block 340 -60 111
+<Judy> Waste blocks count: 0, Reward blocks count: 18
+<Judy> Changed the block at 341, -60, 110]
+<Judy> setblock_slime_block 341 -60 110
+<Judy> Waste blocks count: 1, Reward blocks count: 18
+<Judy> Changed the block at 342, -60, 110]
+<Judy> setblock_slime_block 342 -60 110
+<Judy> Waste blocks count: 2, Reward blocks count: 18
+<Judy> Changed the block at 347, -59, 113]
+<Judy> setblock_slime_block 347 -59 113
+<Judy> Waste blocks count: 3, Reward blocks count: 18
+Gizmo - Success: False, Emeralds: None
+Glitch - Success: False, Emeralds: None
+Judy - Success: None, Emeralds: {'Gizmo': 0, 'Glitch': 0}
+=== Round 1 Summary ===
+========================
+Gizmo - Success: False, Emeralds: None
+Glitch - Success: False, Emeralds: None
+Judy - Success: None, Emeralds: {'Gizmo': 0, 'Glitch': 0}
+Unpausing agents...
+Strategy count completed: 1
+check
+0 ('hunt', 'hunt') ('clean', 'clean') (0, 11)
+check
+0 ('hunt', 'hunt') ('clean', 'clean') (0, 11)
+Gizmo {emeralds: {'Gizmo': 0, 'Glitch': 0}}
+Glitch {emeralds: {'Gizmo': 0, 'Glitch': 0}}
+Quitting...
+Closing...
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 40713.
+Server http://127.0.0.1:3003 started successfully
+Creating agent Gizmo on port 3013
+Server on port 3013 not ready yet (attempt 1/15)
+Server on port 3013 not ready yet (attempt 4/15)
+Server on port 3013 not ready yet (attempt 7/15)
+Server on port 3013 not ready yet (attempt 10/15)
+Server on port 3013 not ready yet (attempt 13/15)
+Warning: Server on port 3013 may not be ready after 15 attempts
+Waiting 3 seconds before creating next agent...
+Creating agent Glitch on port 3023
+Server on port 3023 not ready yet (attempt 1/15)
+Server on port 3023 not ready yet (attempt 4/15)
+Server on port 3023 not ready yet (attempt 7/15)
+Server on port 3023 not ready yet (attempt 10/15)
+Server on port 3023 not ready yet (attempt 13/15)
+Warning: Server on port 3023 may not be ready after 15 attempts
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 40779.
+Server http://127.0.0.1:3013 started successfully
+Server http://127.0.0.1:3013 started successfully
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 40782.
+Server http://127.0.0.1:3023 started successfully
+Server http://127.0.0.1:3023 started successfully
+Loading cleanup.json...
+Mineflayer process has exited, restarting
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 40793.
+Subprocess mineflayer started with PID 40794.
+Server http://127.0.0.1:3013 started successfully
+Server http://127.0.0.1:3023 started successfully
+Warning: No chest found in scenario
+Server http://127.0.0.1:3003 started successfully
+Server http://127.0.0.1:3003 started successfully
+Server http://127.0.0.1:3013 started successfully
+Server http://127.0.0.1:3023 started successfully
+Starting episode 0...
+=== Starting Game Round 1/1 ===
+{'message': 'Success'}
+Pausing agents...
+--- Turn 1 of Round 1 ---
+Getting strategy recommendation...
+Generating recommended strategy based on current state and history...
+Generating strategy for agents...
+Loading value sets from /Users/chengrenmin/work/multiagent/Voyager-Contracts/result/mushroom_20260104_160922.csv
+real_state: (7, 2) current_strategy: ('clean', 'clean') real_strategy: ('clean', 'clean') 
+
+执行策略示例（5步）:
+check_inducibility (1): FEASIBLE...
+check_inducibility (2): FEASIBLE...
+步骤: 状态=(7, 2), 实际执行的动作=('clean', 'clean'), 下一步推荐的动作=('hunt', 'hunt'), 奖励=[0. 0.]
+Recommended strategy: ('hunt', 'hunt')
+Strategy updated: ('hunt', 'hunt')
+LLM deciding on turn strategy, real_strategy_count: 0, turn_count: 1
+Unpausing agents...
+Executing env step
+Server http://127.0.0.1:3023 started successfully
+Server http://127.0.0.1:3013 started successfully
+{'message': 'Success'}
+Pausing agents...
+Summarizing turn...
+matches_hunt_Gizmo []
+matches_clean_Gizmo ['<Gizmo> Cleaned_slime']
+matches_hunt_Glitch []
+matches_clean_Glitch ['<Glitch> Cleaned_slime']
+timeout_Gizmo 7128
+timeout_Glitch 8329
+real_timeout: (7.128, 8.329)
+real_strategy: ('clean', 'clean')
+summarized Turn 1 of Round 1 ---
+Summarizing subtask
+Slime block placements found: 11, Mushroom block placements found: 0
+匹配结果: [('8', '18'), ('6', '18'), ('4', '18'), ('2', '18'), ('1', '18'), ('2', '18'), ('8', '18'), ('6', '18'), ('4', '18'), ('2', '18'), ('1', '18'), ('2', '18'), ('3', '18'), ('4', '18')]
+最后一处匹配内容: ('4', '18')
+最后一处匹配内容: Waste blocks count: 4, Reward blocks count: 18
+Slime block placements found: 11, Mushroom block placements found: 0
+上次的状态记录: (7, 2)
+State extracted: {'waste_blocks': 4, 'reward_blocks': 18, 'slime_count': 11, 'mushroom_count': 0, 'strategy': ('clean', 'clean'), 'recommend_strategy': ('hunt', 'hunt')}
+Subtask summary completed.
+Updated total_time: 8.329 seconds after adding max timeout: 8.329 seconds
+total_time/turn_count: 8.329/1
+check_task_success for turn
+chat_log: <Gizmo> Gamerule keepInventory is now set to: true]
+<Gizmo> Gamerule doDaylightCycle is now set to: false]
+<Judy> Changed the block at 340, -60, 111]
+<Judy> setblock_slime_block 340 -60 111
+<Judy> Waste blocks count: 8, Reward blocks count: 18
+<Judy> Changed the block at 340, -60, 111]
+<Judy> setblock_slime_block 340 -60 111
+<Judy> Waste blocks count: 6, Reward blocks count: 18
+<Judy> The river is clean!
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 4, Reward blocks count: 18
+<Judy> Changed the block at 341, -60, 110]
+<Judy> setblock_slime_block 341 -60 110
+<Judy> Waste blocks count: 2, Reward blocks count: 18
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Changed the block at 342, -60, 110]
+<Gizmo> Cleaned_slime 10
+<Gizmo> Gizmo took 7128ms
+<Judy> setblock_slime_block 342 -60 110
+<Judy> Waste blocks count: 1, Reward blocks count: 18
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Glitch> Cleaned_slime 10
+<Glitch> Glitch took 8329ms
+<Judy> Changed the block at 343, -60, 111]
+<Judy> setblock_slime_block 343 -60 111
+<Judy> Changed the block at 342, -60, 110]
+<Judy> setblock_slime_block 342 -60 110
+<Judy> Waste blocks count: 2, Reward blocks count: 18
+<Judy> Changed the block at 347, -59, 113]
+<Judy> setblock_slime_block 347 -59 113
+<Judy> Waste blocks count: 3, Reward blocks count: 18
+<Judy> Changed the block at 340, -60, 111]
+<Judy> setblock_slime_block 340 -60 111
+<Judy> Waste blocks count: 4, Reward blocks count: 18
+Gizmo - Success: False, Emeralds: None
+Glitch - Success: False, Emeralds: None
+Judy - Success: None, Emeralds: {'Gizmo': 0, 'Glitch': 0}
+--- Turn 2 of Round 1 ---
+Getting strategy recommendation...
+Generating recommended strategy based on current state and history...
+Generating strategy for agents...
+Loading value sets from /Users/chengrenmin/work/multiagent/Voyager-Contracts/result/mushroom_20260104_160922.csv
+real_state: (18, 4) current_strategy: ('hunt', 'hunt') real_strategy: ('clean', 'clean') 
+
+执行策略示例（5步）:
+check_inducibility (3): FEASIBLE...
+check_inducibility (4): FEASIBLE...
+步骤: 状态=(18, 4), 实际执行的动作=('clean', 'clean'), 下一步推荐的动作=('hunt', 'hunt'), 奖励=[0. 0.]
+Recommended strategy: ('hunt', 'hunt')
+Strategy updated: ('hunt', 'hunt')
+LLM deciding on turn strategy, real_strategy_count: 0, turn_count: 2
+Unpausing agents...
+Executing env step
+Server http://127.0.0.1:3023 started successfully
+Server http://127.0.0.1:3013 started successfully
+{'message': 'Success'}
+Pausing agents...
+Summarizing turn...
+matches_hunt_Gizmo ['<Gizmo> Harvested_mushroom']
+matches_clean_Gizmo ['<Gizmo> Cleaned_slime']
+matches_hunt_Glitch ['<Glitch> Harvested_mushroom']
+matches_clean_Glitch ['<Glitch> Cleaned_slime', '<Glitch> Cleaned_slime', '<Glitch> Cleaned_slime', '<Glitch> Cleaned_slime']
+timeout_Gizmo 16194
+timeout_Glitch 19900
+real_timeout: (16.194, 19.9)
+real_strategy: ('clean', 'clean')
+summarized Turn 2 of Round 1 ---
+Summarizing subtask
+Slime block placements found: 21, Mushroom block placements found: 2
+匹配结果: [('10', '18'), ('9', '18'), ('8', '18'), ('7', '18'), ('6', '17'), ('5', '15'), ('6', '14'), ('6', '12'), ('7', '10'), ('8', '9'), ('9', '8'), ('10', '7'), ('11', '5'), ('11', '4'), ('11', '1'), ('11', '0'), ('10', '18'), ('9', '18'), ('8', '18'), ('7', '18'), ('6', '17'), ('5', '15'), ('6', '14'), ('6', '12'), ('7', '10'), ('8', '9'), ('9', '8'), ('10', '7'), ('11', '5'), ('11', '4'), ('11', '1'), ('11', '0'), ('9', '0'), ('8', '0'), ('9', '0'), ('8', '0'), ('9', '0'), ('10', '0'), ('11', '0')]
+最后一处匹配内容: ('11', '0')
+最后一处匹配内容: Waste blocks count: 11, Reward blocks count: 0
+Slime block placements found: 21, Mushroom block placements found: 2
+上次的状态记录: (18, 4)
+State extracted: {'waste_blocks': 11, 'reward_blocks': 0, 'slime_count': 21, 'mushroom_count': 2, 'strategy': ('clean', 'clean'), 'recommend_strategy': ('hunt', 'hunt')}
+Subtask summary completed.
+Updated total_time: 28.229 seconds after adding max timeout: 19.9 seconds
+total_time/turn_count: 28.229/2
+check_task_success for turn
+chat_log: <Gizmo> Gamerule keepInventory is now set to: true]
+<Gizmo> Gamerule doDaylightCycle is now set to: false]
+<Glitch> Cycle 1: slime=11, mushrooms=18
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 10, Reward blocks count: 18
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 9, Reward blocks count: 18
+<Glitch> Cleaned_slime 4
+<Glitch> Glitch took 2214ms
+<Glitch> Cleaned 4 slime blocks
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 8, Reward blocks count: 18
+<Glitch> Cycle 2: slime=7, mushrooms=18
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 7, Reward blocks count: 18
+<Judy> Changed the block at 347, -59, 113]
+<Judy> setblock_slime_block 347 -59 113
+<Judy> Waste blocks count: 6, Reward blocks count: 17
+<Judy> Changed the block at 338, -58, 110]
+<Judy> The river is clean!
+<Judy> setblock_red_mushroom_block 338 -58 110
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 5, Reward blocks count: 15
+<Judy> Changed the block at 339, -58, 109]
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_red_mushroom_block 339 -58 109
+<Judy> setblock_slime_block 347 -60 114
+<Gizmo> Cleaned_slime 10
+<Gizmo> Gizmo took 7638ms
+<Judy> Changed the block at 345, -60, 112]
+<Judy> The river is too dirty!
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 6, Reward blocks count: 14
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 6, Reward blocks count: 12
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 7, Reward blocks count: 10
+<Judy> Changed the block at 347, -59, 113]
+<Judy> setblock_slime_block 347 -59 113
+<Judy> Waste blocks count: 8, Reward blocks count: 9
+<Judy> Changed the block at 343, -60, 111]
+<Judy> setblock_slime_block 343 -60 111
+<Judy> Waste blocks count: 9, Reward blocks count: 8
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Waste blocks count: 10, Reward blocks count: 7
+<Judy> Waste blocks count: 11, Reward blocks count: 5
+<Judy> Waste blocks count: 11, Reward blocks count: 4
+<Glitch> Harvested_mushroom 18
+<Glitch> Glitch took 12183ms
+<Glitch> Harvested 18 mushroom blocks
+<Judy> Waste blocks count: 11, Reward blocks count: 1
+<Gizmo> Harvested_mushroom 27
+<Gizmo> Gizmo took 8556ms
+<Judy> Waste blocks count: 11, Reward blocks count: 0
+<Glitch> Cycle 3: slime=11, mushrooms=0
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 9, Reward blocks count: 0
+<Glitch> Cleaned_slime 4
+<Glitch> Glitch took 3623ms
+<Glitch> Cleaned 4 slime blocks
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 8, Reward blocks count: 0
+<Judy> Changed the block at 345, -60, 112]
+<Glitch> Cycle 4: slime=9, mushrooms=0
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 9, Reward blocks count: 0
+<Glitch> Cleaned_slime 2
+<Glitch> Glitch took 937ms
+<Glitch> Cleaned 2 slime blocks
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 8, Reward blocks count: 0
+<Judy> Changed the block at 346, -60, 114]
+<Glitch> Cycle 5: slime=9, mushrooms=0
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 9, Reward blocks count: 0
+<Judy> Changed the block at 345, -60, 112]
+<Glitch> Cleaned_slime 2
+<Glitch> Glitch took 943ms
+<Glitch> Cleaned 2 slime blocks
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Changed the block at 346, -60, 113]
+<Glitch> Finished maximizing emerald value
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 10, Reward blocks count: 0
+<Judy> Waste blocks count: 11, Reward blocks count: 0
+Gizmo - Success: False, Emeralds: None
+Glitch - Success: False, Emeralds: None
+Judy - Success: None, Emeralds: {'Gizmo': 0, 'Glitch': 0}
+--- Turn 3 of Round 1 ---
+Getting strategy recommendation...
+Generating recommended strategy based on current state and history...
+Generating strategy for agents...
+Loading value sets from /Users/chengrenmin/work/multiagent/Voyager-Contracts/result/mushroom_20260104_160922.csv
+real_state: (0, 11) current_strategy: ('hunt', 'hunt') real_strategy: ('clean', 'clean') 
+
+执行策略示例（5步）:
+check_inducibility (5): FEASIBLE...
+check_inducibility (6): FEASIBLE...
+步骤: 状态=(0, 11), 实际执行的动作=('clean', 'clean'), 下一步推荐的动作=('clean', 'clean'), 奖励=[0. 0.]
+Recommended strategy: ('clean', 'clean')
+Strategy updated: ('clean', 'clean')
+LLM deciding on turn strategy, real_strategy_count: 0, turn_count: 3
+Unpausing agents...
+Executing env step
+Server http://127.0.0.1:3013 started successfully
+Server http://127.0.0.1:3023 started successfully
+{'message': 'Success'}
+Pausing agents...
+Summarizing turn...
+matches_hunt_Gizmo ['<Gizmo> Harvested_mushroom']
+matches_clean_Gizmo ['<Gizmo> Cleaned_slime']
+matches_hunt_Glitch []
+matches_clean_Glitch []
+timeout_Gizmo 33499
+timeout_Glitch 0
+real_timeout: (33.499, 0.0)
+real_strategy: ('clean', '')
+summarized Turn 3 of Round 1 ---
+Summarizing subtask
+Slime block placements found: 62, Mushroom block placements found: 45
+匹配结果: [('10', '0'), ('9', '0'), ('8', '0'), ('7', '0'), ('5', '0'), ('4', '1'), ('3', '2'), ('3', '3'), ('2', '3'), ('3', '2'), ('3', '3'), ('1', '3'), ('2', '3'), ('2', '2'), ('2', '1'), ('3', '2'), ('3', '1'), ('3', '2'), ('4', '2'), ('4', '1'), ('4', '2'), ('5', '2'), ('4', '2'), ('4', '3'), ('4', '4'), ('10', '0'), ('9', '0'), ('8', '0'), ('7', '0'), ('5', '0'), ('4', '1'), ('3', '2'), ('3', '3'), ('2', '3'), ('3', '2'), ('3', '3'), ('1', '3'), ('2', '3'), ('2', '2'), ('2', '1'), ('3', '2'), ('3', '1'), ('3', '2'), ('4', '2'), ('4', '1'), ('4', '2'), ('5', '2'), ('4', '2'), ('4', '3'), ('4', '4'), ('5', '5'), ('4', '6'), ('4', '7'), ('4', '8'), ('4', '9'), ('4', '10'), ('4', '11'), ('5', '12'), ('5', '13'), ('4', '14'), ('4', '15'), ('4', '16'), ('4', '17'), ('4', '18'), ('3', '18'), ('4', '18'), ('3', '18'), ('4', '18'), ('3', '18'), ('2', '18'), ('3', '18')]
+最后一处匹配内容: ('3', '18')
+最后一处匹配内容: Waste blocks count: 3, Reward blocks count: 18
+Slime block placements found: 62, Mushroom block placements found: 45
+上次的状态记录: (0, 11)
+State extracted: {'waste_blocks': 3, 'reward_blocks': 18, 'slime_count': 62, 'mushroom_count': 45, 'strategy': ('clean', ''), 'recommend_strategy': ('clean', 'clean')}
+Subtask summary completed.
+Updated total_time: 61.728 seconds after adding max timeout: 33.499 seconds
+total_time/turn_count: 61.728/3
+check_task_success for turn
+chat_log: <Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 10, Reward blocks count: 0
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 9, Reward blocks count: 0
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 8, Reward blocks count: 0
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 7, Reward blocks count: 0
+<Judy> The river is clean!
+<Judy> Changed the block at 339, -58, 110]
+<Judy> setblock_red_mushroom_block 339 -58 110
+<Judy> Changed the block at 347, -59, 113]
+<Judy> setblock_slime_block 347 -59 113
+<Judy> Waste blocks count: 5, Reward blocks count: 0
+<Judy> Changed the block at 334, -58, 116]
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_red_mushroom_block 334 -58 116
+<Judy> Waste blocks count: 4, Reward blocks count: 1
+<Judy> Changed the block at 337, -58, 110]
+<Gizmo> Cleaned_slime 10
+<Gizmo> Gizmo took 7360ms
+<Judy> setblock_red_mushroom_block 337 -58 110
+<Judy> Changed the block at 347, -59, 113]
+<Judy> setblock_slime_block 347 -59 113
+<Judy> Waste blocks count: 3, Reward blocks count: 2
+<Judy> Changed the block at 334, -57, 117]
+<Judy> setblock_red_mushroom_block 334 -57 117
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 3, Reward blocks count: 3
+<Judy> Changed the block at 339, -58, 108]
+<Judy> setblock_red_mushroom_block 339 -58 108
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Changed the block at 339, -58, 109]
+<Judy> setblock_red_mushroom_block 339 -58 109
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 2, Reward blocks count: 3
+<Judy> Changed the block at 338, -58, 110]
+<Judy> setblock_red_mushroom_block 338 -58 110
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 3, Reward blocks count: 2
+<Judy> Changed the block at 339, -58, 109]
+<Judy> setblock_red_mushroom_block 339 -58 109
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Waste blocks count: 3, Reward blocks count: 3
+<Judy> Changed the block at 338, -57, 109]
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_red_mushroom_block 338 -57 109
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Changed the block at 337, -58, 110]
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_red_mushroom_block 337 -58 110
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 1, Reward blocks count: 3
+<Judy> Changed the block at 334, -58, 116]
+<Judy> setblock_red_mushroom_block 334 -58 116
+<Judy> Changed the block at 342, -60, 110]
+<Judy> setblock_slime_block 342 -60 110
+<Judy> Waste blocks count: 2, Reward blocks count: 3
+<Judy> Changed the block at 338, -58, 110]
+<Judy> Changed the block at 340, -60, 111]
+<Judy> setblock_red_mushroom_block 338 -58 110
+<Judy> setblock_slime_block 340 -60 111
+<Judy> Waste blocks count: 2, Reward blocks count: 2
+<Judy> Changed the block at 338, -58, 110]
+<Judy> setblock_red_mushroom_block 338 -58 110
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 2, Reward blocks count: 1
+<Judy> Changed the block at 333, -58, 118]
+<Judy> setblock_red_mushroom_block 333 -58 118
+<Judy> Changed the block at 342, -60, 110]
+<Judy> setblock_slime_block 342 -60 110
+<Judy> Changed the block at 338, -58, 108]
+<Judy> Changed the block at 343, -60, 111]
+<Judy> setblock_red_mushroom_block 338 -58 108
+<Judy> setblock_slime_block 343 -60 111
+<Judy> Waste blocks count: 3, Reward blocks count: 2
+<Judy> Changed the block at 339, -58, 109]
+<Judy> setblock_red_mushroom_block 339 -58 109
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Changed the block at 338, -57, 109]
+<Judy> setblock_red_mushroom_block 338 -57 109
+<Judy> Changed the block at 342, -60, 110]
+<Judy> setblock_slime_block 342 -60 110
+<Judy> Waste blocks count: 3, Reward blocks count: 1
+<Judy> Changed the block at 338, -58, 110]
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_red_mushroom_block 338 -58 110
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 3, Reward blocks count: 2
+<Judy> Changed the block at 334, -58, 118]
+<Judy> setblock_red_mushroom_block 334 -58 118
+<Judy> Changed the block at 341, -60, 110]
+<Judy> setblock_slime_block 341 -60 110
+<Judy> Waste blocks count: 4, Reward blocks count: 2
+<Judy> Changed the block at 334, -57, 117]
+<Judy> setblock_red_mushroom_block 334 -57 117
+<Judy> Changed the block at 347, -59, 113]
+<Judy> setblock_slime_block 347 -59 113
+<Judy> Changed the block at 333, -58, 118]
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_red_mushroom_block 333 -58 118
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Changed the block at 339, -58, 108]
+<Judy> setblock_red_mushroom_block 339 -58 108
+<Judy> Changed the block at 342, -60, 110]
+<Judy> setblock_slime_block 342 -60 110
+<Judy> Changed the block at 333, -58, 117]
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_red_mushroom_block 333 -58 117
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 4, Reward blocks count: 1
+<Judy> Changed the block at 335, -58, 118]
+<Judy> setblock_red_mushroom_block 335 -58 118
+<Judy> Changed the block at 343, -60, 111]
+<Judy> setblock_slime_block 343 -60 111
+<Judy> Waste blocks count: 4, Reward blocks count: 2
+<Judy> Changed the block at 338, -57, 109]
+<Judy> setblock_red_mushroom_block 338 -57 109
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Changed the block at 335, -58, 116]
+<Judy> Changed the block at 342, -60, 110]
+<Judy> setblock_red_mushroom_block 335 -58 116
+<Judy> setblock_slime_block 342 -60 110
+<Judy> Changed the block at 337, -58, 110]
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_red_mushroom_block 337 -58 110
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Changed the block at 339, -58, 109]
+<Judy> setblock_red_mushroom_block 339 -58 109
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 5, Reward blocks count: 2
+<Judy> Changed the block at 335, -58, 116]
+<Judy> setblock_red_mushroom_block 335 -58 116
+<Judy> Changed the block at 347, -60, 114]
+<Gizmo> Harvested_mushroom 27
+<Gizmo> Gizmo took 26139ms
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Changed the block at 334, -58, 118]
+<Judy> setblock_red_mushroom_block 334 -58 118
+<Judy> Changed the block at 343, -60, 111]
+<Judy> setblock_slime_block 343 -60 111
+<Judy> Waste blocks count: 4, Reward blocks count: 2
+<Judy> Changed the block at 334, -58, 116]
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_red_mushroom_block 334 -58 116
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Waste blocks count: 4, Reward blocks count: 3
+<Judy> Changed the block at 337, -58, 109]
+<Judy> setblock_red_mushroom_block 337 -58 109
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 4, Reward blocks count: 4
+<Judy> Changed the block at 335, -58, 117]
+<Judy> setblock_red_mushroom_block 335 -58 117
+<Judy> Changed the block at 343, -60, 111]
+<Judy> setblock_slime_block 343 -60 111
+<Judy> Waste blocks count: 5, Reward blocks count: 5
+<Judy> Changed the block at 337, -58, 108]
+<Judy> setblock_red_mushroom_block 337 -58 108
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 4, Reward blocks count: 6
+<Judy> Changed the block at 333, -58, 118]
+<Judy> setblock_red_mushroom_block 333 -58 118
+<Judy> Changed the block at 347, -59, 113]
+<Judy> setblock_slime_block 347 -59 113
+<Judy> Waste blocks count: 4, Reward blocks count: 7
+<Judy> Changed the block at 338, -58, 108]
+<Judy> Changed the block at 342, -59, 110]
+<Judy> setblock_red_mushroom_block 338 -58 108
+<Judy> setblock_slime_block 342 -59 110
+<Judy> Waste blocks count: 4, Reward blocks count: 8
+<Judy> Changed the block at 337, -58, 110]
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_red_mushroom_block 337 -58 110
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 4, Reward blocks count: 9
+<Judy> Changed the block at 333, -58, 116]
+<Judy> setblock_red_mushroom_block 333 -58 116
+<Judy> Changed the block at 343, -60, 111]
+<Judy> setblock_slime_block 343 -60 111
+<Judy> Waste blocks count: 4, Reward blocks count: 10
+<Judy> Changed the block at 339, -58, 110]
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_red_mushroom_block 339 -58 110
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Waste blocks count: 4, Reward blocks count: 11
+<Judy> Changed the block at 335, -58, 118]
+<Judy> Changed the block at 347, -59, 113]
+<Judy> setblock_red_mushroom_block 335 -58 118
+<Judy> setblock_slime_block 347 -59 113
+<Judy> Waste blocks count: 5, Reward blocks count: 12
+<Judy> Changed the block at 338, -58, 110]
+<Judy> setblock_red_mushroom_block 338 -58 110
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 5, Reward blocks count: 13
+<Judy> Changed the block at 338, -57, 109]
+<Judy> setblock_red_mushroom_block 338 -57 109
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 4, Reward blocks count: 14
+<Judy> Changed the block at 339, -58, 108]
+<Judy> setblock_red_mushroom_block 339 -58 108
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Waste blocks count: 4, Reward blocks count: 15
+<Judy> Changed the block at 334, -57, 117]
+<Judy> setblock_red_mushroom_block 334 -57 117
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 4, Reward blocks count: 16
+<Judy> Changed the block at 333, -58, 117]
+<Judy> setblock_red_mushroom_block 333 -58 117
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 4, Reward blocks count: 17
+<Judy> Changed the block at 342, -60, 110]
+<Judy> setblock_slime_block 342 -60 110
+<Judy> Waste blocks count: 4, Reward blocks count: 18
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Waste blocks count: 3, Reward blocks count: 18
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 4, Reward blocks count: 18
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Changed the block at 343, -60, 111]
+<Judy> setblock_slime_block 343 -60 111
+<Judy> Waste blocks count: 3, Reward blocks count: 18
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 4, Reward blocks count: 18
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 3, Reward blocks count: 18
+<Judy> Changed the block at 342, -59, 110]
+<Judy> setblock_slime_block 342 -59 110
+<Judy> Waste blocks count: 2, Reward blocks count: 18
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 3, Reward blocks count: 18
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+Gizmo - Success: True, Emeralds: None
+Glitch - Success: False, Emeralds: None
+Judy - Success: None, Emeralds: {'Gizmo': 0, 'Glitch': 0}
+=== Round 1 Summary ===
+========================
+Gizmo - Success: True, Emeralds: None
+Glitch - Success: False, Emeralds: None
+Judy - Success: None, Emeralds: {'Gizmo': 0, 'Glitch': 0}
+Unpausing agents...
+Strategy count completed: 1
+check
+0 ('hunt', 'hunt') ('clean', 'clean') (0, 11)
+check
+0 ('hunt', 'hunt') ('clean', 'clean') (0, 11)
+Gizmo {emeralds: {'Gizmo': 0, 'Glitch': 0}}
+Glitch {emeralds: {'Gizmo': 0, 'Glitch': 0}}
+Quitting...
+Closing...
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 41340.
+Server http://127.0.0.1:3003 started successfully
+Creating agent Gizmo on port 3013
+Server on port 3013 not ready yet (attempt 1/15)
+Server on port 3013 not ready yet (attempt 4/15)
+Server on port 3013 not ready yet (attempt 7/15)
+Server on port 3013 not ready yet (attempt 10/15)
+Server on port 3013 not ready yet (attempt 13/15)
+Warning: Server on port 3013 may not be ready after 15 attempts
+Waiting 3 seconds before creating next agent...
+Creating agent Glitch on port 3023
+Server on port 3023 not ready yet (attempt 1/15)
+Server on port 3023 not ready yet (attempt 4/15)
+Server on port 3023 not ready yet (attempt 7/15)
+Server on port 3023 not ready yet (attempt 10/15)
+Server on port 3023 not ready yet (attempt 13/15)
+Warning: Server on port 3023 may not be ready after 15 attempts
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 41397.
+Server http://127.0.0.1:3013 started successfully
+Server http://127.0.0.1:3013 started successfully
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 41402.
+Server http://127.0.0.1:3023 started successfully
+Server http://127.0.0.1:3023 started successfully
+Loading cleanup.json...
+Mineflayer process has exited, restarting
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 41412.
+Subprocess mineflayer started with PID 41413.
+Server http://127.0.0.1:3013 started successfully
+Server http://127.0.0.1:3023 started successfully
+Warning: No chest found in scenario
+Server http://127.0.0.1:3003 started successfully
+Server http://127.0.0.1:3003 started successfully
+Server http://127.0.0.1:3013 started successfully
+Server http://127.0.0.1:3023 started successfully
+Starting episode 0...
+=== Starting Game Round 1/1 ===
+{'message': 'Success'}
+Pausing agents...
+--- Turn 1 of Round 1 ---
+Getting strategy recommendation...
+Generating recommended strategy based on current state and history...
+Generating strategy for agents...
+Loading value sets from /Users/chengrenmin/work/multiagent/Voyager-Contracts/result/mushroom_20260104_160922.csv
+real_state: (18, 3) current_strategy: ('clean', 'clean') real_strategy: ('clean', '') 
+Warning: Invalid real_strategy ('clean', ''), using default ('hunt', 'hunt')
+
+执行策略示例（5步）:
+check_inducibility (1): FEASIBLE...
+check_inducibility (2): INFEASIBLE...
+Strategy monitor error for agents: 'NoneType' object has no attribute 'pi'
+LLM deciding on turn strategy, real_strategy_count: 0, turn_count: 1
+Unpausing agents...
+Executing env step
+Server http://127.0.0.1:3013 started successfully
+Server http://127.0.0.1:3023 started successfully
+{'message': 'Success'}
+Pausing agents...
+Summarizing turn...
+matches_hunt_Gizmo ['<Gizmo> Harvested_mushroom']
+matches_clean_Gizmo []
+matches_hunt_Glitch ['<Glitch> Harvested_mushroom']
+matches_clean_Glitch ['<Glitch> Cleaned_slime']
+timeout_Gizmo 12244
+timeout_Glitch 12514
+real_timeout: (12.244, 12.514)
+real_strategy: ('hunt', 'clean')
+summarized Turn 1 of Round 1 ---
+Summarizing subtask
+Slime block placements found: 10, Mushroom block placements found: 0
+匹配结果: [('10', '16'), ('10', '15'), ('9', '13'), ('8', '12'), ('8', '10'), ('8', '9'), ('7', '8'), ('8', '7'), ('9', '5'), ('10', '2'), ('11', '0'), ('10', '16'), ('10', '15'), ('9', '13'), ('8', '12'), ('8', '10'), ('8', '9'), ('7', '8'), ('8', '7'), ('9', '5'), ('10', '2'), ('11', '0')]
+最后一处匹配内容: ('11', '0')
+最后一处匹配内容: Waste blocks count: 11, Reward blocks count: 0
+Slime block placements found: 10, Mushroom block placements found: 0
+上次的状态记录: (18, 3)
+State extracted: {'waste_blocks': 11, 'reward_blocks': 0, 'slime_count': 10, 'mushroom_count': 0, 'strategy': ('hunt', 'clean'), 'recommend_strategy': ('clean', 'clean')}
+Subtask summary completed.
+Updated total_time: 12.514 seconds after adding max timeout: 12.514 seconds
+total_time/turn_count: 12.514/1
+check_task_success for turn
+chat_log: <Glitch> Gamerule keepInventory is now set to: true]
+<Glitch> Gamerule doDaylightCycle is now set to: false]
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 10, Reward blocks count: 16
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 10, Reward blocks count: 15
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 9, Reward blocks count: 13
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 8, Reward blocks count: 12
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 8, Reward blocks count: 10
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 8, Reward blocks count: 9
+<Glitch> Cleaned_slime 10
+<Glitch> Glitch took 7614ms
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 7, Reward blocks count: 8
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 8, Reward blocks count: 7
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Waste blocks count: 9, Reward blocks count: 5
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 10, Reward blocks count: 2
+<Gizmo> Harvested_mushroom 27
+<Gizmo> Gizmo took 12244ms
+<Judy> Waste blocks count: 11, Reward blocks count: 0
+<Glitch> Harvested_mushroom 27
+<Glitch> Glitch took 4900ms
+Gizmo - Success: True, Emeralds: None
+Glitch - Success: True, Emeralds: None
+Judy - Success: None, Emeralds: {'Gizmo': 81, 'Glitch': 81}
+--- Turn 2 of Round 1 ---
+Getting strategy recommendation...
+Generating recommended strategy based on current state and history...
+Generating strategy for agents...
+Loading value sets from /Users/chengrenmin/work/multiagent/Voyager-Contracts/result/mushroom_20260104_160922.csv
+real_state: (0, 11) current_strategy: ('clean', 'clean') real_strategy: ('hunt', 'clean') 
+
+执行策略示例（5步）:
+check_inducibility (3): FEASIBLE...
+check_inducibility (4): FEASIBLE...
+步骤: 状态=(0, 11), 实际执行的动作=('hunt', 'clean'), 下一步推荐的动作=('clean', 'clean'), 奖励=[0. 0.]
+Recommended strategy: ('clean', 'clean')
+Strategy updated: ('clean', 'clean')
+LLM deciding on turn strategy, real_strategy_count: 0, turn_count: 2
+Unpausing agents...
+Executing env step
+Server http://127.0.0.1:3023 started successfully
+Server http://127.0.0.1:3013 started successfully
+{'message': 'Success'}
+Pausing agents...
+Summarizing turn...
+matches_hunt_Gizmo ['<Gizmo> Harvested_mushroom']
+matches_clean_Gizmo []
+matches_hunt_Glitch ['<Glitch> Harvested_mushroom']
+matches_clean_Glitch []
+timeout_Gizmo 181
+timeout_Glitch 186
+real_timeout: (0.181, 0.186)
+real_strategy: ('hunt', 'hunt')
+summarized Turn 2 of Round 1 ---
+Summarizing subtask
+Slime block placements found: 0, Mushroom block placements found: 0
+匹配结果: []
+未找到匹配内容
+Subtask summary completed.
+Updated total_time: 12.7 seconds after adding max timeout: 0.186 seconds
+total_time/turn_count: 12.7/2
+check_task_success for turn
+chat_log: <Gizmo> Gamerule keepInventory is now set to: true]
+<Gizmo> Gamerule doDaylightCycle is now set to: false]
+<Glitch> Harvested_mushroom 27
+<Glitch> Glitch took 186ms
+<Gizmo> Harvested_mushroom 27
+<Gizmo> Gizmo took 181ms
+Gizmo - Success: False, Emeralds: None
+Glitch - Success: False, Emeralds: None
+Judy - Success: None, Emeralds: {'Gizmo': 0, 'Glitch': 0}
+--- Turn 3 of Round 1 ---
+Getting strategy recommendation...
+Generating recommended strategy based on current state and history...
+Generating strategy for agents...
+Loading value sets from /Users/chengrenmin/work/multiagent/Voyager-Contracts/result/mushroom_20260104_160922.csv
+real_state: (0, 11) current_strategy: ('clean', 'clean') real_strategy: ('hunt', 'hunt') 
+
+执行策略示例（5步）:
+check_inducibility (5): FEASIBLE...
+check_inducibility (6): FEASIBLE...
+步骤: 状态=(0, 11), 实际执行的动作=('hunt', 'hunt'), 下一步推荐的动作=('clean', 'clean'), 奖励=[0. 0.]
+Recommended strategy: ('clean', 'clean')
+Strategy updated: ('clean', 'clean')
+LLM deciding on turn strategy, real_strategy_count: 0, turn_count: 3
+Unpausing agents...
+Executing env step
+Server http://127.0.0.1:3013 started successfully
+Server http://127.0.0.1:3023 started successfully
+{'message': 'Success'}
+Pausing agents...
+Summarizing turn...
+matches_hunt_Gizmo []
+matches_clean_Gizmo ['<Gizmo> Cleaned_slime']
+matches_hunt_Glitch ['<Glitch> Harvested_mushroom']
+matches_clean_Glitch []
+timeout_Gizmo 9701
+timeout_Glitch 144
+real_timeout: (9.701, 0.144)
+real_strategy: ('clean', 'hunt')
+summarized Turn 3 of Round 1 ---
+Summarizing subtask
+Slime block placements found: 1, Mushroom block placements found: 0
+匹配结果: [('10', '0'), ('9', '0'), ('8', '0'), ('7', '0'), ('8', '0'), ('9', '0'), ('10', '0'), ('11', '0'), ('10', '0')]
+最后一处匹配内容: ('10', '0')
+最后一处匹配内容: Waste blocks count: 10, Reward blocks count: 0
+Slime block placements found: 1, Mushroom block placements found: 0
+上次的状态记录: (0, 11)
+State extracted: {'waste_blocks': 10, 'reward_blocks': 0, 'slime_count': 1, 'mushroom_count': 0, 'strategy': ('clean', 'hunt'), 'recommend_strategy': ('clean', 'clean')}
+Subtask summary completed.
+Updated total_time: 22.401 seconds after adding max timeout: 9.701 seconds
+total_time/turn_count: 22.401/3
+check_task_success for turn
+chat_log: <Glitch> Gamerule keepInventory is now set to: true]
+<Glitch> Gamerule doDaylightCycle is now set to: false]
+<Glitch> Harvested_mushroom 27
+<Glitch> Glitch took 144ms
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 10, Reward blocks count: 0
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 9, Reward blocks count: 0
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 8, Reward blocks count: 0
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 7, Reward blocks count: 0
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 8, Reward blocks count: 0
+<Gizmo> Cleaned_slime 10
+<Gizmo> Gizmo took 9701ms
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 9, Reward blocks count: 0
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 10, Reward blocks count: 0
+<Judy> Waste blocks count: 11, Reward blocks count: 0
+Gizmo - Success: False, Emeralds: None
+Glitch - Success: False, Emeralds: None
+Judy - Success: None, Emeralds: {'Gizmo': 0, 'Glitch': 0}
+--- Turn 4 of Round 1 ---
+Getting strategy recommendation...
+Generating recommended strategy based on current state and history...
+Generating strategy for agents...
+Loading value sets from /Users/chengrenmin/work/multiagent/Voyager-Contracts/result/mushroom_20260104_160922.csv
+real_state: (0, 10) current_strategy: ('clean', 'clean') real_strategy: ('clean', 'hunt') 
+
+执行策略示例（5步）:
+check_inducibility (7): FEASIBLE...
+check_inducibility (8): FEASIBLE...
+步骤: 状态=(0, 10), 实际执行的动作=('clean', 'hunt'), 下一步推荐的动作=('clean', 'clean'), 奖励=[0. 0.]
+Recommended strategy: ('clean', 'clean')
+Strategy updated: ('clean', 'clean')
+LLM deciding on turn strategy, real_strategy_count: 0, turn_count: 4
+Unpausing agents...
+Executing env step
+Server http://127.0.0.1:3023 started successfully
+Server http://127.0.0.1:3013 started successfully
+{'message': 'Success'}
+Pausing agents...
+Summarizing turn...
+matches_hunt_Gizmo []
+matches_clean_Gizmo ['<Gizmo> Cleaned_slime']
+matches_hunt_Glitch []
+matches_clean_Glitch ['<Glitch> Cleaned_slime']
+timeout_Gizmo 5502
+timeout_Glitch 12836
+real_timeout: (5.502, 12.836)
+real_strategy: ('clean', 'clean')
+summarized Turn 4 of Round 1 ---
+Summarizing subtask
+Slime block placements found: 15, Mushroom block placements found: 1
+匹配结果: [('10', '0'), ('8', '0'), ('6', '0'), ('5', '0'), ('6', '1'), ('10', '0'), ('8', '0'), ('6', '0'), ('5', '0'), ('6', '1'), ('7', '1'), ('8', '1'), ('9', '1'), ('10', '1'), ('11', '1')]
+最后一处匹配内容: ('11', '1')
+最后一处匹配内容: Waste blocks count: 11, Reward blocks count: 1
+Slime block placements found: 15, Mushroom block placements found: 1
+上次的状态记录: (0, 10)
+State extracted: {'waste_blocks': 11, 'reward_blocks': 1, 'slime_count': 15, 'mushroom_count': 1, 'strategy': ('clean', 'clean'), 'recommend_strategy': ('clean', 'clean')}
+Subtask summary completed.
+Updated total_time: 35.237 seconds after adding max timeout: 12.836 seconds
+total_time/turn_count: 35.237/4
+check_task_success for turn
+chat_log: <Gizmo> Gamerule keepInventory is now set to: true]
+<Gizmo> Gamerule doDaylightCycle is now set to: false]
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 10, Reward blocks count: 0
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 8, Reward blocks count: 0
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 6, Reward blocks count: 0
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Gizmo> Cleaned_slime 10
+<Gizmo> Gizmo took 5502ms
+<Judy> The river is clean!
+<Judy> Changed the block at 333, -58, 116]
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_red_mushroom_block 333 -58 116
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 5, Reward blocks count: 0
+<Judy> Changed the block at 347, -59, 113]
+<Judy> The river is too dirty!
+<Judy> setblock_slime_block 347 -59 113
+<Judy> Waste blocks count: 6, Reward blocks count: 1
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Changed the block at 343, -60, 111]
+<Judy> setblock_slime_block 343 -60 111
+<Judy> Waste blocks count: 7, Reward blocks count: 1
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 8, Reward blocks count: 1
+<Glitch> Cleaned_slime 10
+<Glitch> Glitch took 12836ms
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 9, Reward blocks count: 1
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 10, Reward blocks count: 1
+<Judy> Waste blocks count: 11, Reward blocks count: 1
+Gizmo - Success: False, Emeralds: None
+Glitch - Success: False, Emeralds: None
+Judy - Success: None, Emeralds: {'Gizmo': 0, 'Glitch': 0}
+--- Turn 5 of Round 1 ---
+Getting strategy recommendation...
+Generating recommended strategy based on current state and history...
+Generating strategy for agents...
+Loading value sets from /Users/chengrenmin/work/multiagent/Voyager-Contracts/result/mushroom_20260104_160922.csv
+real_state: (1, 11) current_strategy: ('clean', 'clean') real_strategy: ('clean', 'clean') 
+
+执行策略示例（5步）:
+check_inducibility (9): FEASIBLE...
+check_inducibility (10): INFEASIBLE...
+Strategy monitor error for agents: 'NoneType' object has no attribute 'pi'
+LLM deciding on turn strategy, real_strategy_count: 0, turn_count: 5
+Unpausing agents...
+Executing env step
+Server http://127.0.0.1:3023 started successfully
+Server http://127.0.0.1:3013 started successfully
+{'message': 'Success'}
+Pausing agents...
+Summarizing turn...
+matches_hunt_Gizmo ['<Gizmo> Harvested_mushroom']
+matches_clean_Gizmo []
+matches_hunt_Glitch []
+matches_clean_Glitch ['<Glitch> Cleaned_slime']
+timeout_Gizmo 2776
+timeout_Glitch 45344
+real_timeout: (2.776, 45.344)
+real_strategy: ('hunt', 'clean')
+summarized Turn 5 of Round 1 ---
+Summarizing subtask
+Slime block placements found: 48, Mushroom block placements found: 18
+匹配结果: [('9', '1'), ('8', '1'), ('7', '0'), ('6', '0'), ('5', '0'), ('9', '1'), ('8', '1'), ('7', '0'), ('6', '0'), ('5', '0'), ('5', '1'), ('5', '2'), ('5', '3'), ('4', '4'), ('5', '5'), ('5', '6'), ('5', '7'), ('5', '8'), ('5', '9'), ('5', '10'), ('4', '11'), ('4', '12'), ('4', '13'), ('4', '14'), ('4', '15'), ('4', '16'), ('3', '17'), ('3', '18'), ('2', '18'), ('3', '18'), ('2', '18'), ('3', '18'), ('4', '18'), ('3', '18'), ('2', '18'), ('1', '18'), ('0', '18'), ('1', '18'), ('2', '18'), ('3', '18')]
+最后一处匹配内容: ('3', '18')
+最后一处匹配内容: Waste blocks count: 3, Reward blocks count: 18
+Slime block placements found: 48, Mushroom block placements found: 18
+上次的状态记录: (1, 11)
+State extracted: {'waste_blocks': 3, 'reward_blocks': 18, 'slime_count': 48, 'mushroom_count': 18, 'strategy': ('hunt', 'clean'), 'recommend_strategy': ('clean', 'clean')}
+Subtask summary completed.
+Updated total_time: 80.581 seconds after adding max timeout: 45.344 seconds
+total_time/turn_count: 80.581/5
+check_task_success for turn
+chat_log: <Gizmo> Gamerule keepInventory is now set to: true]
+<Gizmo> Gamerule doDaylightCycle is now set to: false]
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 9, Reward blocks count: 1
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 8, Reward blocks count: 1
+<Judy> Changed the block at 347, -60, 113]
+<Gizmo> Harvested_mushroom 27
+<Gizmo> Gizmo took 2776ms
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Waste blocks count: 7, Reward blocks count: 0
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 6, Reward blocks count: 0
+<Judy> The river is clean!
+<Judy> Changed the block at 333, -58, 116]
+<Judy> setblock_red_mushroom_block 333 -58 116
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 5, Reward blocks count: 0
+<Judy> Changed the block at 339, -58, 109]
+<Judy> setblock_red_mushroom_block 339 -58 109
+<Judy> Changed the block at 347, -59, 113]
+<Judy> setblock_slime_block 347 -59 113
+<Judy> Waste blocks count: 5, Reward blocks count: 1
+<Judy> Changed the block at 339, -58, 108]
+<Judy> setblock_red_mushroom_block 339 -58 108
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 5, Reward blocks count: 2
+<Judy> Changed the block at 339, -58, 110]
+<Judy> setblock_red_mushroom_block 339 -58 110
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 5, Reward blocks count: 3
+<Judy> Changed the block at 333, -58, 118]
+<Judy> Changed the block at 342, -60, 110]
+<Judy> setblock_red_mushroom_block 333 -58 118
+<Judy> setblock_slime_block 342 -60 110
+<Judy> Waste blocks count: 4, Reward blocks count: 4
+<Judy> Changed the block at 335, -58, 118]
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_red_mushroom_block 335 -58 118
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Waste blocks count: 5, Reward blocks count: 5
+<Judy> Changed the block at 338, -58, 108]
+<Judy> setblock_red_mushroom_block 338 -58 108
+<Judy> Changed the block at 347, -59, 113]
+<Judy> setblock_slime_block 347 -59 113
+<Judy> Waste blocks count: 5, Reward blocks count: 6
+<Judy> Changed the block at 334, -58, 116]
+<Judy> setblock_red_mushroom_block 334 -58 116
+<Judy> Changed the block at 342, -60, 110]
+<Judy> setblock_slime_block 342 -60 110
+<Judy> Waste blocks count: 5, Reward blocks count: 7
+<Judy> Changed the block at 334, -58, 118]
+<Judy> Changed the block at 347, -59, 113]
+<Judy> setblock_red_mushroom_block 334 -58 118
+<Judy> setblock_slime_block 347 -59 113
+<Judy> Waste blocks count: 5, Reward blocks count: 8
+<Judy> Changed the block at 335, -58, 116]
+<Judy> setblock_red_mushroom_block 335 -58 116
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Waste blocks count: 5, Reward blocks count: 9
+<Judy> Changed the block at 337, -58, 109]
+<Judy> setblock_red_mushroom_block 337 -58 109
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Waste blocks count: 5, Reward blocks count: 10
+<Judy> Changed the block at 333, -58, 117]
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_red_mushroom_block 333 -58 117
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 4, Reward blocks count: 11
+<Judy> Changed the block at 334, -57, 117]
+<Judy> setblock_red_mushroom_block 334 -57 117
+<Judy> Changed the block at 342, -60, 110]
+<Judy> setblock_slime_block 342 -60 110
+<Judy> Waste blocks count: 4, Reward blocks count: 12
+<Judy> Changed the block at 337, -58, 108]
+<Judy> setblock_red_mushroom_block 337 -58 108
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 4, Reward blocks count: 13
+<Judy> Changed the block at 338, -57, 109]
+<Judy> setblock_red_mushroom_block 338 -57 109
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 4, Reward blocks count: 14
+<Judy> Changed the block at 335, -58, 117]
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_red_mushroom_block 335 -58 117
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 4, Reward blocks count: 15
+<Judy> Changed the block at 337, -58, 110]
+<Judy> setblock_red_mushroom_block 337 -58 110
+<Judy> Changed the block at 347, -59, 113]
+<Judy> setblock_slime_block 347 -59 113
+<Judy> Waste blocks count: 4, Reward blocks count: 16
+<Judy> Changed the block at 338, -58, 110]
+<Judy> setblock_red_mushroom_block 338 -58 110
+<Judy> Changed the block at 343, -60, 111]
+<Judy> setblock_slime_block 343 -60 111
+<Judy> Waste blocks count: 3, Reward blocks count: 17
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Waste blocks count: 3, Reward blocks count: 18
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Waste blocks count: 2, Reward blocks count: 18
+<Judy> Changed the block at 342, -60, 110]
+<Judy> setblock_slime_block 342 -60 110
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 3, Reward blocks count: 18
+<Judy> Changed the block at 347, -60, 114]
+<Judy> setblock_slime_block 347 -60 114
+<Judy> Waste blocks count: 2, Reward blocks count: 18
+<Judy> Changed the block at 347, -59, 113]
+<Judy> setblock_slime_block 347 -59 113
+<Judy> Waste blocks count: 3, Reward blocks count: 18
+<Judy> Changed the block at 342, -59, 110]
+<Judy> setblock_slime_block 342 -59 110
+<Judy> Changed the block at 342, -60, 110]
+<Judy> setblock_slime_block 342 -60 110
+<Judy> Changed the block at 347, -60, 113]
+<Judy> setblock_slime_block 347 -60 113
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Changed the block at 342, -60, 110]
+<Judy> setblock_slime_block 342 -60 110
+<Judy> Changed the block at 346, -60, 113]
+<Judy> setblock_slime_block 346 -60 113
+<Judy> Changed the block at 347, -59, 113]
+<Judy> setblock_slime_block 347 -59 113
+<Judy> Changed the block at 342, -60, 110]
+<Judy> setblock_slime_block 342 -60 110
+<Judy> Waste blocks count: 4, Reward blocks count: 18
+<Judy> Changed the block at 343, -60, 111]
+<Judy> setblock_slime_block 343 -60 111
+<Judy> Waste blocks count: 3, Reward blocks count: 18
+<Judy> Changed the block at 342, -60, 110]
+<Judy> setblock_slime_block 342 -60 110
+<Judy> Changed the block at 342, -60, 110]
+<Judy> setblock_slime_block 342 -60 110
+<Judy> Waste blocks count: 2, Reward blocks count: 18
+<Judy> Changed the block at 341, -60, 110]
+<Judy> setblock_slime_block 341 -60 110
+<Judy> Waste blocks count: 1, Reward blocks count: 18
+<Glitch> Cleaned_slime 100
+<Glitch> Glitch took 45344ms
+<Judy> Changed the block at 346, -60, 114]
+<Judy> setblock_slime_block 346 -60 114
+<Judy> Waste blocks count: 0, Reward blocks count: 18
+<Judy> Changed the block at 340, -60, 111]
+<Judy> setblock_slime_block 340 -60 111
+<Judy> Waste blocks count: 1, Reward blocks count: 18
+<Judy> Changed the block at 343, -60, 111]
+<Judy> setblock_slime_block 343 -60 111
+<Judy> Waste blocks count: 2, Reward blocks count: 18
+<Judy> Changed the block at 345, -60, 112]
+<Judy> setblock_slime_block 345 -60 112
+<Judy> Waste blocks count: 3, Reward blocks count: 18
+Gizmo - Success: True, Emeralds: None
+Glitch - Success: False, Emeralds: None
+Judy - Success: None, Emeralds: {'Gizmo': 0, 'Glitch': 0}
+=== Round 1 Summary ===
+========================
+Gizmo - Success: False, Emeralds: None
+Glitch - Success: False, Emeralds: None
+Judy - Success: None, Emeralds: {'Gizmo': 0, 'Glitch': 0}
+Unpausing agents...
+Strategy count completed: 1
+check
+0 ('clean', 'clean') ('clean', 'clean') (1, 11)
+check
+0 ('clean', 'clean') ('clean', 'clean') (1, 11)
+Gizmo {emeralds: {'Gizmo': 0, 'Glitch': 0}}
+Glitch {emeralds: {'Gizmo': 0, 'Glitch': 0}}
+Quitting...
+Closing...
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 42152.
+Server http://127.0.0.1:3003 started successfully
+Creating agent Gizmo on port 3013
+Server on port 3013 not ready yet (attempt 1/15)
+Server on port 3013 not ready yet (attempt 4/15)
+Server on port 3013 not ready yet (attempt 7/15)
+Server on port 3013 not ready yet (attempt 10/15)
+Server on port 3013 not ready yet (attempt 13/15)
+Warning: Server on port 3013 may not be ready after 15 attempts
+Waiting 3 seconds before creating next agent...
+Creating agent Glitch on port 3023
+Server on port 3023 not ready yet (attempt 1/15)
+Server on port 3023 not ready yet (attempt 4/15)
+Server on port 3023 not ready yet (attempt 7/15)
+Server on port 3023 not ready yet (attempt 10/15)
+Server on port 3023 not ready yet (attempt 13/15)
+Warning: Server on port 3023 may not be ready after 15 attempts
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 42210.
+Server http://127.0.0.1:3013 started successfully
+Server http://127.0.0.1:3013 started successfully
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 42221.
+Server http://127.0.0.1:3023 started successfully
+Server http://127.0.0.1:3023 started successfully
+Loading cleanup.json...
+Mineflayer process has exited, restarting
+Mineflayer process has exited, restarting
+Subprocess mineflayer started with PID 42241.
+Subprocess mineflayer started with PID 42242.
+Server http://127.0.0.1:3023 started successfully
+Server http://127.0.0.1:3013 started successfully
+Warning: No chest found in scenario
+Server http://127.0.0.1:3003 started successfully
+Server http://127.0.0.1:3003 started successfully
+Server http://127.0.0.1:3013 started successfully
+Server http://127.0.0.1:3023 started successfully
+Starting episode 0...
+=== Starting Game Round 1/1 ===
+{'message': 'Success'}
+Pausing agents...
+--- Turn 1 of Round 1 ---
+Getting strategy recommendation...
+Generating recommended strategy based on current state and history...
+Generating strategy for agents...
+Loading value sets from /Users/chengrenmin/work/multiagent/Voyager-Contracts/result/mushroom_20260104_160922.csv
+real_state: (18, 3) current_strategy: ('clean', 'clean') real_strategy: ('hunt', 'clean') 
+
+执行策略示例（5步）:
+check_inducibility (1): FEASIBLE...
+check_inducibility (2): INFEASIBLE...
+Strategy monitor error for agents: 'NoneType' object has no attribute 'pi'
+LLM deciding on turn strategy, real_strategy_count: 0, turn_count: 1

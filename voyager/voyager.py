@@ -27,12 +27,12 @@ class Voyager:
         env_request_timeout: int = 600,
         max_iterations: int = 160,
         reset_placed_if_failed: bool = False,
-        action_agent_model_name: str = "gpt-4",
+        action_agent_model_name: str = "gpt-3.5-turbo",
         action_agent_temperature: float = 0,
         action_agent_task_max_retries: int = 4,
         action_agent_show_chat_log: bool = True,
         action_agent_show_execution_error: bool = True,
-        curriculum_agent_model_name: str = "gpt-4",
+        curriculum_agent_model_name: str = "gpt-3.5-turbo",
         curriculum_agent_temperature: float = 0,
         curriculum_agent_qa_model_name: str = "gpt-3.5-turbo",
         curriculum_agent_qa_temperature: float = 0,
@@ -40,7 +40,7 @@ class Voyager:
         curriculum_agent_core_inventory_items: str = r".*_log|.*_planks|stick|crafting_table|furnace"
         r"|cobblestone|dirt|coal|.*_pickaxe|.*_sword|.*_axe",
         curriculum_agent_mode: str = "auto",
-        critic_agent_model_name: str = "gpt-4",
+        critic_agent_model_name: str = "gpt-3.5-turbo",
         critic_agent_temperature: float = 0,
         critic_agent_mode: str = "auto",
         skill_manager_model_name: str = "gpt-3.5-turbo",
@@ -179,6 +179,13 @@ class Voyager:
         self.recorder = U.EventRecorder(ckpt_dir=ckpt_dir, resume=resume, logger=logger)
         self.resume = resume
 
+        # Connection stability parameters
+        self.connection_timeout = 60  # seconds
+        self.max_retries = 3
+        self.retry_delay = 5  # seconds
+        self.heartbeat_interval = 30  # seconds
+        self.last_heartbeat_time = time.time()
+
         # init variables for rollout
         self.action_agent_rollout_num_iter = -1
         self.task = None
@@ -248,10 +255,45 @@ class Voyager:
     def close(self):
         self.env.close()
 
-    def step(self):
+    def _check_connection(self):
+        current_time = time.time()
+        if current_time - self.last_heartbeat_time > self.heartbeat_interval:
+            try:
+                # Send ping to check connection
+                self.env.step("bot.chat('/ping')", timeout=15)  # Increase timeout
+                self.last_heartbeat_time = current_time
+                return True
+            except Exception as e:
+                self.logger(f"\033[31mConnection check failed: {e}, reconnecting...\033[0m")
+                
+                # Fix: Check if reset_connection method exists before calling
+                if hasattr(self.env, 'reset_connection'):
+                    success = self.env.reset_connection()
+                else:
+                    # Fallback: Use reset method if reset_connection is not available
+                    try:
+                        self.env.reset(options={"mode": "soft", "wait_ticks": self.env_wait_ticks})
+                        success = True
+                    except Exception as reset_e:
+                        self.logger(f"\033[31mReset failed: {reset_e}\033[0m")
+                        success = False
+                
+                if success:
+                    self.last_heartbeat_time = time.time()
+                else:
+                    time.sleep(self.retry_delay)
+                
+                return success
+        return True
 
+    def step(self):
         if self.action_agent_rollout_num_iter < 0:
             raise ValueError("Agent must be reset before stepping")
+            
+        # Check connection before proceeding
+        if not self._check_connection():
+            return self.messages, 0, False, {"error": "Connection lost"}
+
         ai_message = self.action_agent.llm(self.messages)
         self.logger(f"\033[34m****Action Agent ai message****\n{ai_message.content}\033[0m")
         self.conversations.append(
@@ -262,6 +304,9 @@ class Voyager:
         success = False
         if isinstance(parsed_result, dict):
             code = parsed_result["program_code"] + "\n" + parsed_result["exec_code"]
+            print('parsed_result', parsed_result)
+            print("fengexian")
+            print('code', code)
             events = self.env.step(
                 code,
                 programs=self.skill_manager.programs,

@@ -1,0 +1,130 @@
+import os
+import subprocess
+import re
+import argparse
+import sys
+import time
+# 定义常量
+DEFAULT_PORT = 54321
+LOG_DIR = "data/gpt_3.5"
+LOG_DIR_ABS = os.path.abspath(LOG_DIR)
+
+# 确保日志目录存在
+os.makedirs(LOG_DIR_ABS, exist_ok=True)
+
+def get_next_log_filename():
+    """获取下一个自增的日志文件名（仅处理文件，排除目录）"""
+    # 列出目录中的所有文件
+    files = os.listdir(LOG_DIR_ABS)
+    
+    # 过滤出 仅文件 + 纯数字命名 的文件
+    numeric_files = []
+    for file in files:
+        file_path = os.path.join(LOG_DIR_ABS, file)
+        # 只处理文件（排除目录），且文件名是纯数字
+        if os.path.isfile(file_path) and re.match(r'^\d+$', file):
+            numeric_files.append(int(file))
+    
+    if not numeric_files:
+        # 如果没有数字文件，从12345开始
+        return "12345"
+    
+    # 找到最大的数字并加1
+    max_num = max(numeric_files)
+    return str(max_num + 1)
+
+def run_command_with_log(command, log_file):
+    """执行命令并将输出重定向到日志文件（增强错误检测）"""
+    log_path = os.path.join(LOG_DIR_ABS, log_file)
+    
+    # 拆分命令（避免shell=True的安全风险，同时更准确检测子进程错误）
+    cmd_parts = command.split()
+    print(f"执行命令: {' '.join(cmd_parts)}")
+    print(f"日志文件: {log_path}")
+    
+    try:
+        # 打开日志文件，准备重定向输出
+        with open(log_path, 'w', encoding='utf-8') as f:
+            # 执行命令，不使用shell=True，直接执行可执行文件+参数
+            # capture_output=False，直接重定向到文件
+            result = subprocess.run(
+                cmd_parts,
+                stdout=f,
+                stderr=f,
+                check=True,
+                encoding='utf-8'
+            )
+        
+        print(f"命令执行成功，日志文件: {log_file}")
+        return True
+    
+    except subprocess.CalledProcessError as e:
+        print(f"命令执行出错 (返回码: {e.returncode})，日志文件: {log_file}")
+        # 打印简短错误信息（详细信息在日志文件中）
+        print(f"错误详情参考日志文件: {log_path}")
+        return False
+    
+    except FileNotFoundError as e:
+        print(f"找不到命令/文件: {e.filename}，日志文件: {log_file}")
+        # 即使找不到文件，也创建日志文件并写入错误信息
+        with open(log_path, 'w', encoding='utf-8') as f:
+            f.write(f"FileNotFoundError: {e}\n")
+        return False
+    
+    except PermissionError as e:
+        print(f"权限不足: {e}，日志文件: {log_file}")
+        with open(log_path, 'w', encoding='utf-8') as f:
+            f.write(f"PermissionError: {e}\n")
+        return False
+    
+    except Exception as e:
+        print(f"未知错误: {type(e).__name__}: {e}，日志文件: {log_file}")
+        with open(log_path, 'w', encoding='utf-8') as f:
+            f.write(f"Unknown Error: {type(e).__name__}: {e}\n")
+        return False
+
+def main():
+    """主函数"""
+    # 解析命令行参数
+    parser = argparse.ArgumentParser(description='自动执行命令脚本')
+    parser.add_argument('--success-count', type=int, default=5, help='成功执行的次数 (默认: 5)')
+    parser.add_argument('--port', type=int, default=DEFAULT_PORT, help='端口号 (默认: 54321)')
+    args = parser.parse_args()
+    
+    success_count = args.success_count
+    port = args.port
+    
+    print(f"自动执行命令脚本启动...")
+    print(f"目标成功执行次数: {success_count}")
+    print(f"使用端口: {port}")
+    
+    # 构建命令（拆分成列表，避免shell=True）
+    command = f"python main3.py --port {port}"
+    
+    # 前置检查：确认main3.py存在
+    if not os.path.exists("main3.py"):
+        print("错误：找不到main3.py文件，请检查路径！")
+        sys.exit(1)
+    
+    current_success = 0
+    
+    while current_success < success_count:
+        # 获取下一个日志文件名
+        log_file = get_next_log_filename()
+        
+        # 执行命令
+        success = run_command_with_log(command, log_file)
+        
+        if success:
+            current_success += 1
+            print(f"已成功执行 {current_success}/{success_count} 次")
+        else:
+            print(f"执行失败，未增加成功次数 (当前成功: {current_success}/{success_count})")
+        
+        print("\n" + "="*50 + "\n")
+        time.sleep(10)  # 等待10秒后再执行下一次，避免过快执行导致问题
+    
+    print(f"成功完成 {success_count} 次命令执行！")
+
+if __name__ == "__main__":
+    main()

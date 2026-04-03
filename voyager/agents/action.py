@@ -39,6 +39,7 @@ class ActionAgent:
             self.chest_memory = {}
         self.llm = ChatOpenAI(
             model_name=model_name,
+            openai_api_base="https://api.zhizengzeng.com/v1",
             temperature=temperature,
             request_timeout=request_timout,
         )
@@ -87,6 +88,7 @@ class ActionAgent:
             # "craftItem",
             "placeItem",
             "multiAgent",
+            "maximizeMushroomValue",
             # "farm",
             # "smeltItem",
             # "killMob",
@@ -108,7 +110,8 @@ class ActionAgent:
         return system_message
 
     def render_human_message(
-        self, *, events, code="", task="", contract="", scenario="", context="", critique="", contract_critique=""
+        self, *, events, code="", task="", contract="", scenario="", context="", critique="", contract_critique="",
+        real_strategy_count=None, current_strategy=None, real_strategy=None, real_state=None, recommend_strategy=None
     ):
         chat_messages = []
         error_messages = []
@@ -215,6 +218,31 @@ class ActionAgent:
             observation += f"Contract Critique: {contract_critique}\n\n"
         else:
             observation += f"Contract Critique: None\n\n"
+    
+        # 添加策略信息到观察中
+        if real_strategy_count is not None:
+            observation += f"Real Strategy Count: {real_strategy_count}\n\n"
+        else:
+            observation += f"Real Strategy Count: 1\n\n"
+        
+        if current_strategy:
+            observation += f"Current Strategy (The strategy recommended by the previous round's strategy recommender): {current_strategy}\n\n"
+        else:
+            observation += f"Current Strategy (The strategy recommended by the previous round's strategy recommender): None\n\n"
+        
+        if real_strategy:
+            observation += f"Real Strategy (The strategy employed in the previous round): {real_strategy}\n\n"
+        else:
+            observation += f"Real Strategy (The strategy employed in the previous round): None\n\n"
+        
+        if real_state:
+            observation += f"Real State (The status of this round (the number of mushrooms, the number of slimes):{real_state}\n\n"
+        else:
+            observation += f"Real State (The status of this round (the number of mushrooms, the number of slimes):(18, 11)\n\n"
+        if recommend_strategy:
+            observation += f"Recommend Strategy (The strategy recommended by the strategy recommender for this round): {recommend_strategy}\n\n"
+        else:
+            observation += f"Recommend Strategy (The strategy recommended by the strategy recommender for this round): ('hunt', 'hunt')\n\n"
 
         return HumanMessage(content=observation)
 
