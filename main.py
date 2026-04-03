@@ -21,7 +21,7 @@ mc_port = args.port
 options = {
     'azure_login':  None,
     'mc_port': mc_port,
-    'openai_api_key': "sk-740e6db3e4524c51a2ec4c0fac7454b6",
+    'openai_api_key': openai_api_key,
     # skill_library_dir=skill_library_dir, # Load a learned skill library.
     # ckpt_dir: ckpt_dir, # Feel free to use a new dir. Do not use the same dir as skill library because new events will still be recorded to ckpt_dir. 
     'resume':False, # Do not resume from a skill library because this is not learning.

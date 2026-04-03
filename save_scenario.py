@@ -1,5 +1,6 @@
 import argparse
 from voyager import MultiAgentVoyager
+from api_keys import openai_api_key
 
 # Argument parser
 parser = argparse.ArgumentParser(description='Running Voyager with different sets of parameters.')
@@ -16,7 +17,6 @@ azure_login = {
 }
 
 mc_port = args.port
-openai_api_key = "YOUR_OPENAI_API_KEY"
 options = {
     'azure_login':  None,
     'mc_port': mc_port,
