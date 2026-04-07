@@ -211,9 +211,19 @@ def main():
     for game_i in range(num_games):
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         game_dir = f"{save_base}/game_{timestamp}"
-        U.f_mkdir(game_dir)
+        # 注意：不在此处预先创建 game_dir，让 MultiAgentVoyager.__init__ 自行创建，
+        # 否则非空目录会被误判为已有存档而触发 load_from_save 逻辑。
 
-        # 写入元数据（run 前写入，即使崩溃也留有记录）
+        print(f"[run_experiment] 开始第 {game_i + 1}/{num_games} 局 → {game_dir}")
+
+        multi_agent = MultiAgentVoyager(
+            **multi_options,
+            contract_mode=contract_mode_for_games,
+            contract=contract_text,
+            save_dir=game_dir,
+        )
+
+        # MultiAgentVoyager 创建目录后再写入元数据
         write_metadata(
             game_dir,
             run_timestamp=datetime.now().isoformat(),
@@ -231,14 +241,6 @@ def main():
             save_dir=game_dir,
         )
 
-        print(f"[run_experiment] 开始第 {game_i + 1}/{num_games} 局 → {game_dir}")
-
-        multi_agent = MultiAgentVoyager(
-            **multi_options,
-            contract_mode=contract_mode_for_games,
-            contract=contract_text,
-            save_dir=game_dir,
-        )
         multi_agent.run()
         multi_agent.close()
 

@@ -129,7 +129,7 @@ class MultiAgentVoyager:
                 if contract_mode == "auto":
                     print("Warning: contract mode is auto but contract was found in save directory. Overwriting with saved contract...")
             except FileNotFoundError:
-                raise("No contract found in save directory")
+                raise Exception("No contract found in save directory")
             
             self.load_from_save = True
         
