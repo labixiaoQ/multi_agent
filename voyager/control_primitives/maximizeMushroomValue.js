@@ -55,7 +55,7 @@ async function maximizeMushroomValue(bot, mushroomTarget = 0, slimeTarget = 10) 
   async function harvestMushroomBlocks(bot, targetCount) {
     harvestedCount = 0;
     while (harvestedCount < targetCount) {
-      if (countMushroomBlocks(bot) <= 0) {
+      if (await countMushroomBlocks(bot) <= 0) {
         break;
       }
       const success = await checkAndHarvestSingleMushroom(bot);
@@ -95,7 +95,7 @@ async function maximizeMushroomValue(bot, mushroomTarget = 0, slimeTarget = 10) 
   async function cleanSlimeBlocks(bot, targetCount) {
     cleanedCount = 0;
     while (cleanedCount < targetCount) {
-      if (countSlimeBlocks(bot) <= 0) {
+      if (await countSlimeBlocks(bot) <= 0) {
         break;
       }
       const success = await checkAndCleanSingleSlime(bot);

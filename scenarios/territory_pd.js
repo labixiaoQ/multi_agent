@@ -68,10 +68,11 @@ async function runTerritoryPDScenario(bot) {
     const reward_block = mcData.blocksByName.red_mushroom_block;
 
     // ─── Helper: try to place a block only if the slot is empty ────────────────
-    function trySetblock(pos, blockName) {
+    async function trySetblock(pos, blockName) {
         const current = bot.blockAt(new Vec3(pos.x, pos.y, pos.z));
         if (current && current.name !== blockName) {
             bot.chat(`/setblock ${pos.x} ${pos.y} ${pos.z} ${blockName}`);
+            await new Promise(resolve => setTimeout(resolve, 200));
             return true;
         }
         return false;
@@ -127,7 +128,7 @@ async function runTerritoryPDScenario(bot) {
         let placed = 0;
         for (const pos of injectPositions) {
             if (placed >= DEFECT_INJECT_COUNT) break;
-            if (trySetblock(pos, 'slime_block')) {
+            if (await trySetblock(pos, 'slime_block')) {
                 bot.chat(`setblock_slime_block ${pos.x} ${pos.y} ${pos.z}`);
                 placed++;
             }

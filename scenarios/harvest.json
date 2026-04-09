@@ -16,6 +16,6 @@
         "Gizmo": {"x": 337, "y": -60, "z": 111},
         "Glitch": {"x": 338, "y": -60, "z": 115}
     },
-    "reward_item_name": "red_mushroom",
+    "reward_item_names": ["red_mushroom"],
     "chest_contents": {}
 }
