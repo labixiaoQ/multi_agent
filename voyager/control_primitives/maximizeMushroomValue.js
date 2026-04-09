@@ -39,7 +39,9 @@ async function maximizeMushroomValue(bot, mushroomTarget = 0, slimeTarget = 10) 
       try {
         await bot.pathfinder.goto(new GoalNear(pos.x, pos.y, pos.z, 4));
         await bot.dig(block);
-        // await bot.chat(`${bot.username} harvested mushroom`);
+        // red_mushroom_block drops are unreliable in vanilla MC, use /give to ensure item is awarded
+        bot.chat(`/give ${bot.username} red_mushroom 1`);
+        await bot.waitForTicks(2);
         harvestedCount++;
         return "success";
       } catch (error) {
