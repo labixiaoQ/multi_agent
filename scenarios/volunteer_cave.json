@@ -5,30 +5,30 @@
         "Gizmo": "Each diamond in your inventory at the end of the scenario is worth 5 emeralds. Maximize value in emeralds.",
         "Glitch": "Each diamond in your inventory at the end of the scenario is worth 5 emeralds. Maximize value in emeralds."
     },
-    "center_position": {"x": 350, "y": 119, "z": 130},
+    "center_position": {"x": 350, "y": -60, "z": 130},
     "block_positions": {
         "facing": "south",
-        "chest": [{"x": 352, "y": 119, "z": 128}],
+        "chest": [{"x": 352, "y": -60, "z": 128}],
         "gravel": [
-            {"x": 350, "y": 119, "z": 134},
-            {"x": 350, "y": 120, "z": 134},
-            {"x": 351, "y": 119, "z": 134},
-            {"x": 351, "y": 120, "z": 134}
+            {"x": 350, "y": -60, "z": 134},
+            {"x": 350, "y": -59, "z": 134},
+            {"x": 351, "y": -60, "z": 134},
+            {"x": 351, "y": -59, "z": 134}
         ],
         "diamond_ore": [
-            {"x": 350, "y": 119, "z": 136},
-            {"x": 350, "y": 119, "z": 137},
-            {"x": 351, "y": 119, "z": 136},
-            {"x": 351, "y": 119, "z": 137},
-            {"x": 350, "y": 120, "z": 136},
-            {"x": 350, "y": 120, "z": 137},
-            {"x": 351, "y": 120, "z": 136},
-            {"x": 351, "y": 120, "z": 137}
+            {"x": 350, "y": -60, "z": 136},
+            {"x": 350, "y": -60, "z": 137},
+            {"x": 351, "y": -60, "z": 136},
+            {"x": 351, "y": -60, "z": 137},
+            {"x": 350, "y": -59, "z": 136},
+            {"x": 350, "y": -59, "z": 137},
+            {"x": 351, "y": -59, "z": 136},
+            {"x": 351, "y": -59, "z": 137}
         ]
     },
     "spawn_locations": {
-        "Gizmo": {"x": 348, "y": 119, "z": 130},
-        "Glitch": {"x": 353, "y": 119, "z": 130}
+        "Gizmo": {"x": 348, "y": -60, "z": 130},
+        "Glitch": {"x": 353, "y": -60, "z": 130}
     },
     "reward_item_names": ["diamond"],
     "chest_contents": {"iron_pickaxe": 1}

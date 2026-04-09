@@ -128,7 +128,7 @@ def main():
     parser.add_argument(
         "--port",
         type=int,
-        default=49172,
+        default=54321,
         help="Minecraft 服务器端口（默认 49172）",
     )
     args = parser.parse_args()
